@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termos de Uso — Guia do Nome Limpo</title>
+<meta name="description" content="Termos de Uso do Guia do Nome Limpo: regras de utilização do portal, isenções de responsabilidade e propriedade intelectual.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30;
+    --navy-800:#0f2745;
+    --navy-700:#16345e;
+    --blue-500:#2f6fed;
+    --blue-400:#5b8fff;
+    --gray-600:#5b6b82;
+    --gray-300:#c4cedd;
+    --gray-100:#eef1f6;
+    --white:#ffffff;
+    --clean-green:#1fae6f;
+    --clean-green-soft:#e4f7ee;
+    --dirty-red:#e35b5b;
+
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:18px;
+    --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--gray-100);
+    color:var(--navy-900);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:2px solid var(--blue-400); outline-offset:2px;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ============ MARQUEE STATUS BAR ============ */
+  .status-bar{
+    background:var(--navy-900);
+    color:var(--gray-300);
+    font-family:var(--font-mono);
+    font-size:.75rem;
+    padding:7px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .status-bar .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .status-bar .dot{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--clean-green); margin-right:6px;
+    box-shadow:0 0 0 3px rgba(31,174,111,.18);
+  }
+  .status-bar .items{display:flex; gap:22px; flex-wrap:wrap;}
+
+  /* ============ HEADER ============ */
+  header.site{
+    background:var(--white);
+    border-bottom:1px solid var(--gray-300);
+    position:sticky; top:0; z-index:100;
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; gap:24px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display);
+    font-weight:700; font-size:1.28rem;
+    color:var(--navy-900);
+  }
+  .logo .mark{
+    width:34px; height:34px; flex-shrink:0;
+  }
+  .logo small{
+    display:block; font-family:var(--font-body); font-weight:500;
+    font-size:.62rem; color:var(--gray-600); letter-spacing:.03em;
+  }
+  nav.primary ul{display:flex; gap:30px; align-items:center;}
+  nav.primary a{
+    font-size:.92rem; font-weight:600; color:var(--navy-800);
+    position:relative; padding:6px 0;
+  }
+  nav.primary a::after{
+    content:''; position:absolute; left:0; bottom:0; height:2px; width:0;
+    background:var(--blue-500); transition:width .2s ease;
+  }
+  nav.primary a:hover::after{width:100%;}
+  .header-cta{display:flex; align-items:center; gap:14px;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-weight:700; font-size:.88rem; border:none;
+    border-radius:var(--radius-sm); padding:12px 22px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--blue-500); color:var(--white);}
+  .btn-primary:hover{background:var(--navy-700); transform:translateY(-1px); box-shadow:0 8px 20px rgba(47,111,237,.28);}
+  .btn-ghost{background:transparent; color:var(--navy-800); border:1px solid var(--gray-300);}
+  .btn-ghost:hover{border-color:var(--navy-800);}
+  .menu-toggle{display:none; background:none; border:none; padding:6px;}
+  .menu-toggle span{display:block; width:22px; height:2px; background:var(--navy-900); margin:5px 0;}
+
+  /* ============ SECTION HEADERS (reused) ============ */
+  .section{padding:56px 0;}
+
+  /* ============ TICKER (reused for continuity) ============ */
+  .ticker{
+    background:var(--navy-800); color:var(--gray-300); overflow:hidden;
+    padding:12px 0; border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .ticker-track{display:flex; gap:48px; white-space:nowrap; animation:scroll-left 32s linear infinite;}
+  .ticker-track span{font-family:var(--font-mono); font-size:.78rem; display:flex; align-items:center; gap:8px;}
+  .ticker-track b{color:var(--clean-green);}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ============ LEGAL PAGE HERO ============ */
+  .legal-hero{
+    background:linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+    color:var(--white);
+    padding:52px 0 56px;
+  }
+  .legal-hero .eyebrow{color:var(--blue-400); margin-bottom:14px;}
+  .legal-hero h1{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(1.9rem, 3vw, 2.6rem); letter-spacing:-.01em; margin-bottom:12px;
+  }
+  .legal-hero p{color:var(--gray-300); max-width:60ch; font-size:1rem;}
+  .legal-hero .updated{
+    display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+    font-family:var(--font-mono); font-size:.76rem; color:var(--gray-300);
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    padding:8px 14px; border-radius:100px;
+  }
+  .legal-hero .updated .dot{width:6px; height:6px; border-radius:50%; background:var(--clean-green);}
+
+  /* ============ LEGAL LAYOUT ============ */
+  .legal-layout{
+    display:grid; grid-template-columns:260px 1fr; gap:40px; align-items:start;
+  }
+  .toc{
+    background:var(--white); border:1px solid var(--gray-300); border-radius:var(--radius-md);
+    padding:22px; position:sticky; top:92px;
+  }
+  .toc h4{
+    font-family:var(--font-display); font-weight:600; font-size:.92rem; margin-bottom:14px;
+  }
+  .toc ol{list-style:none; counter-reset:toc-counter; display:flex; flex-direction:column; gap:10px;}
+  .toc li{counter-increment:toc-counter;}
+  .toc a{
+    display:flex; gap:10px; font-size:.85rem; color:var(--gray-600); font-weight:500;
+    padding:4px 0; border-radius:4px; transition:color .15s ease;
+  }
+  .toc a::before{
+    content:counter(toc-counter, decimal-leading-zero);
+    font-family:var(--font-mono); font-size:.72rem; color:var(--blue-500); flex-shrink:0; padding-top:1px;
+  }
+  .toc a:hover{color:var(--navy-900);}
+
+  .legal-content{
+    background:var(--white); border:1px solid var(--gray-300); border-radius:var(--radius-md);
+    padding:40px 44px;
+  }
+  .legal-content section{margin-bottom:36px; scroll-margin-top:100px;}
+  .legal-content section:last-child{margin-bottom:0;}
+  .legal-content h2{
+    font-family:var(--font-display); font-weight:700; font-size:1.2rem; color:var(--navy-900);
+    margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .legal-content h2 .num{
+    font-family:var(--font-mono); font-size:.78rem; color:var(--blue-500);
+    background:var(--gray-100); border-radius:6px; padding:3px 8px;
+  }
+  .legal-content h3{
+    font-family:var(--font-display); font-weight:600; font-size:1rem; color:var(--navy-800);
+    margin:18px 0 8px;
+  }
+  .legal-content p{color:var(--gray-600); font-size:.94rem; line-height:1.7; margin-bottom:12px;}
+  .legal-content ul{list-style:none; display:flex; flex-direction:column; gap:8px; margin:12px 0 12px 0;}
+  .legal-content ul li{
+    color:var(--gray-600); font-size:.94rem; line-height:1.6; padding-left:20px; position:relative;
+  }
+  .legal-content ul li::before{
+    content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%;
+    background:var(--blue-500);
+  }
+  .legal-content strong{color:var(--navy-900); font-weight:700;}
+  .highlight-box{
+    background:var(--clean-green-soft); border:1px solid rgba(31,174,111,.25); border-radius:var(--radius-sm);
+    padding:16px 18px; margin:14px 0;
+  }
+  .highlight-box p{color:var(--navy-800); margin-bottom:0; font-size:.9rem;}
+  .highlight-box p strong{color:var(--clean-green);}
+  .warn-box{
+    background:#fdf1f1; border:1px solid rgba(227,91,91,.3); border-radius:var(--radius-sm);
+    padding:16px 18px; margin:14px 0;
+  }
+  .warn-box p{margin-bottom:0; font-size:.9rem; color:var(--navy-800);}
+  .warn-box p strong{color:var(--dirty-red);}
+  .legal-content a.inline-link{color:var(--blue-500); font-weight:600; text-decoration:underline;}
+
+  /* ============ FOOTER (reused) ============ */
+  footer.site{background:var(--navy-900); color:var(--gray-300); padding:56px 0 0; margin-top:64px;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr repeat(3, 1fr); gap:40px;
+    padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand .logo{color:var(--white);}
+  .footer-brand p{font-size:.85rem; color:var(--gray-300); margin-top:14px; max-width:32ch; line-height:1.6;}
+  .footer-col h5{
+    font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--white);
+    margin-bottom:16px; font-weight:700;
+  }
+  .footer-col ul{display:flex; flex-direction:column; gap:11px;}
+  .footer-col a{font-size:.87rem; color:var(--gray-300);}
+  .footer-col a:hover{color:var(--white);}
+  .footer-bottom{
+    padding:22px 0 28px; display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:14px; font-size:.78rem; color:var(--gray-300);
+  }
+  .footer-bottom .legal-links{display:flex; gap:20px;}
+  .footer-bottom .legal-links a:hover{color:var(--white); text-decoration:underline;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px){
+    .legal-layout{grid-template-columns:1fr;}
+    .toc{position:static;}
+    .legal-content{padding:30px 26px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 720px){
+    nav.primary{
+      position:fixed; inset:64px 0 0 0; background:var(--white);
+      transform:translateX(100%); transition:transform .25s ease; padding:24px;
+    }
+    nav.primary.open{transform:translateX(0);}
+    nav.primary ul{flex-direction:column; align-items:flex-start; gap:22px;}
+    .menu-toggle{display:block;}
+    .header-cta .btn-ghost{display:none;}
+    .footer-grid{grid-template-columns:1fr;}
+    .status-bar .items{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ STATUS BAR ============ -->
+  <div class="status-bar">
+    <div class="wrap">
+      <span><span class="dot"></span>Atualizado hoje às 09:40 — dados de mercado de crédito</span>
+      <div class="items">
+        <span>Selic: <strong style="color:#fff">10,75%</strong></span>
+        <span>Inadimplência BR: <strong style="color:#fff">28,4%</strong></span>
+        <span>IPCA (12m): <strong style="color:#fff">4,3%</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="index.html" class="logo">
+        <svg class="mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/>
+          <path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Guia do Nome Limpo<small>Crédito, dívidas &amp; renegociação</small></span>
+      </a>
+
+      <nav class="primary" id="primaryNav">
+        <ul>
+          <li><a href="index.html#renegociacao">Renegociação</a></li>
+          <li><a href="index.html#artigos">Artigos</a></li>
+          <li><a href="index.html#calculadora">Calculadora</a></li>
+          <li><a href="index.html#score">Score &amp; CPF</a></li>
+          <li><a href="index.html#sobre">Sobre o Guia</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="index.html#score" class="btn btn-ghost">Consultar meu CPF</a>
+        <a href="index.html#renegociacao" class="btn btn-primary">Quero limpar meu nome</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ LEGAL HERO ============ -->
+  <section class="legal-hero">
+    <div class="wrap">
+      <span class="eyebrow">DOCUMENTO LEGAL</span>
+      <h1>Termos de Uso</h1>
+      <p>Estas condições regem o acesso e a utilização do portal Guia do Nome Limpo. Ao navegar neste site, você declara ter lido, compreendido e aceito integralmente os termos aqui descritos.</p>
+      <span class="updated"><span class="dot"></span>Última atualização: 23 de julho de 2026</span>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Conteúdo educativo, não constitui consultoria financeira individualizada</span>
+      <span>O uso do site implica aceitação integral destes termos</span>
+      <span>Dúvidas? Fale conosco pelo canal de contato indicado abaixo</span>
+      <span>Conteúdo educativo, não constitui consultoria financeira individualizada</span>
+      <span>O uso do site implica aceitação integral destes termos</span>
+      <span>Dúvidas? Fale conosco pelo canal de contato indicado abaixo</span>
+    </div>
+  </div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="wrap">
+    <section class="section">
+      <div class="legal-layout">
+
+        <!-- TOC -->
+        <nav class="toc" aria-label="Sumário">
+          <h4>Nesta página</h4>
+          <ol>
+            <li><a href="#aceitacao">Aceitação dos termos</a></li>
+            <li><a href="#descricao">Descrição do serviço</a></li>
+            <li><a href="#natureza-conteudo">Natureza do conteúdo</a></li>
+            <li><a href="#uso-permitido">Uso permitido do site</a></li>
+            <li><a href="#propriedade">Propriedade intelectual</a></li>
+            <li><a href="#links-terceiros">Links e serviços de terceiros</a></li>
+            <li><a href="#publicidade">Publicidade</a></li>
+            <li><a href="#isencao">Isenção de responsabilidade</a></li>
+            <li><a href="#limitacao">Limitação de responsabilidade</a></li>
+            <li><a href="#alteracoes">Alterações dos termos</a></li>
+            <li><a href="#lei-aplicavel">Lei aplicável e foro</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ol>
+        </nav>
+
+        <!-- LEGAL CONTENT -->
+        <article class="legal-content">
+
+          <section id="aceitacao">
+            <h2><span class="num">01</span>Aceitação dos termos</h2>
+            <p>Estes Termos de Uso ("Termos") regulam o acesso e a utilização do portal <strong>Guia do Nome Limpo</strong>, disponível em <strong>guiadonomelimpo.com.br</strong>. Ao acessar ou utilizar o site, você concorda integralmente com estes Termos. Caso não concorde com alguma disposição, recomendamos que interrompa o uso do portal.</p>
+          </section>
+
+          <section id="descricao">
+            <h2><span class="num">02</span>Descrição do serviço</h2>
+            <p>O Guia do Nome Limpo é um portal de conteúdo editorial e educativo voltado a temas de crédito, dívidas, renegociação e organização financeira pessoal. O site disponibiliza artigos, calculadoras ilustrativas e materiais informativos de caráter geral.</p>
+          </section>
+
+          <section id="natureza-conteudo">
+            <h2><span class="num">03</span>Natureza do conteúdo</h2>
+            <div class="warn-box">
+              <p><strong>Atenção:</strong> o conteúdo publicado neste site tem finalidade exclusivamente informativa e educacional. Ele <strong>não constitui consultoria financeira, jurídica ou contábil individualizada</strong> e não substitui a orientação de um profissional habilitado.</p>
+            </div>
+            <p>As calculadoras e simuladores disponíveis no portal apresentam estimativas ilustrativas e genéricas, que podem não refletir com exatidão a sua situação financeira real. Decisões relacionadas à renegociação de dívidas devem ser tomadas com base em análise individual, preferencialmente com apoio de profissionais qualificados ou diretamente junto aos credores.</p>
+          </section>
+
+          <section id="uso-permitido">
+            <h2><span class="num">04</span>Uso permitido do site</h2>
+            <p>Ao utilizar o portal, você concorda em não:</p>
+            <ul>
+              <li>Utilizar o site para fins ilícitos ou não autorizados;</li>
+              <li>Tentar acessar áreas restritas, sistemas ou dados sem autorização;</li>
+              <li>Reproduzir, copiar ou distribuir o conteúdo do site sem autorização prévia, exceto para uso pessoal e não comercial;</li>
+              <li>Utilizar meios automatizados (robôs, scrapers) para extração de conteúdo sem consentimento expresso;</li>
+              <li>Praticar qualquer ação que comprometa a segurança, a disponibilidade ou o funcionamento do portal.</li>
+            </ul>
+          </section>
+
+          <section id="propriedade">
+            <h2><span class="num">05</span>Propriedade intelectual</h2>
+            <p>Todo o conteúdo do portal — incluindo textos, artigos, logotipos, ícones, layout e elementos visuais — é de propriedade do Guia do Nome Limpo ou de seus licenciadores, sendo protegido pela legislação de direitos autorais e propriedade intelectual vigente. É vedada a reprodução total ou parcial sem autorização prévia por escrito, salvo para fins de citação com a devida referência à fonte.</p>
+          </section>
+
+          <section id="links-terceiros">
+            <h2><span class="num">06</span>Links e serviços de terceiros</h2>
+            <p>O portal pode conter links para sites de terceiros, incluindo instituições financeiras, órgãos de proteção ao crédito (como Serasa e SPC) e outros parceiros. Não temos controle sobre o conteúdo, as políticas de privacidade ou as práticas desses sites, e não nos responsabilizamos por eles. A inclusão de um link não representa endosso ou recomendação.</p>
+          </section>
+
+          <section id="publicidade">
+            <h2><span class="num">07</span>Publicidade</h2>
+            <p>Este site pode exibir anúncios veiculados por redes de publicidade de terceiros, incluindo o Google AdSense. Esses anúncios podem utilizar cookies e tecnologias semelhantes para exibição de conteúdo personalizado, conforme detalhado em nossa <a class="inline-link" href="politica-de-privacidade.html">Política de Privacidade</a>. A presença de um anúncio no site não implica recomendação ou endosso do produto ou serviço anunciado por parte do Guia do Nome Limpo.</p>
+          </section>
+
+          <section id="isencao">
+            <h2><span class="num">08</span>Isenção de responsabilidade</h2>
+            <p>Envidamos esforços para manter as informações do portal atualizadas e precisas, porém não garantimos a exatidão, completude ou atualidade de todo o conteúdo publicado, especialmente diante de mudanças frequentes em normas, taxas e políticas de instituições financeiras e órgãos de proteção ao crédito.</p>
+            <p>O uso das informações contidas neste site é de responsabilidade exclusiva do usuário. O Guia do Nome Limpo não se responsabiliza por decisões financeiras tomadas com base no conteúdo aqui publicado.</p>
+          </section>
+
+          <section id="limitacao">
+            <h2><span class="num">09</span>Limitação de responsabilidade</h2>
+            <p>Na máxima extensão permitida pela legislação aplicável, o Guia do Nome Limpo não se responsabiliza por danos diretos, indiretos, incidentais ou consequenciais decorrentes do uso ou da impossibilidade de uso do site, incluindo eventuais indisponibilidades, falhas técnicas ou erros de conteúdo.</p>
+          </section>
+
+          <section id="alteracoes">
+            <h2><span class="num">10</span>Alterações dos termos</h2>
+            <p>Podemos alterar estes Termos de Uso periodicamente, a fim de refletir mudanças em nossos serviços ou na legislação aplicável. A versão vigente estará sempre disponível nesta página, com a respectiva data de atualização. O uso continuado do site após eventuais alterações implica aceitação dos novos termos.</p>
+          </section>
+
+          <section id="lei-aplicavel">
+            <h2><span class="num">11</span>Lei aplicável e foro</h2>
+            <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca de domicílio do usuário para dirimir eventuais controvérsias decorrentes destes Termos, conforme facultado pelo Código de Defesa do Consumidor, ou o foro que vier a ser especificado em contrato específico, quando aplicável.</p>
+          </section>
+
+          <section id="contato">
+            <h2><span class="num">12</span>Contato</h2>
+            <p>Em caso de dúvidas sobre estes Termos de Uso, entre em contato através do e-mail <strong>contato@guiadonomelimpo.com.br</strong>.</p>
+          </section>
+
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site" id="sobre">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="mark" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#5b8fff" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Guia do Nome Limpo</span>
+          </a>
+          <p>Conteúdo educativo e independente sobre crédito, dívidas e renegociação para o consumidor brasileiro.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Conteúdo</h5>
+          <ul>
+            <li><a href="index.html#renegociacao">Renegociação</a></li>
+            <li><a href="index.html#score">Score de crédito</a></li>
+            <li><a href="index.html#artigos">Orçamento pessoal</a></li>
+            <li><a href="index.html#artigos">Golpes e alertas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Ferramentas</h5>
+          <ul>
+            <li><a href="index.html#calculadora">Calculadora de desconto</a></li>
+            <li><a href="index.html#score">Consulta de CPF</a></li>
+            <li><a href="index.html#calculadora">Simulador de acordo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="index.html#sobre">Sobre o Guia</a></li>
+            <li><a href="#contato">Fale conosco</a></li>
+            <li><a href="#contato">Anuncie aqui</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados. CNPJ 00.000.000/0001-00.</span>
+        <div class="legal-links">
+          <a href="termos-de-uso.html">Termos de Uso</a>
+          <a href="politica-de-privacidade.html">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    menuToggle && menuToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+
+</body>
+</html>
