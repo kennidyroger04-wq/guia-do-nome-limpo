@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia do Nome Limpo — Renegocie suas dívidas com segurança</title>
+<meta name="description" content="Portal com dicas, calculadoras e análises para sair do nome sujo e recuperar seu score de crédito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30;
+    --navy-800:#0f2745;
+    --navy-700:#16345e;
+    --blue-500:#2f6fed;
+    --blue-400:#5b8fff;
+    --gray-600:#5b6b82;
+    --gray-300:#c4cedd;
+    --gray-100:#eef1f6;
+    --white:#ffffff;
+    --clean-green:#1fae6f;
+    --clean-green-soft:#e4f7ee;
+    --dirty-red:#e35b5b;
+
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:18px;
+    --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--gray-100);
+    color:var(--navy-900);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:2px solid var(--blue-400); outline-offset:2px;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ============ MARQUEE STATUS BAR ============ */
+  .status-bar{
+    background:var(--navy-900);
+    color:var(--gray-300);
+    font-family:var(--font-mono);
+    font-size:.75rem;
+    padding:7px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .status-bar .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .status-bar .dot{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--clean-green); margin-right:6px;
+    box-shadow:0 0 0 3px rgba(31,174,111,.18);
+  }
+  .status-bar .items{display:flex; gap:22px; flex-wrap:wrap;}
+
+  /* ============ HEADER ============ */
+  header.site{
+    background:var(--white);
+    border-bottom:1px solid var(--gray-300);
+    position:sticky; top:0; z-index:100;
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; gap:24px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display);
+    font-weight:700; font-size:1.28rem;
+    color:var(--navy-900);
+  }
+  .logo .mark{
+    width:34px; height:34px; flex-shrink:0;
+  }
+  .logo .mark path{transition:stroke-dashoffset .6s ease;}
+  .logo small{
+    display:block; font-family:var(--font-body); font-weight:500;
+    font-size:.62rem; color:var(--gray-600); letter-spacing:.03em;
+  }
+  nav.primary ul{display:flex; gap:30px; align-items:center;}
+  nav.primary a{
+    font-size:.92rem; font-weight:600; color:var(--navy-800);
+    position:relative; padding:6px 0;
+  }
+  nav.primary a::after{
+    content:''; position:absolute; left:0; bottom:0; height:2px; width:0;
+    background:var(--blue-500); transition:width .2s ease;
+  }
+  nav.primary a:hover::after{width:100%;}
+  .header-cta{display:flex; align-items:center; gap:14px;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-weight:700; font-size:.88rem; border:none;
+    border-radius:var(--radius-sm); padding:12px 22px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--blue-500); color:var(--white);}
+  .btn-primary:hover{background:var(--navy-700); transform:translateY(-1px); box-shadow:0 8px 20px rgba(47,111,237,.28);}
+  .btn-ghost{background:transparent; color:var(--navy-800); border:1px solid var(--gray-300);}
+  .btn-ghost:hover{border-color:var(--navy-800);}
+  .menu-toggle{display:none; background:none; border:none; padding:6px;}
+  .menu-toggle span{display:block; width:22px; height:2px; background:var(--navy-900); margin:5px 0;}
+
+  /* ============ HERO ============ */
+  .hero{
+    background:linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 62%, var(--navy-700) 100%);
+    color:var(--white);
+    padding:64px 0 84px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 80% 60% at 30% 20%, black, transparent);
+  }
+  .hero-inner{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+  }
+  .hero-eyebrow{color:var(--blue-400); margin-bottom:18px; display:flex; align-items:center; gap:8px;}
+  .hero h1{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(2.1rem, 3.6vw, 3.2rem);
+    line-height:1.08; letter-spacing:-.01em;
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{color:var(--clean-green);}
+  .hero p.lede{
+    font-size:1.08rem; color:var(--gray-300); max-width:52ch;
+    margin-bottom:32px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
+  .btn-lg{padding:15px 28px; font-size:.95rem;}
+  .btn-primary.btn-lg{box-shadow:0 10px 30px rgba(47,111,237,.35);}
+  .hero-trust{display:flex; gap:28px; flex-wrap:wrap; color:var(--gray-300); font-size:.82rem;}
+  .hero-trust li{display:flex; align-items:center; gap:8px;}
+  .hero-trust svg{width:16px; height:16px; color:var(--clean-green);}
+
+  /* SIGNATURE: score dial */
+  .dial-card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:var(--radius-lg);
+    padding:28px 26px 24px;
+    backdrop-filter:blur(6px);
+  }
+  .dial-card .dial-label{font-size:.78rem; color:var(--gray-300); margin-bottom:6px;}
+  .dial-wrap{display:flex; justify-content:center; margin:6px 0 10px;}
+  .dial-value{
+    font-family:var(--font-display); font-weight:700; font-size:2.4rem;
+    text-align:center; color:var(--white);
+  }
+  .dial-value span{font-size:1rem; font-weight:600; color:var(--clean-green); display:block; margin-top:2px;}
+  .dial-scale{display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:.68rem; color:var(--gray-300); margin-top:8px;}
+  .dial-arc-neg{stroke:var(--dirty-red); opacity:.35;}
+  .dial-arc-pos{stroke:var(--clean-green); stroke-dasharray:251; stroke-dashoffset:90; transition:stroke-dashoffset 1s ease;}
+  .dial-needle{transform-origin:100px 100px; transform:rotate(15deg);}
+
+  /* ============ SECTION HEADERS ============ */
+  .section{padding:56px 0;}
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    margin-bottom:30px; gap:20px; flex-wrap:wrap;
+    border-bottom:1px solid var(--gray-300); padding-bottom:16px;
+  }
+  .section-head h2{
+    font-family:var(--font-display); font-weight:700; font-size:1.5rem; color:var(--navy-900);
+  }
+  .section-head .eyebrow{color:var(--blue-500); display:block; margin-bottom:6px;}
+  .section-head .see-all{font-weight:700; font-size:.85rem; color:var(--blue-500); white-space:nowrap;}
+  .section-head .see-all:hover{text-decoration:underline;}
+
+  /* ============ CONTENT LAYOUT: articles + sidebar ============ */
+  .content-layout{
+    display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start;
+  }
+
+  .article-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;
+  }
+  .article-grid > .featured{grid-column:1 / -1;}
+
+  .card{
+    background:var(--white); border:1px solid var(--gray-300);
+    border-radius:var(--radius-md); overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(10,26,48,.09); border-color:var(--gray-300);}
+  .card .thumb{
+    height:150px; position:relative;
+    background:linear-gradient(135deg, var(--navy-800), var(--navy-700));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card.featured .thumb{height:230px;}
+  .card .thumb svg{width:48px; height:48px; color:rgba(255,255,255,.35);}
+  .tag{
+    position:absolute; top:14px; left:14px;
+    background:rgba(255,255,255,.95); color:var(--navy-800);
+    font-size:.68rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    padding:5px 10px; border-radius:100px;
+  }
+  .tag.tag-green{background:var(--clean-green-soft); color:var(--clean-green);}
+  .card .body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .card h3{
+    font-family:var(--font-display); font-weight:600; font-size:1.05rem; line-height:1.3; color:var(--navy-900);
+  }
+  .card.featured h3{font-size:1.5rem;}
+  .card p{color:var(--gray-600); font-size:.9rem; line-height:1.55;}
+  .card .meta{
+    margin-top:auto; display:flex; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:.72rem; color:var(--gray-600);
+    padding-top:10px; border-top:1px dashed var(--gray-300);
+  }
+  .card .meta .dot-sep{width:3px; height:3px; border-radius:50%; background:var(--gray-600);}
+
+  /* ============ SIDEBAR ============ */
+  .sidebar{display:flex; flex-direction:column; gap:24px; position:sticky; top:92px;}
+  .side-block{
+    background:var(--white); border:1px solid var(--gray-300); border-radius:var(--radius-md);
+    padding:22px;
+  }
+  .side-block h4{
+    font-family:var(--font-display); font-weight:600; font-size:.98rem; margin-bottom:14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .side-block h4 svg{width:18px; height:18px; color:var(--blue-500);}
+
+  /* calculator mock */
+  .calc-field{margin-bottom:14px;}
+  .calc-field label{
+    display:block; font-size:.76rem; font-weight:600; color:var(--gray-600); margin-bottom:6px;
+  }
+  .calc-field .fake-input{
+    background:var(--gray-100); border:1px solid var(--gray-300); border-radius:var(--radius-sm);
+    padding:11px 12px; font-family:var(--font-mono); font-size:.88rem; color:var(--navy-800);
+  }
+  .calc-result{
+    margin-top:16px; background:var(--clean-green-soft); border-radius:var(--radius-sm);
+    padding:14px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .calc-result .label{font-size:.76rem; color:var(--gray-600); font-weight:600;}
+  .calc-result .value{font-family:var(--font-mono); font-weight:700; color:var(--clean-green); font-size:1.15rem;}
+  .calc-cta{
+    display:block; width:100%; margin-top:14px; text-align:center;
+    background:var(--navy-900); color:var(--white); padding:12px; border-radius:var(--radius-sm);
+    font-weight:700; font-size:.85rem;
+  }
+  .calc-cta:hover{background:var(--blue-500);}
+
+  /* ad slot */
+  .ad-slot{
+    border:1.5px dashed var(--gray-300); border-radius:var(--radius-md);
+    background:repeating-linear-gradient(135deg, var(--gray-100), var(--gray-100) 10px, #e4e9f0 10px, #e4e9f0 20px);
+    min-height:250px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; color:var(--gray-600);
+  }
+  .ad-slot .eyebrow{color:var(--gray-600);}
+  .ad-slot span.dims{font-family:var(--font-mono); font-size:.72rem;}
+  .ad-slot.ad-small{min-height:120px;}
+
+  .newsletter-block{
+    background:var(--navy-900); color:var(--white); border-radius:var(--radius-md); padding:22px;
+  }
+  .newsletter-block h4{color:var(--white);}
+  .newsletter-block p{font-size:.85rem; color:var(--gray-300); margin-bottom:14px; line-height:1.5;}
+  .newsletter-form{display:flex; gap:8px;}
+  .newsletter-form input{
+    flex:1; min-width:0; padding:11px 12px; border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06); color:var(--white); font-size:.85rem;
+  }
+  .newsletter-form input::placeholder{color:var(--gray-300);}
+  .newsletter-form button{
+    background:var(--blue-500); color:var(--white); border:none; border-radius:var(--radius-sm);
+    padding:0 16px; font-weight:700; font-size:.85rem;
+  }
+  .newsletter-form button:hover{background:var(--blue-400);}
+
+  /* ============ TICKER STRIP ============ */
+  .ticker{
+    background:var(--navy-800); color:var(--gray-300); overflow:hidden;
+    padding:12px 0; border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .ticker-track{display:flex; gap:48px; white-space:nowrap; animation:scroll-left 32s linear infinite;}
+  .ticker-track span{font-family:var(--font-mono); font-size:.78rem; display:flex; align-items:center; gap:8px;}
+  .ticker-track b{color:var(--clean-green);}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ============ FOOTER ============ */
+  footer.site{background:var(--navy-900); color:var(--gray-300); padding:56px 0 0; margin-top:64px;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr repeat(3, 1fr); gap:40px;
+    padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand .logo{color:var(--white);}
+  .footer-brand p{font-size:.85rem; color:var(--gray-300); margin-top:14px; max-width:32ch; line-height:1.6;}
+  .footer-col h5{
+    font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--white);
+    margin-bottom:16px; font-weight:700;
+  }
+  .footer-col ul{display:flex; flex-direction:column; gap:11px;}
+  .footer-col a{font-size:.87rem; color:var(--gray-300);}
+  .footer-col a:hover{color:var(--white);}
+  .footer-bottom{
+    padding:22px 0 28px; display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:14px; font-size:.78rem; color:var(--gray-300);
+  }
+  .footer-bottom .legal-links{display:flex; gap:20px;}
+  .footer-bottom .legal-links a:hover{color:var(--white); text-decoration:underline;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px){
+    .content-layout{grid-template-columns:1fr;}
+    .sidebar{position:static; display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+    .hero-inner{grid-template-columns:1fr;}
+    .dial-card{max-width:360px; margin:0 auto;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 720px){
+    nav.primary{
+      position:fixed; inset:64px 0 0 0; background:var(--white);
+      transform:translateX(100%); transition:transform .25s ease; padding:24px;
+    }
+    nav.primary.open{transform:translateX(0);}
+    nav.primary ul{flex-direction:column; align-items:flex-start; gap:22px;}
+    .menu-toggle{display:block;}
+    .header-cta .btn-ghost{display:none;}
+    .article-grid{grid-template-columns:1fr;}
+    .sidebar{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .status-bar .items{display:none;}
+    .hero{padding:44px 0 56px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ STATUS BAR ============ -->
+  <div class="status-bar">
+    <div class="wrap">
+      <span><span class="dot"></span>Atualizado hoje às 09:40 — dados de mercado de crédito</span>
+      <div class="items">
+        <span>Selic: <strong style="color:#fff">10,75%</strong></span>
+        <span>Inadimplência BR: <strong style="color:#fff">28,4%</strong></span>
+        <span>IPCA (12m): <strong style="color:#fff">4,3%</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="#topo" class="logo">
+        <svg class="mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/>
+          <path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Guia do Nome Limpo<small>Crédito, dívidas &amp; renegociação</small></span>
+      </a>
+
+      <nav class="primary" id="primaryNav">
+        <ul>
+          <li><a href="#renegociacao">Renegociação</a></li>
+          <li><a href="#artigos">Artigos</a></li>
+          <li><a href="#calculadora">Calculadora</a></li>
+          <li><a href="#score">Score &amp; CPF</a></li>
+          <li><a href="#sobre">Sobre o Guia</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="#score" class="btn btn-ghost">Consultar meu CPF</a>
+        <a href="#renegociacao" class="btn btn-primary">Quero limpar meu nome</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="topo">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow hero-eyebrow">● GUIA PRÁTICO · ATUALIZADO PARA 2026</div>
+        <h1>Seu caminho do nome sujo ao <span class="accent">nome limpo</span> começa com uma decisão informada.</h1>
+        <p class="lede">Reunimos estratégias de renegociação, prazos de limpeza no Serasa e SPC, e simulações reais de desconto para você quitar dívidas sem cair em armadilhas.</p>
+        <div class="hero-actions">
+          <a href="#renegociacao" class="btn btn-primary btn-lg">Ver dicas de renegociação →</a>
+          <a href="#calculadora" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,.3); color:#fff;">Simular minha dívida</a>
+        </div>
+        <ul class="hero-trust">
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Conteúdo revisado por especialistas em crédito</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sem custo para consultar</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Atualizado semanalmente</li>
+        </ul>
+      </div>
+
+      <div class="dial-card">
+        <div class="dial-label eyebrow">SIMULAÇÃO · SCORE DE CRÉDITO</div>
+        <div class="dial-wrap">
+          <svg width="200" height="120" viewBox="0 0 200 120">
+            <path d="M20 100 A80 80 0 0 1 180 100" stroke="#22344f" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path class="dial-arc-pos" d="M20 100 A80 80 0 0 1 180 100" stroke-width="14" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="dial-value">712<span>Nome limpo · score bom</span></div>
+        <div class="dial-scale"><span>0</span><span>300</span><span>600</span><span>1000</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span><b>+38%</b> de desconto médio em acordos à vista este mês</span>
+      <span>Serasa Limpa Nome: nova rodada de descontos ativa</span>
+      <span><b>5 dias</b> úteis é o prazo médio para baixa após pagamento</span>
+      <span>Consulta ao CPF é gratuita e não afeta o score</span>
+      <span><b>+38%</b> de desconto médio em acordos à vista este mês</span>
+      <span>Serasa Limpa Nome: nova rodada de descontos ativa</span>
+      <span><b>5 dias</b> úteis é o prazo médio para baixa após pagamento</span>
+      <span>Consulta ao CPF é gratuita e não afeta o score</span>
+    </div>
+  </div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="wrap">
+
+    <section class="section" id="artigos">
+      <div class="content-layout">
+
+        <!-- ARTICLES -->
+        <div>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">EDITORIAL</span>
+              <h2>Artigos recentes</h2>
+            </div>
+            <a href="#" class="see-all">Ver todos os artigos →</a>
+          </div>
+
+          <div class="article-grid">
+
+            <a href="#" class="card featured">
+              <div class="thumb">
+                <span class="tag tag-green">Guia completo</span>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="body">
+                <h3>Como negociar dívidas atrasadas em 2026: passo a passo com bancos e financeiras</h3>
+                <p>Um roteiro completo para contatar credores, calcular sua margem de desconto e formalizar o acordo sem comprometer seu orçamento.</p>
+                <div class="meta"><span>Renegociação</span><span class="dot-sep"></span><span>12 min de leitura</span><span class="dot-sep"></span><span>22 jul 2026</span></div>
+              </div>
+            </a>
+
+            <a href="#" class="card">
+              <div class="thumb"><span class="tag">Serasa</span>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8h14M5 16h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </div>
+              <div class="body">
+                <h3>Quanto tempo leva para meu nome sair do Serasa após o pagamento?</h3>
+                <p>Prazos legais, o que fazer se a baixa não ocorrer e como acompanhar sua situação online.</p>
+                <div class="meta"><span>Score</span><span class="dot-sep"></span><span>6 min</span></div>
+              </div>
+            </a>
+
+            <a href="#" class="card">
+              <div class="thumb"><span class="tag">Planejamento</span>
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </div>
+              <div class="body">
+                <h3>Orçamento em 50/30/20: como sobrar dinheiro para quitar dívidas</h3>
+                <p>Um método simples para reorganizar suas contas mensais e destinar parte da renda aos acordos.</p>
+                <div class="meta"><span>Orçamento</span><span class="dot-sep"></span><span>8 min</span></div>
+              </div>
+            </a>
+
+            <a href="#" class="card">
+              <div class="thumb"><span class="tag">Alerta</span>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9L2.7 17a1.8 1.8 0 001.6 2.7h15.4a1.8 1.8 0 001.6-2.7L13.7 3.9a1.8 1.8 0 00-3.4 0z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="body">
+                <h3>5 golpes comuns em ofertas de "limpeza de nome" — e como identificá-los</h3>
+                <p>Empresas que prometem apagar dívidas sem pagamento e outras armadilhas para evitar.</p>
+                <div class="meta"><span>Segurança</span><span class="dot-sep"></span><span>7 min</span></div>
+              </div>
+            </a>
+
+            <a href="#" class="card">
+              <div class="thumb"><span class="tag">Cartão</span>
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.6"/></svg>
+              </div>
+              <div class="body">
+                <h3>Fatura do cartão atrasada: negociar direto com o banco ou portabilidade da dívida?</h3>
+                <p>Comparamos os dois caminhos considerando juros, prazos e impacto no seu score.</p>
+                <div class="meta"><span>Cartão de crédito</span><span class="dot-sep"></span><span>9 min</span></div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="calculadora">
+
+          <div class="side-block ad-slot">
+            <span class="eyebrow">Publicidade</span>
+            <span class="dims">300 × 250</span>
+          </div>
+
+          <div class="side-block">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Calculadora de desconto à vista
+            </h4>
+            <div class="calc-field">
+              <label for="valorDivida">Valor original da dívida</label>
+              <div class="fake-input" id="valorDivida">R$ 3.200,00</div>
+            </div>
+            <div class="calc-field">
+              <label for="desconto">Desconto médio negociado</label>
+              <div class="fake-input" id="desconto">45%</div>
+            </div>
+            <div class="calc-result">
+              <span class="label">Valor estimado do acordo</span>
+              <span class="value">R$ 1.760,00</span>
+            </div>
+            <a href="#" class="calc-cta">Simular minha dívida real</a>
+          </div>
+
+          <div class="side-block ad-slot ad-small">
+            <span class="eyebrow">Publicidade</span>
+            <span class="dims">300 × 120</span>
+          </div>
+
+          <div class="side-block newsletter-block">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5b8fff"><path d="M4 6h16v12H4V6zm0 0l8 7 8-7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Alertas de crédito
+            </h4>
+            <p>Receba por e-mail novas oportunidades de desconto e mudanças nas regras do Serasa e SPC.</p>
+            <form class="newsletter-form" onsubmit="return false;">
+              <input type="email" placeholder="seu@email.com" aria-label="E-mail">
+              <button type="submit">Assinar</button>
+            </form>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============ RENEGOTIATION CALLOUT ============ -->
+    <section class="section" id="renegociacao">
+      <div style="background:var(--navy-900); border-radius:var(--radius-lg); padding:48px 44px; display:grid; grid-template-columns:1.3fr .7fr; gap:32px; align-items:center; color:#fff;">
+        <div>
+          <span class="eyebrow" style="color:var(--blue-400)">PRONTO PARA COMEÇAR?</span>
+          <h2 style="font-family:var(--font-display); font-size:1.7rem; margin:10px 0 12px; font-weight:700;">Monte seu plano de renegociação em menos de 10 minutos</h2>
+          <p style="color:var(--gray-300); max-width:56ch; line-height:1.6;">Responda 5 perguntas sobre sua situação financeira e receba um roteiro personalizado com as melhores estratégias de negociação para o seu caso.</p>
+        </div>
+        <a href="#" class="btn btn-primary btn-lg" style="justify-self:end;">Começar agora →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site" id="sobre">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#topo" class="logo">
+            <svg class="mark" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#5b8fff" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Guia do Nome Limpo</span>
+          </a>
+          <p>Conteúdo educativo e independente sobre crédito, dívidas e renegociação para o consumidor brasileiro.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Conteúdo</h5>
+          <ul>
+            <li><a href="#">Renegociação</a></li>
+            <li><a href="#">Score de crédito</a></li>
+            <li><a href="#">Orçamento pessoal</a></li>
+            <li><a href="#">Golpes e alertas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Ferramentas</h5>
+          <ul>
+            <li><a href="#">Calculadora de desconto</a></li>
+            <li><a href="#">Consulta de CPF</a></li>
+            <li><a href="#">Simulador de acordo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="#">Sobre o Guia</a></li>
+            <li><a href="#">Fale conosco</a></li>
+            <li><a href="#">Anuncie aqui</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados. CNPJ 00.000.000/0001-00.</span>
+        <div class="legal-links">
+          <a href="#">Termos de Uso</a>
+          <a href="#">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    menuToggle && menuToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+
+</body>
+</html>
