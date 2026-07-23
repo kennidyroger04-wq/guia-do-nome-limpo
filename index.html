@@ -536,52 +536,73 @@
         <!-- SIDEBAR -->
         <aside class="sidebar" id="calculadora">
 
-          <div class="side-block ad-slot">
-            <span class="eyebrow">Publicidade</span>
-            <span class="dims">300 × 250</span>
-          </div>
+  <!-- BLOCO DE ANÚNCIO 1 (AdSense 300x250 ou Responsivo) -->
+  <div class="side-block">
+    <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
+      PUBLICIDADE
+    </div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
-          <div class="side-block">
-            <h4>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              Calculadora de desconto à vista
-            </h4>
-            <div class="calc-field">
-              <label for="valorDivida">Valor original da dívida</label>
-              <div class="fake-input" id="valorDivida">R$ 3.200,00</div>
-            </div>
-            <div class="calc-field">
-              <label for="desconto">Desconto médio negociado</label>
-              <div class="fake-input" id="desconto">45%</div>
-            </div>
-            <div class="calc-result">
-              <span class="label">Valor estimado do acordo</span>
-              <span class="value">R$ 1.760,00</span>
-            </div>
-            <a href="#" class="calc-cta">Simular minha dívida real</a>
-          </div>
+  <!-- CALCULADORA DE DESCONTO -->
+  <div class="side-block">
+    <h4>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Calculadora de desconto à vista
+    </h4>
+    <div class="calc-field">
+      <label for="valorDivida">Valor original da dívida</label>
+      <div class="fake-input" id="valorDivida">R$ 3.200,00</div>
+    </div>
+    <div class="calc-field">
+      <label for="desconto">Desconto médio negociado</label>
+      <div class="fake-input" id="desconto">45%</div>
+    </div>
+    <div class="calc-result">
+      <span class="label">Valor estimado do acordo</span>
+      <span class="value">R$ 1.760,00</span>
+    </div>
+    <a href="#" class="calc-cta">Simular minha dívida real</a>
+  </div>
 
-          <div class="side-block ad-slot ad-small">
-            <span class="eyebrow">Publicidade</span>
-            <span class="dims">300 × 120</span>
-          </div>
+  <!-- BLOCO DE ANÚNCIO 2 (AdSense Secundário) -->
+  <div class="side-block">
+    <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
+      PUBLICIDADE
+    </div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="0987654321"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
-          <div class="side-block newsletter-block">
-            <h4>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#5b8fff"><path d="M4 6h16v12H4V6zm0 0l8 7 8-7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Alertas de crédito
-            </h4>
-            <p>Receba por e-mail novas oportunidades de desconto e mudanças nas regras do Serasa e SPC.</p>
-            <form class="newsletter-form" onsubmit="return false;">
-              <input type="email" placeholder="seu@email.com" aria-label="E-mail">
-              <button type="submit">Assinar</button>
-            </form>
-          </div>
+  <!-- NEWSLETTER -->
+  <div class="side-block newsletter-block">
+    <h4>
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5b8fff"><path d="M4 6h16v12H4V6zm0 0l8 7 8-7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Alertas de crédito
+    </h4>
+    <p>Receba por e-mail novas oportunidades de desconto e mudanças nas regras do Serasa e SPC.</p>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="seu@email.com" aria-label="E-mail">
+      <button type="submit">Assinar</button>
+    </form>
+  </div>
 
-        </aside>
-
-      </div>
-    </section>
+</aside>
 
     <!-- ============ RENEGOTIATION CALLOUT ============ -->
     <section class="section" id="renegociacao">
