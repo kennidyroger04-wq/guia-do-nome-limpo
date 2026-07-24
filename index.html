@@ -60,6 +60,34 @@
     *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
   }
 
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--blue-500);
+    color: var(--white);
+  }
+  .btn-primary:hover {
+    background: var(--blue-400);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--navy-900);
+    border-color: var(--gray-300);
+  }
+  .btn-ghost:hover {
+    background: rgba(0,0,0,0.05);
+  }
+
   /* ============ MARQUEE STATUS BAR ============ */
   .status-bar{
     background:var(--navy-900);
@@ -78,44 +106,75 @@
   .status-bar .items{display:flex; gap:22px; flex-wrap:wrap;}
 
   /* ============ HEADER ============ */
-  <header class="site-header">
-  <div class="wrap header-wrapper">
-    
-    <!-- LOGO -->
-    <a href="index.html" class="logo">
-      <svg class="mark" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#5b8fff" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Guia do Nome Limpo</span>
-    </a>
+  header.site {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-300);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--navy-900);
+    white-space: nowrap;
+  }
+  .logo .mark {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .logo small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--gray-600);
+  }
+  nav.primary ul {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  nav.primary a {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--navy-900);
+  }
+  nav.primary a:hover {
+    color: var(--blue-500);
+  }
+  .header-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 6px;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--navy-900);
+  }
 
-    <!-- NAVEGAÇÃO PRINCIPAL -->
-    <nav class="primary-nav" id="primaryNav">
-      <ul>
-        <li><a href="categoria-renegociacao.html">Guias de Renegociação</a></li>
-        <li><a href="categoria-score.html">Entender Score</a></li>
-        <li><a href="calculadoras.html">Calculadoras</a></li>
-        
-        <!-- DROPDOWN DE ARTIGOS -->
-        <li class="has-dropdown">
-          <a href="#">Artigos ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="categoria-renda-extra.html">Renda Extra</a></li>
-            <li><a href="categoria-carreira.html">Carreira & Cursos</a></li>
-            <li><a href="categoria-organizacao.html">Organização Financeira</a></li>
-            <li><a href="sobre.html">Sobre o Guia</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- AÇÃO DE DESTAQUE (CTA) -->
-    <div class="header-actions">
-      <a href="https://www.serasa.com.br/limpa-nome-online/" target="_blank" rel="noopener noreferrer" class="btn-cta">
-        Consultar no Serasa ↗
-      </a>
-    </div>
-
-  </div>
-</header>
   /* ============ HERO ============ */
   .hero{
     background:linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 62%, var(--navy-700) 100%);
@@ -190,7 +249,7 @@
   .section-head .see-all{font-weight:700; font-size:.85rem; color:var(--blue-500); white-space:nowrap;}
   .section-head .see-all:hover{text-decoration:underline;}
 
-  /* ============ CONTENT LAYOUT: articles + sidebar ============ */
+  /* ============ CONTENT LAYOUT ============ */
   .content-layout{
     display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start;
   }
@@ -246,14 +305,9 @@
   }
   .side-block h4 svg{width:18px; height:18px; color:var(--blue-500);}
 
-  /* calculator mock */
   .calc-field{margin-bottom:14px;}
   .calc-field label{
     display:block; font-size:.76rem; font-weight:600; color:var(--gray-600); margin-bottom:6px;
-  }
-  .calc-field .fake-input{
-    background:var(--gray-100); border:1px solid var(--gray-300); border-radius:var(--radius-sm);
-    padding:11px 12px; font-family:var(--font-mono); font-size:.88rem; color:var(--navy-800);
   }
   .calc-result{
     margin-top:16px; background:var(--clean-green-soft); border-radius:var(--radius-sm);
@@ -267,17 +321,6 @@
     font-weight:700; font-size:.85rem;
   }
   .calc-cta:hover{background:var(--blue-500);}
-
-  /* ad slot */
-  .ad-slot{
-    border:1.5px dashed var(--gray-300); border-radius:var(--radius-md);
-    background:repeating-linear-gradient(135deg, var(--gray-100), var(--gray-100) 10px, #e4e9f0 10px, #e4e9f0 20px);
-    min-height:250px; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:6px; color:var(--gray-600);
-  }
-  .ad-slot .eyebrow{color:var(--gray-600);}
-  .ad-slot span.dims{font-family:var(--font-mono); font-size:.72rem;}
-  .ad-slot.ad-small{min-height:120px;}
 
   .newsletter-block{
     background:var(--navy-900); color:var(--white); border-radius:var(--radius-md); padding:22px;
@@ -346,7 +389,7 @@
     }
     nav.primary.open{transform:translateX(0);}
     nav.primary ul{flex-direction:column; align-items:flex-start; gap:22px;}
-    .menu-toggle{display:block;}
+    .menu-toggle{display:flex;}
     .header-cta .btn-ghost{display:none;}
     .article-grid{grid-template-columns:1fr;}
     .sidebar{grid-template-columns:1fr;}
@@ -527,77 +570,80 @@
         <!-- SIDEBAR -->
         <aside class="sidebar" id="calculadora">
 
-  <!-- BLOCO DE ANÚNCIO 1 (AdSense 300x250 ou Responsivo) -->
-  <div class="side-block">
-    <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
-      PUBLICIDADE
-    </div>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+          <!-- BLOCO DE ANÚNCIO 1 -->
+          <div class="side-block">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
+              PUBLICIDADE
+            </div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
 
-  <!-- CALCULADORA DE DESCONTO INTERATIVA -->
-<div class="side-block">
-  <h4>
-    <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    Calculadora de desconto à vista
-  </h4>
+          <!-- CALCULADORA DE DESCONTO -->
+          <div class="side-block">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Calculadora de desconto à vista
+            </h4>
 
-  <div class="calc-field">
-    <label for="valorDivida">Valor original da dívida (R$)</label>
-    <input type="number" id="valorDivida" class="fake-input" placeholder="3200" value="3200" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
-  </div>
+            <div class="calc-field">
+              <label for="valorDivida">Valor original da dívida (R$)</label>
+              <input type="number" id="valorDivida" class="fake-input" placeholder="3200" value="3200" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
+            </div>
 
-  <div class="calc-field" style="margin-top: 12px;">
-    <label for="desconto">Desconto estimado (%)</label>
-    <input type="number" id="desconto" class="fake-input" placeholder="45" value="45" min="0" max="99" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
-  </div>
+            <div class="calc-field" style="margin-top: 12px;">
+              <label for="desconto">Desconto estimado (%)</label>
+              <input type="number" id="desconto" class="fake-input" placeholder="45" value="45" min="0" max="99" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
+            </div>
 
-  <div class="calc-result" style="margin-top: 16px;">
-    <span class="label">Valor estimado do acordo</span>
-    <span class="value" id="resultadoAcordo" style="font-size: 1.4rem; font-weight: 700; color: var(--green-600, #1fae6f);">R$ 1.760,00</span>
-  </div>
+            <div class="calc-result" style="margin-top: 16px;">
+              <span class="label">Valor estimado do acordo</span>
+              <span class="value" id="resultadoAcordo" style="font-size: 1.4rem; font-weight: 700; color: var(--clean-green);">R$ 1.760,00</span>
+            </div>
 
-  <button type="button" id="btnCalcular" class="calc-cta" style="width:100%; border:none; cursor:pointer; margin-top: 12px;">Calcular meu desconto</button>
-</div>
+            <button type="button" id="btnCalcular" class="calc-cta" style="width:100%; border:none; cursor:pointer; margin-top: 12px;">Calcular meu desconto</button>
+          </div>
 
-  <!-- BLOCO DE ANÚNCIO 2 (AdSense Secundário) -->
-  <div class="side-block">
-    <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
-      PUBLICIDADE
-    </div>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="0987654321"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+          <!-- BLOCO DE ANÚNCIO 2 -->
+          <div class="side-block">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
+              PUBLICIDADE
+            </div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="0987654321"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
 
-  <!-- NEWSLETTER -->
-  <div class="side-block newsletter-block">
-    <h4>
-      <svg viewBox="0 0 24 24" fill="none" stroke="#5b8fff"><path d="M4 6h16v12H4V6zm0 0l8 7 8-7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Alertas de crédito
-    </h4>
-    <p>Receba por e-mail novas oportunidades de desconto e mudanças nas regras do Serasa e SPC.</p>
-    <form class="newsletter-form" onsubmit="return false;">
-      <input type="email" placeholder="seu@email.com" aria-label="E-mail">
-      <button type="submit">Assinar</button>
-    </form>
-  </div>
+          <!-- NEWSLETTER -->
+          <div class="side-block newsletter-block">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5b8fff"><path d="M4 6h16v12H4V6zm0 0l8 7 8-7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Alertas de crédito
+            </h4>
+            <p>Receba por e-mail novas oportunidades de desconto e mudanças nas regras do Serasa e SPC.</p>
+            <form class="newsletter-form" onsubmit="return false;">
+              <input type="email" placeholder="seu@email.com" aria-label="E-mail">
+              <button type="submit">Assinar</button>
+            </form>
+          </div>
 
-</aside>
+        </aside>
+
+      </div>
+    </section>
 
     <!-- ============ RENEGOTIATION CALLOUT ============ -->
     <section class="section" id="renegociacao">
@@ -613,7 +659,7 @@
 
   </main>
 
-   <!-- ============ FOOTER ============ -->
+  <!-- ============ FOOTER ============ -->
   <footer class="site" id="sobre">
     <div class="wrap">
       <div class="footer-grid">
@@ -671,33 +717,25 @@
       const isOpen = primaryNav.classList.toggle('open');
       menuToggle.setAttribute('aria-expanded', isOpen);
     });
+
+    function calcularDesconto() {
+      const valorInput = parseFloat(document.getElementById('valorDivida').value) || 0;
+      const descontoInput = parseFloat(document.getElementById('desconto').value) || 0;
+
+      const percentual = Math.min(Math.max(descontoInput, 0), 100);
+      const valorComDesconto = valorInput * (1 - (percentual / 100));
+
+      const valorFormatado = valorComDesconto.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
+
+      document.getElementById('resultadoAcordo').innerText = valorFormatado;
+    }
+
+    document.getElementById('btnCalcular')?.addEventListener('click', calcularDesconto);
+    document.getElementById('valorDivida')?.addEventListener('input', calcularDesconto);
+    document.getElementById('desconto')?.addEventListener('input', calcularDesconto);
   </script>
-
-  <script>
-  // Script da Calculadora de Desconto
-  function calcularDesconto() {
-    const valorInput = parseFloat(document.getElementById('valorDivida').value) || 0;
-    const descontoInput = parseFloat(document.getElementById('desconto').value) || 0;
-
-    // Cálculo: Valor Final = Valor Original * (1 - Desconto/100)
-    const percentual = Math.min(Math.max(descontoInput, 0), 100);
-    const valorComDesconto = valorInput * (1 - (percentual / 100));
-
-    // Formata o resultado no padrão de moeda brasileira (R$)
-    const valorFormatado = valorComDesconto.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    });
-
-    document.getElementById('resultadoAcordo').innerText = valorFormatado;
-  }
-
-  // Executa o cálculo ao clicar no botão ou ao digitar nos campos
-  document.getElementById('btnCalcular')?.addEventListener('click', calcularDesconto);
-  document.getElementById('valorDivida')?.addEventListener('input', calcularDesconto);
-  document.getElementById('desconto')?.addEventListener('input', calcularDesconto);
-</script>
-        
 </body>
 </html>
-
