@@ -155,6 +155,52 @@
   nav.primary a:hover {
     color: var(--blue-500);
   }
+  
+  /* Dropdown Styles */
+  .has-dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 25px rgba(10,26,48,0.1);
+    min-width: 240px;
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    z-index: 10;
+  }
+  @media (min-width: 721px) {
+    .has-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  .dropdown-menu li {
+    width: 100%;
+  }
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    color: var(--navy-800);
+    transition: background 0.2s ease;
+  }
+  .dropdown-menu a:hover {
+    background: var(--gray-100);
+    color: var(--blue-500);
+  }
+
   .header-cta {
     display: flex;
     align-items: center;
@@ -386,9 +432,27 @@
     nav.primary{
       position:fixed; inset:64px 0 0 0; background:var(--white);
       transform:translateX(100%); transition:transform .25s ease; padding:24px;
+      overflow-y:auto;
     }
     nav.primary.open{transform:translateX(0);}
     nav.primary ul{flex-direction:column; align-items:flex-start; gap:22px;}
+    
+    .dropdown-menu {
+      position: static;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      border-left: 2px solid var(--gray-300);
+      margin-top: 10px;
+      margin-left: 10px;
+      opacity: 1;
+      visibility: visible;
+      padding: 0;
+    }
+    .dropdown-menu a {
+      padding: 8px 20px;
+    }
+
     .menu-toggle{display:flex;}
     .header-cta .btn-ghost{display:none;}
     .article-grid{grid-template-columns:1fr;}
@@ -413,7 +477,6 @@
     </div>
   </div>
 
- <!-- ============ HEADER ============ -->
   <!-- ============ HEADER ============ -->
   <header class="site">
     <div class="header-inner wrap">
@@ -460,27 +523,6 @@
     </div>
   </header>
 
-      <!-- Menu Principal -->
-      <nav class="primary" id="primaryNav">
-        <ul>
-          <li><a href="#renegociacao">Renegociação</a></li>
-          <li><a href="#artigos">Artigos</a></li>
-          <li><a href="#calculadora">Calculadora</a></li>
-          <li><a href="#score">Score &amp; CPF</a></li>
-          <li><a href="#sobre">Sobre o Guia</a></li>
-        </ul>
-      </nav>
-
-      <!-- Botões de Ação -->
-      <div class="header-cta">
-        <a href="#score" class="btn btn-ghost">Consultar meu CPF</a>
-        <a href="#renegociacao" class="btn btn-primary">Quero limpar meu nome</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
   <!-- ============ HERO ============ -->
   <section class="hero" id="topo">
     <div class="wrap hero-inner">
