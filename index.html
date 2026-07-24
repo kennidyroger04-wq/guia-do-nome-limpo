@@ -486,11 +486,11 @@
  <!-- ============ STATUS BAR ============ -->
   <div class="status-bar">
     <div class="wrap">
-      <span><span class="dot"></span>Atualizado <span id="status-time">...</span> — dados de mercado de crédito</span>
+      <span><span class="dot"></span>Indicadores atualizados mensalmente — dados de mercado de crédito</span>
       <div class="items">
-        <span>Selic: <strong style="color:#fff" id="val-selic">Carregando...</strong></span>
-        <span>Inadimplência BR: <strong style="color:#fff" id="val-inadimp">Carregando...</strong></span>
-        <span>IPCA (12m): <strong style="color:#fff" id="val-ipca">Carregando...</strong></span>
+        <span>Selic: <strong style="color:#fff">10,50%</strong></span>
+        <span>Inadimplência BR: <strong style="color:#fff">28,4%</strong></span>
+        <span>IPCA (12m): <strong style="color:#fff">4,23%</strong></span>
       </div>
     </div>
   </div>
@@ -833,61 +833,6 @@
     document.getElementById('btnCalcular')?.addEventListener('click', calcularDesconto);
     document.getElementById('valorDivida')?.addEventListener('input', calcularDesconto);
     document.getElementById('desconto')?.addEventListener('input', calcularDesconto);
-    
-   // ============ DADOS DO MERCADO (API BANCO CENTRAL VIA PROXY) ============
-async function buscarDadosMercado() {
-  try {
-    // Códigos das séries temporais no Banco Central (SGS)
-    // 432: Meta Selic definida pelo Copom
-    // 13522: IPCA - % acumulada em 12 meses
-    // 21082: Taxa de inadimplência da carteira de crédito (Recursos Livres)
-    
-    const buscarSerie = async (codigo) => {
-      // Usamos o AllOrigins como "mensageiro" para burlar o bloqueio de CORS do BCB
-      const urlBCB = encodeURIComponent(`https://api.bcb.gov.br/dados/serie/bcb/${codigo}/dados/ultimos/1?formato=json`);
-      const resposta = await fetch(`https://api.allorigins.win/raw?url=${urlBCB}`);
-      
-      if (!resposta.ok) throw new Error('Falha no proxy ou BCB');
-      
-      const dados = await resposta.json();
-      return parseFloat(dados[0].valor);
-    };
-
-    // Busca os 3 dados ao mesmo tempo
-    const [selic, ipca, inadimp] = await Promise.all([
-      buscarSerie(432),
-      buscarSerie(13522),
-      buscarSerie(21082)
-    ]);
-
-    // Função para formatar os números no padrão brasileiro (ex: 10,75%)
-    const formatarNumero = (num) => num.toLocaleString('pt-BR', { 
-      minimumFractionDigits: 1, 
-      maximumFractionDigits: 2 
-    }) + '%';
-
-    // Injeta os dados reais no HTML
-    document.getElementById('val-selic').textContent = formatarNumero(selic);
-    document.getElementById('val-ipca').textContent = formatarNumero(ipca);
-    document.getElementById('val-inadimp').textContent = formatarNumero(inadimp);
-
-    // Atualiza o relógio para a hora exata da consulta
-    const agora = new Date();
-    const horaFormatada = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('status-time').textContent = `hoje às ${horaFormatada}`;
-
-  } catch (erro) {
-    console.error("Erro ao buscar dados do BCB:", erro);
-    // Fallback: se algo der errado, mostra valores estáticos recentes
-    document.getElementById('val-selic').textContent = "10,75%";
-    document.getElementById('val-ipca').textContent = "4,3%";
-    document.getElementById('val-inadimp').textContent = "28,4%";
-    document.getElementById('status-time').textContent = "recentemente";
-  }
-}
-
-// Roda a função assim que o site carregar
-document.addEventListener('DOMContentLoaded', buscarDadosMercado);
   </script>
 </body>
 </html>
