@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- METADADOS DE SEO -->
+<title>Sobre o Guia do Nome Limpo — Nossa Missão e Transparência</title>
+<meta name="description" content="Conheça a missão do Guia do Nome Limpo: democratizar a educação financeira e ajudar os brasileiros a saírem das dívidas com segurança e transparência.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30; --navy-800:#0f2745; --navy-700:#16345e;
+    --blue-500:#2f6fed; --blue-400:#5b8fff; --gray-600:#5b6b82;
+    --gray-300:#c4cedd; --gray-100:#eef1f6; --white:#ffffff;
+    --clean-green:#1fae6f; --clean-green-soft:#e4f7ee; --dirty-red:#e35b5b;
+    --font-display:'Space Grotesk', sans-serif; --font-body:'Inter', sans-serif; --font-mono:'JetBrains Mono', monospace;
+    --radius-sm:6px; --radius-md:10px; --radius-lg:18px; --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:var(--font-body); background:var(--gray-100); color:var(--navy-900); line-height:1.6; -webkit-font-smoothing:antialiased; }
+  img,svg{display:block; max-width:100%;}
+  a{color:var(--blue-500); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  .eyebrow{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+
+  /* ============ BUTTONS ============ */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: all 0.2s ease; border: 1px solid transparent; text-decoration: none !important; }
+  .btn-primary { background: var(--blue-500); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-400); color: var(--white); }
+
+  /* ============ HEADER ============ */
+  header.site { background: var(--white); border-bottom: 1px solid var(--gray-300); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); text-decoration: none !important; }
+  .logo small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--gray-600); }
+  nav.primary ul { display: flex; align-items: center; gap: 24px; }
+  nav.primary a { font-weight: 500; font-size: 0.9rem; color: var(--navy-900); transition: color 0.2s ease; text-decoration: none !important; }
+  nav.primary a:hover { color: var(--blue-500); }
+
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; }
+  @media (min-width: 721px) { .has-dropdown::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 100%; height: 15px; } }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: var(--white); border: 1px solid var(--gray-300); border-top: 3px solid var(--blue-500); border-radius: 0 0 var(--radius-sm) var(--radius-sm); box-shadow: 0 14px 30px rgba(10,26,48,0.12); min-width: 240px; padding: 8px 0; opacity: 0; visibility: hidden; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; gap: 0; z-index: 10; }
+  @media (min-width: 721px) { .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); } }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.88rem; font-weight: 500; color: var(--navy-800); transition: all 0.2s ease; }
+  .dropdown-menu a:hover { background: var(--gray-100); color: var(--blue-500); padding-left: 26px; }
+
+  /* ============ PAGE HEADER ============ */
+  .page-header { background: var(--white); border-bottom: 1px solid var(--gray-300); padding: 64px 0; text-align: center; }
+  .page-header h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--navy-900); margin-bottom: 12px; }
+  .page-header p { color: var(--gray-600); max-width: 60ch; font-size: 1.05rem; margin: 0 auto; }
+
+  /* ============ CONTENT ============ */
+  .section { padding: 64px 0; }
+  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: start; }
+  
+  .content-body h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy-900); margin: 40px 0 16px; }
+  .content-body h2:first-child { margin-top: 0; }
+  .content-body p { margin-bottom: 16px; color: var(--navy-800); font-size: 1.05rem; }
+  .content-body ul.feature-list { margin: 24px 0; padding-left: 0; display: flex; flex-direction: column; gap: 12px; }
+  .content-body ul.feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 1.05rem; }
+  .content-body ul.feature-list svg { width: 24px; height: 24px; color: var(--clean-green); flex-shrink: 0; margin-top: 2px; }
+
+  /* Notice Box (Disclaimer Legal) */
+  .notice-box { background: #fff8e6; border: 1px solid #fde68a; border-radius: var(--radius-md); padding: 24px; margin-top: 48px; }
+  .notice-box h3 { font-family: var(--font-display); font-size: 1.1rem; color: #92400e; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .notice-box p { color: #92400e; font-size: 0.9rem; margin: 0; }
+
+  /* Contact Sidebar */
+  .contact-box { background: var(--navy-900); color: var(--white); border-radius: var(--radius-md); padding: 32px; position: sticky; top: 92px; }
+  .contact-box h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 16px; color: var(--white); }
+  .contact-box p { font-size: 0.9rem; color: var(--gray-300); margin-bottom: 24px; }
+  
+  .contact-form { display: flex; flex-direction: column; gap: 12px; }
+  .input-field { width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-sm); background: rgba(255,255,255,0.05); color: var(--white); font-family: inherit; }
+  .input-field:focus { outline: none; border-color: var(--blue-400); }
+  .input-field::placeholder { color: var(--gray-600); }
+  textarea.input-field { resize: vertical; min-height: 100px; }
+
+  /* FOOTER */
+  footer.site { background: var(--navy-900); color: var(--gray-300); padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+  .footer-bottom a { color: var(--gray-300); }
+  .footer-bottom a:hover { color: var(--white); }
+
+  @media (max-width: 980px){
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-box { position: static; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Guia do Nome Limpo</span>
+      </a>
+
+      <nav class="primary">
+        <ul>
+          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
+          <li><a href="entender-score.html">Entender Score</a></li>
+          <li><a href="calculadoras.html">Calculadoras</a></li>
+          <li class="has-dropdown">
+            <a href="#" style="color: var(--blue-500);">Artigos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="renda-extra.html">Renda Extra</a></li>
+              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
+              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
+              <li><a href="sobre.html" style="color: var(--blue-500); background: var(--gray-100);">Sobre o Guia</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary">Consultar Dívidas Grátis</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="page-header">
+    <div class="wrap">
+      <span class="eyebrow" style="color: var(--blue-500); margin-bottom: 12px; display: block;">Transparência</span>
+      <h1>Nossa Missão</h1>
+      <p>Democratizar a educação financeira e ajudar os brasileiros a recuperarem o crédito com informações claras, ferramentas práticas e muita responsabilidade.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTENT ============ -->
+  <main class="wrap section">
+    <div class="about-grid">
+      
+      <div class="content-body">
+        <h2>Quem somos?</h2>
+        <p>O <strong>Guia do Nome Limpo</strong> nasceu de uma constatação simples: sair das dívidas no Brasil é um processo complexo, cheio de juros abusivos e, infelizmente, repleto de golpistas se aproveitando do desespero alheio.</p>
+        <p>Nós somos um portal independente focado em descomplicar o mercado de crédito. Nossa equipe revisa e compila dados de órgãos oficiais, como o Banco Central e os principais birôs de crédito (Serasa, SPC, Boa Vista), para entregar a você apenas o que realmente funciona.</p>
+
+        <h2>O que nós fazemos</h2>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div><strong>Guias Práticos:</strong> Passo a passos testados para negociar dívidas atrasadas, organizar o orçamento e aumentar o Score.</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <div><strong>Ferramentas e Simuladores:</strong> Calculadoras de desconto à vista e análise de perfil para você não fechar acordos às cegas.</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div><strong>Proteção contra Golpes:</strong> Alertas constantes sobre falsas promessas de "limpar nome em 24 horas" e fraudes financeiras.</div>
+          </li>
+        </ul>
+
+        <h2>Como nos mantemos</h2>
+        <p>O Guia do Nome Limpo é 100% gratuito para os nossos leitores. Para manter nossos servidores e nossa equipe funcionando, utilizamos publicidade programática (anúncios) e links de afiliados. Isso significa que, se você solicitar um cartão ou serviço através de um link nosso, podemos receber uma pequena comissão do parceiro, sem nenhum custo adicional para você.</p>
+        <p><strong>Isso jamais interfere na nossa linha editorial.</strong> Só recomendamos ferramentas e instituições reconhecidas pelo Banco Central e com boa reputação no mercado.</p>
+
+        <!-- Disclaimer de Transparência -->
+        <div class="notice-box">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Aviso de Isenção de Responsabilidade
+          </h3>
+          <p>O Guia do Nome Limpo tem caráter estritamente informativo e educativo. Não somos uma instituição financeira, não realizamos empréstimos e não fazemos renegociações em nome de terceiros. As taxas, prazos e condições citadas nos artigos podem sofrer alterações pelas instituições sem aviso prévio. Consulte sempre as regras oficiais antes de assinar qualquer contrato.</p>
+        </div>
+      </div>
+
+      <!-- Formulário de Contato -->
+      <aside>
+        <div class="contact-box">
+          <h3>Fale Conosco</h3>
+          <p>Tem alguma dúvida, sugestão de pauta ou encontrou algum dado desatualizado? Mande uma mensagem para a nossa equipe.</p>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Em breve: Formulário de contato em funcionamento!');">
+            <input type="text" class="input-field" placeholder="Seu nome completo" required>
+            <input type="email" class="input-field" placeholder="Seu e-mail" required>
+            <input type="text" class="input-field" placeholder="Assunto (ex: Sugestão, Parceria)" required>
+            <textarea class="input-field" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            <button type="submit" class="btn btn-primary" style="margin-top: 8px; border: none; font-size: 1rem; padding: 14px;">Enviar Mensagem</button>
+          </form>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados. CNPJ 00.000.000/0001-00.</span>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html">Página Inicial</a>
+          <a href="#">Termos de Uso</a>
+          <a href="#">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
