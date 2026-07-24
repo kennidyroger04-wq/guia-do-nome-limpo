@@ -151,29 +151,42 @@
     font-weight: 500;
     font-size: 0.9rem;
     color: var(--navy-900);
+    transition: color 0.2s ease;
   }
   nav.primary a:hover {
     color: var(--blue-500);
   }
   
-  /* Dropdown Styles */
+  /* ============ DROPDOWN MENU UX ============ */
   .has-dropdown {
     position: relative;
+  }
+  /* Ponte invisível para evitar que o mouse saia do elemento e feche o menu */
+  @media (min-width: 721px) {
+    .has-dropdown::after {
+      content: '';
+      position: absolute;
+      bottom: -15px; 
+      left: 0;
+      width: 100%;
+      height: 15px;
+    }
   }
   .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(15px); /* Inicia mais abaixo */
     background: var(--white);
     border: 1px solid var(--gray-300);
-    border-radius: var(--radius-sm);
-    box-shadow: 0 10px 25px rgba(10,26,48,0.1);
+    border-top: 3px solid var(--blue-500); /* Destaque visual forte */
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    box-shadow: 0 14px 30px rgba(10,26,48,0.12); /* Sombra mais refinada */
     min-width: 240px;
-    padding: 12px 0;
+    padding: 8px 0;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); /* Animação suave e elegante */
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -183,7 +196,7 @@
     .has-dropdown:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
-      transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%) translateY(4px); /* Fica mais próximo do menu original */
     }
   }
   .dropdown-menu li {
@@ -192,13 +205,15 @@
   .dropdown-menu a {
     display: block;
     padding: 10px 20px;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
+    font-weight: 500;
     color: var(--navy-800);
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
   }
   .dropdown-menu a:hover {
     background: var(--gray-100);
     color: var(--blue-500);
+    padding-left: 26px; /* Micro-interação: pequeno deslize ao passar o mouse */
   }
 
   .header-cta {
@@ -452,6 +467,9 @@
     .dropdown-menu a {
       padding: 8px 20px;
     }
+    .dropdown-menu a:hover {
+      padding-left: 20px; /* Desativa micro-interação no mobile para evitar saltos na tela */
+    }
 
     .menu-toggle{display:flex;}
     .header-cta .btn-ghost{display:none;}
@@ -499,10 +517,10 @@
           <li class="has-dropdown">
             <a href="#artigos" class="dropdown-toggle">Artigos <span class="arrow">▾</span></a>
             <ul class="dropdown-menu">
-              <li><a href="#renda-extra">🟢 Renda Extra</a></li>
-              <li><a href="#carreira">🟢 Carreira &amp; Cursos</a></li>
-              <li><a href="#organizacao">🟢 Organização Financeira</a></li>
-              <li><a href="#sobre">🟢 Sobre o Guia</a></li>
+              <li><a href="#renda-extra">Renda Extra</a></li>
+              <li><a href="#carreira">Carreira &amp; Cursos</a></li>
+              <li><a href="#organizacao">Organização Financeira</a></li>
+              <li><a href="#sobre">Sobre o Guia</a></li>
             </ul>
           </li>
         </ul>
