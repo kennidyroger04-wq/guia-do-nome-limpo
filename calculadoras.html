@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- METADADOS DE SEO -->
+<title>Calculadoras Financeiras e Simuladores de Dívida — Guia do Nome Limpo</title>
+<meta name="description" content="Use nossas calculadoras gratuitas para simular descontos em dívidas, planejar seu orçamento e calcular juros de parcelamentos.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30; --navy-800:#0f2745; --navy-700:#16345e;
+    --blue-500:#2f6fed; --blue-400:#5b8fff; --gray-600:#5b6b82;
+    --gray-300:#c4cedd; --gray-100:#eef1f6; --white:#ffffff;
+    --clean-green:#1fae6f; --clean-green-soft:#e4f7ee; --dirty-red:#e35b5b;
+    --font-display:'Space Grotesk', sans-serif; --font-body:'Inter', sans-serif; --font-mono:'JetBrains Mono', monospace;
+    --radius-sm:6px; --radius-md:10px; --radius-lg:18px; --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:var(--font-body); background:var(--gray-100); color:var(--navy-900); line-height:1.5; -webkit-font-smoothing:antialiased; }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  .eyebrow{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+
+  /* ============ BUTTONS ============ */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: all 0.2s ease; border: 1px solid transparent; }
+  .btn-primary { background: var(--blue-500); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-400); }
+
+  /* ============ HEADER ============ */
+  header.site { background: var(--white); border-bottom: 1px solid var(--gray-300); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); }
+  .logo small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--gray-600); }
+  nav.primary ul { display: flex; align-items: center; gap: 24px; }
+  nav.primary a { font-weight: 500; font-size: 0.9rem; color: var(--navy-900); transition: color 0.2s ease; }
+  nav.primary a:hover { color: var(--blue-500); }
+
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; }
+  @media (min-width: 721px) { .has-dropdown::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 100%; height: 15px; } }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: var(--white); border: 1px solid var(--gray-300); border-top: 3px solid var(--blue-500); border-radius: 0 0 var(--radius-sm) var(--radius-sm); box-shadow: 0 14px 30px rgba(10,26,48,0.12); min-width: 240px; padding: 8px 0; opacity: 0; visibility: hidden; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; gap: 0; z-index: 10; }
+  @media (min-width: 721px) { .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); } }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.88rem; font-weight: 500; color: var(--navy-800); transition: all 0.2s ease; }
+  .dropdown-menu a:hover { background: var(--gray-100); color: var(--blue-500); padding-left: 26px; }
+
+  /* ============ CATEGORY HERO ============ */
+  .category-hero { background: var(--navy-900); color: var(--white); padding: 48px 0; border-bottom: 4px solid var(--blue-500); }
+  .category-hero h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+  .category-hero p { color: var(--gray-300); max-width: 60ch; font-size: 1.05rem; }
+
+  /* ============ CONTENT LAYOUT ============ */
+  .section { padding: 56px 0; }
+  .content-layout { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+  
+  /* Layout específico para ferramentas */
+  .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  /* Cards de Ferramentas */
+  .tool-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 32px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; transition: transform .18s ease, box-shadow .18s ease; }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(10,26,48,.09); border-color: var(--blue-400); }
+  
+  .tool-icon { width: 56px; height: 56px; background: var(--clean-green-soft); color: var(--clean-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .tool-icon svg { width: 28px; height: 28px; }
+  
+  .tool-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; line-height: 1.3; color: var(--navy-900); margin-bottom: 12px; }
+  .tool-card p { color: var(--gray-600); font-size: .9rem; line-height: 1.55; margin-bottom: 24px; flex: 1; }
+  .tool-card .btn { width: 100%; }
+
+  /* Sidebar */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 92px; }
+  .side-block { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 22px; }
+  .side-block h4 { font-family: var(--font-display); font-weight: 600; font-size: .98rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+  /* FOOTER */
+  footer.site { background: var(--navy-900); color: var(--gray-300); padding: 40px 0 20px; margin-top: 40px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+
+  @media (max-width: 980px){
+    .content-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px){
+    .tools-grid { grid-template-columns: 1fr; }
+    .sidebar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Guia do Nome Limpo</span>
+      </a>
+
+      <nav class="primary">
+        <ul>
+          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
+          <li><a href="entender-score.html">Entender Score</a></li>
+          <li><a href="calculadoras.html" style="color: var(--blue-500);">Calculadoras</a></li>
+          <li class="has-dropdown">
+            <a href="#">Artigos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="renda-extra.html">Renda Extra</a></li>
+              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
+              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
+              <li><a href="sobre.html">Sobre o Guia</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary">Consultar Dívidas Grátis</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CATEGORY HERO ============ -->
+  <section class="category-hero">
+    <div class="wrap">
+      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Kit de Ferramentas</span>
+      <h1>Nossas Calculadoras</h1>
+      <p>Simule descontos, entenda os juros das suas parcelas e organize seu orçamento antes de fechar qualquer acordo com os credores.</p>
+    </div>
+  </section>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="wrap section">
+    <div class="content-layout">
+
+      <!-- LISTA DE FERRAMENTAS -->
+      <div>
+        <div class="tools-grid">
+
+          <!-- FERRAMENTA 1: Desconto à vista -->
+          <div class="tool-card">
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0"/></svg>
+            </div>
+            <h3>Calculadora de Desconto à Vista</h3>
+            <p>Descubra exatamente quanto você vai pagar na sua dívida aplicando as taxas médias de desconto oferecidas nos feirões do Serasa.</p>
+            <a href="#" class="btn btn-primary" style="background: var(--navy-900);">Abrir Calculadora</a>
+          </div>
+
+          <!-- FERRAMENTA 2: Simulador de Parcelamento -->
+          <div class="tool-card">
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>Simulador de Parcelamento</h3>
+            <p>Vale a pena dividir a dívida? Compare o valor total pago à vista versus o valor total parcelado com juros embutidos.</p>
+            <a href="#" class="btn btn-primary" style="background: var(--navy-900);">Em breve</a>
+          </div>
+
+          <!-- FERRAMENTA 3: Orçamento 50/30/20 -->
+          <div class="tool-card">
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            </div>
+            <h3>Calculadora de Orçamento 50/30/20</h3>
+            <p>Insira sua renda mensal e descubra exatamente quanto você deve destinar para gastos fixos, lazer e pagamento de dívidas.</p>
+            <a href="#" class="btn btn-primary" style="background: var(--navy-900);">Em breve</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        
+        <div class="side-block" style="background: var(--navy-900); color: #fff;">
+          <h4 style="color: #fff;">Consultar CPF</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-300); margin-bottom: 16px;">Verifique suas dívidas diretamente nos canais oficiais de forma gratuita.</p>
+          <a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary" style="width: 100%; background: var(--clean-green);">Ir para o Limpa Nome</a>
+        </div>
+
+        <div class="side-block">
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
+            PUBLICIDADE
+          </div>
+          <div style="width: 100%; height: 250px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; color: var(--gray-600); font-size: 0.8rem;">
+            [ Espaço AdSense ]
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados.</span>
+        <div>
+          <a href="index.html">Página Inicial</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
