@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- METADADOS DE SEO -->
+<title>Organização Financeira e Controle de Gastos — Guia do Nome Limpo</title>
+<meta name="description" content="Aprenda a montar um orçamento que funciona, cortar gastos sem sofrimento e retomar o controle da sua vida financeira.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30; --navy-800:#0f2745; --navy-700:#16345e;
+    --blue-500:#2f6fed; --blue-400:#5b8fff; --gray-600:#5b6b82;
+    --gray-300:#c4cedd; --gray-100:#eef1f6; --white:#ffffff;
+    --clean-green:#1fae6f; --clean-green-soft:#e4f7ee; --dirty-red:#e35b5b;
+    --font-display:'Space Grotesk', sans-serif; --font-body:'Inter', sans-serif; --font-mono:'JetBrains Mono', monospace;
+    --radius-sm:6px; --radius-md:10px; --radius-lg:18px; --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:var(--font-body); background:var(--gray-100); color:var(--navy-900); line-height:1.5; -webkit-font-smoothing:antialiased; }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  .eyebrow{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+
+  /* ============ BUTTONS ============ */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: all 0.2s ease; border: 1px solid transparent; }
+  .btn-primary { background: var(--blue-500); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-400); }
+
+  /* ============ HEADER ============ */
+  header.site { background: var(--white); border-bottom: 1px solid var(--gray-300); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); }
+  .logo small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--gray-600); }
+  nav.primary ul { display: flex; align-items: center; gap: 24px; }
+  nav.primary a { font-weight: 500; font-size: 0.9rem; color: var(--navy-900); transition: color 0.2s ease; }
+  nav.primary a:hover { color: var(--blue-500); }
+
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; }
+  @media (min-width: 721px) { .has-dropdown::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 100%; height: 15px; } }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: var(--white); border: 1px solid var(--gray-300); border-top: 3px solid var(--blue-500); border-radius: 0 0 var(--radius-sm) var(--radius-sm); box-shadow: 0 14px 30px rgba(10,26,48,0.12); min-width: 240px; padding: 8px 0; opacity: 0; visibility: hidden; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; gap: 0; z-index: 10; }
+  @media (min-width: 721px) { .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); } }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.88rem; font-weight: 500; color: var(--navy-800); transition: all 0.2s ease; }
+  .dropdown-menu a:hover { background: var(--gray-100); color: var(--blue-500); padding-left: 26px; }
+
+  /* ============ CATEGORY HERO ============ */
+  .category-hero { background: var(--navy-900); color: var(--white); padding: 48px 0; border-bottom: 4px solid var(--blue-500); }
+  .category-hero h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+  .category-hero p { color: var(--gray-300); max-width: 60ch; font-size: 1.05rem; }
+
+  /* ============ CONTENT LAYOUT ============ */
+  .section { padding: 56px 0; }
+  .content-layout { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+  .article-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  /* Cards */
+  .card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s ease, box-shadow .18s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(10,26,48,.09); border-color: var(--blue-400); }
+  .card .thumb { height: 160px; position: relative; background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); display: flex; align-items: center; justify-content: center; }
+  .card .thumb svg { width: 40px; height: 40px; color: rgba(255,255,255,.35); }
+  .tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,.95); color: var(--navy-800); font-size: .68rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; padding: 5px 10px; border-radius: 100px; }
+  .card .body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1.3; color: var(--navy-900); }
+  .card p { color: var(--gray-600); font-size: .9rem; line-height: 1.55; }
+
+  /* Sidebar */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 92px; }
+  .side-block { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 22px; }
+  .side-block h4 { font-family: var(--font-display); font-weight: 600; font-size: .98rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+  /* FOOTER */
+  footer.site { background: var(--navy-900); color: var(--gray-300); padding: 40px 0 20px; margin-top: 40px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+
+  @media (max-width: 980px){
+    .content-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px){
+    .article-grid { grid-template-columns: 1fr; }
+    .sidebar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Guia do Nome Limpo</span>
+      </a>
+
+      <nav class="primary">
+        <ul>
+          <li><a href="guias-de-renegociacao.html" style="color: var(--blue-500);">Guias de Renegociação</a></li>
+          <li><a href="entender-score.html">Entender Score</a></li>
+          <li><a href="calculadoras.html">Calculadoras</a></li>
+          <li class="has-dropdown">
+            <a href="#">Artigos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="renda-extra.html">Renda Extra</a></li>
+              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
+              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
+              <li><a href="sobre.html">Sobre o Guia</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary">Consultar Dívidas Grátis</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CATEGORY HERO ============ -->
+  <section class="category-hero">
+    <div class="wrap">
+      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Central de Artigos</span>
+      <h1>Organização Financeira</h1>
+      <p>Ferramentas e métodos práticos (como a regra 50/30/20) para você organizar suas contas, fazer o salário render e parar de viver no sufoco.</p>
+    </div>
+  </section>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="wrap section">
+    <div class="content-layout">
+
+      <!-- LISTA DE ARTIGOS DESTA CATEGORIA -->
+      <div>
+        <div class="article-grid">
+
+          <!-- ARTIGO 1 (O QUE VOCÊ JÁ CRIOU!) -->
+          <a href="limpa-nome-guia-consultar-cpf-negociar-dividas.html" class="card">
+            <div class="thumb">
+              <span class="tag" style="background: var(--clean-green-soft); color: var(--clean-green);">Serasa Limpa Nome</span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="body">
+              <h3>Limpa Nome 2026: Guia Completo para Consultar CPF e Renegociar Dívidas</h3>
+              <p>Veja como consultar seu CPF grátis, negociar dívidas com até 90% de desconto e limpar seu nome em até 5 dias úteis.</p>
+            </div>
+          </a>
+
+          <!-- ARTIGO 2 (FUTURO - PLACEHOLDER) -->
+          <a href="#" class="card">
+            <div class="thumb">
+              <span class="tag">Cartão de Crédito</span>
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div class="body">
+              <h3>Como negociar a fatura atrasada do Cartão de Crédito direto com o banco</h3>
+              <p>Estratégias para fugir dos juros do rotativo e conseguir um parcelamento justo antes da dívida virar uma bola de neve.</p>
+            </div>
+          </a>
+
+          <!-- ARTIGO 3 (FUTURO - PLACEHOLDER) -->
+          <a href="#" class="card">
+            <div class="thumb">
+              <span class="tag">Empréstimos</span>
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div class="body">
+              <h3>Vale a pena fazer portabilidade de dívida para limpar o nome?</h3>
+              <p>Entenda quando trocar uma dívida cara por uma mais barata é o melhor caminho para sair da inadimplência.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- SIDEBAR (MANTENDO A CONSISTÊNCIA) -->
+      <aside class="sidebar">
+        
+        <div class="side-block" style="background: var(--navy-900); color: #fff;">
+          <h4 style="color: #fff;">Consultar CPF</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-300); margin-bottom: 16px;">Verifique suas dívidas diretamente nos canais oficiais de forma gratuita.</p>
+          <a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary" style="width: 100%; background: var(--clean-green);">Ir para o Limpa Nome</a>
+        </div>
+
+        <div class="side-block">
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); text-align: right; margin-bottom: 6px; border-bottom: 1px dashed var(--gray-300); padding-bottom: 4px; letter-spacing: 0.1em;">
+            PUBLICIDADE
+          </div>
+          <div style="width: 100%; height: 250px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; color: var(--gray-600); font-size: 0.8rem;">
+            [ Espaço AdSense ]
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados.</span>
+        <div>
+          <a href="index.html">Página Inicial</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
