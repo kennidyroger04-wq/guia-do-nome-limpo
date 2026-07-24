@@ -78,53 +78,44 @@
   .status-bar .items{display:flex; gap:22px; flex-wrap:wrap;}
 
   /* ============ HEADER ============ */
-  header.site{
-    background:var(--white);
-    border-bottom:1px solid var(--gray-300);
-    position:sticky; top:0; z-index:100;
-  }
-  .header-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 24px; gap:24px;
-  }
-  .logo{
-    display:flex; align-items:center; gap:10px;
-    font-family:var(--font-display);
-    font-weight:700; font-size:1.28rem;
-    color:var(--navy-900);
-  }
-  .logo .mark{
-    width:34px; height:34px; flex-shrink:0;
-  }
-  .logo .mark path{transition:stroke-dashoffset .6s ease;}
-  .logo small{
-    display:block; font-family:var(--font-body); font-weight:500;
-    font-size:.62rem; color:var(--gray-600); letter-spacing:.03em;
-  }
-  nav.primary ul{display:flex; gap:30px; align-items:center;}
-  nav.primary a{
-    font-size:.92rem; font-weight:600; color:var(--navy-800);
-    position:relative; padding:6px 0;
-  }
-  nav.primary a::after{
-    content:''; position:absolute; left:0; bottom:0; height:2px; width:0;
-    background:var(--blue-500); transition:width .2s ease;
-  }
-  nav.primary a:hover::after{width:100%;}
-  .header-cta{display:flex; align-items:center; gap:14px;}
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    font-weight:700; font-size:.88rem; border:none;
-    border-radius:var(--radius-sm); padding:12px 22px;
-    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-  }
-  .btn-primary{background:var(--blue-500); color:var(--white);}
-  .btn-primary:hover{background:var(--navy-700); transform:translateY(-1px); box-shadow:0 8px 20px rgba(47,111,237,.28);}
-  .btn-ghost{background:transparent; color:var(--navy-800); border:1px solid var(--gray-300);}
-  .btn-ghost:hover{border-color:var(--navy-800);}
-  .menu-toggle{display:none; background:none; border:none; padding:6px;}
-  .menu-toggle span{display:block; width:22px; height:2px; background:var(--navy-900); margin:5px 0;}
+  <header class="site-header">
+  <div class="wrap header-wrapper">
+    
+    <!-- LOGO -->
+    <a href="index.html" class="logo">
+      <svg class="mark" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#5b8fff" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Guia do Nome Limpo</span>
+    </a>
 
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <nav class="primary-nav" id="primaryNav">
+      <ul>
+        <li><a href="categoria-renegociacao.html">Guias de Renegociação</a></li>
+        <li><a href="categoria-score.html">Entender Score</a></li>
+        <li><a href="calculadoras.html">Calculadoras</a></li>
+        
+        <!-- DROPDOWN DE ARTIGOS -->
+        <li class="has-dropdown">
+          <a href="#">Artigos ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="categoria-renda-extra.html">Renda Extra</a></li>
+            <li><a href="categoria-carreira.html">Carreira & Cursos</a></li>
+            <li><a href="categoria-organizacao.html">Organização Financeira</a></li>
+            <li><a href="sobre.html">Sobre o Guia</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- AÇÃO DE DESTAQUE (CTA) -->
+    <div class="header-actions">
+      <a href="https://www.serasa.com.br/limpa-nome-online/" target="_blank" rel="noopener noreferrer" class="btn-cta">
+        Consultar no Serasa ↗
+      </a>
+    </div>
+
+  </div>
+</header>
   /* ============ HERO ============ */
   .hero{
     background:linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 62%, var(--navy-700) 100%);
