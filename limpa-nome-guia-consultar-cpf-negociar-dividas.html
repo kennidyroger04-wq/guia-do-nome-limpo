@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- METADADOS DE SEO -->
+<title>Limpa Nome: Como Consultar CPF e Negociar Dívidas com Desconto — Guia do Nome Limpo</title>
+<meta name="description" content="Quer usar o Limpa Nome? Veja como consultar seu CPF grátis, negociar dívidas com até 90% de desconto e limpar seu nome em até 5 dias úteis.">
+<link rel="canonical" href="https://guiadonomelimpo.com.br/limpa-nome-guia-consultar-cpf-negociar-dividas.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30;
+    --navy-800:#0f2745;
+    --navy-700:#16345e;
+    --blue-500:#2f6fed;
+    --blue-400:#5b8fff;
+    --gray-600:#5b6b82;
+    --gray-300:#c4cedd;
+    --gray-100:#eef1f6;
+    --white:#ffffff;
+    --clean-green:#1fae6f;
+    --clean-green-soft:#e4f7ee;
+    --dirty-red:#e35b5b;
+
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:18px;
+    --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--gray-100);
+    color:var(--navy-900);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  ul, ol{margin-left: 20px; margin-bottom: 20px;}
+  li{margin-bottom: 8px;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 20px; font-weight: 600; font-size: 0.9rem;
+    border-radius: var(--radius-sm); transition: all 0.2s ease; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--blue-500); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-400); }
+
+  /* ============ HEADER ============ */
+  header.site { background: var(--white); border-bottom: 1px solid var(--gray-300); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); }
+  .logo small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--gray-600); }
+  nav.primary ul { display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; }
+  nav.primary a { font-weight: 500; font-size: 0.9rem; color: var(--navy-900); }
+  nav.primary a:hover { color: var(--blue-500); }
+
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; }
+  .dropdown-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+    background: var(--white); border: 1px solid var(--gray-300); border-top: 3px solid var(--blue-500);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm); box-shadow: 0 14px 30px rgba(10,26,48,0.12);
+    min-width: 240px; padding: 8px 0; opacity: 0; visibility: hidden; transition: all 0.25s ease;
+    display: flex; flex-direction: column; list-style: none; margin: 0;
+  }
+  @media (min-width: 721px) {
+    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+  }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.88rem; color: var(--navy-800); }
+  .dropdown-menu a:hover { background: var(--gray-100); color: var(--blue-500); padding-left: 26px; }
+
+  /* ============ LAYOUT DO ARTIGO ============ */
+  .article-container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    padding: 40px 0 64px;
+  }
+
+  .article-content {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-300);
+  }
+
+  .article-header { margin-bottom: 32px; border-bottom: 1px solid var(--gray-300); padding-bottom: 24px; }
+  .article-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--blue-500); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; display: block; }
+  .article-title { font-family: var(--font-display); font-size: 2.2rem; line-height: 1.25; color: var(--navy-900); margin-bottom: 16px; }
+  .article-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray-600); display: flex; gap: 16px; }
+
+  /* Estilização da Manchete e Texto do Artigo */
+  .article-body h2 { font-family: var(--font-display); font-size: 1.4rem; color: var(--navy-900); margin: 36px 0 16px; }
+  .article-body h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy-800); margin: 24px 0 12px; }
+  .article-body p { margin-bottom: 20px; color: #2d3748; font-size: 1.02rem; }
+  .article-body strong { color: var(--navy-900); }
+  
+  /* Imagem Principal */
+  .article-featured-img { width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: 24px; object-fit: cover; }
+
+  /* Blocos de Alerta / Destaques */
+  .callout-box {
+    background: var(--gray-100); border-left: 4px solid var(--blue-500);
+    padding: 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 24px 0;
+  }
+  .callout-box.alert { background: #fff5f5; border-left-color: var(--dirty-red); }
+  .callout-box.success { background: var(--clean-green-soft); border-left-color: var(--clean-green); }
+
+  /* Estilização de Tabelas */
+  .custom-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.9rem; }
+  .custom-table th { background: var(--navy-900); color: var(--white); text-align: left; padding: 12px 16px; font-family: var(--font-mono); }
+  .custom-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-300); }
+  .custom-table tr:nth-child(even) { background: var(--gray-100); }
+
+  /* Sidebar */
+  .sidebar-block { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; }
+  .sidebar-block h4 { font-family: var(--font-display); margin-bottom: 12px; font-size: 1.05rem; }
+
+  /* FOOTER */
+  footer.site { background: var(--navy-900); color: var(--gray-300); padding: 40px 0 20px; margin-top: 40px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+
+  @media(max-width: 850px){
+    .article-container { grid-template-columns: 1fr; }
+    .article-title { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Guia do Nome Limpo<small>Crédito, dívidas &amp; renegociação</small></span>
+      </a>
+
+      <nav class="primary">
+        <ul>
+          <li><a href="index.html#renegociacao">Guias de Renegociação</a></li>
+          <li><a href="index.html#score">Entender Score</a></li>
+          <li><a href="index.html#calculadora">Calculadoras</a></li>
+          <li class="has-dropdown">
+            <a href="#">Artigos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Renda Extra</a></li>
+              <li><a href="#">Carreira &amp; Cursos</a></li>
+              <li><a href="#">Organização Financeira</a></li>
+              <li><a href="#">Sobre o Guia</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <a href="https://www.serasa.com.br/limpa-nome-online/" target="_blank" rel="nofollow sponsored" class="btn btn-primary">Consultar Dívidas Grátis</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ARTIGO PRINCIPAL ============ -->
+  <main class="wrap article-container">
+    
+    <article class="article-content">
+      <header class="article-header">
+        <span class="article-category">Renegociação &amp; Crédito</span>
+        <h1 class="article-title">Limpa Nome 2026: Guia Completo para Consultar CPF e Renegociar Dívidas</h1>
+        <div class="article-meta">
+          <span>Atualizado em 2026</span> • <span>7 min de leitura</span>
+        </div>
+      </header>
+
+      <!-- Imagem Principal do Artigo -->
+      <img src="https://images.pexels.com/photos/7545311/pexels-photo-7545311.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Pessoa analisando contas e documentos para renegociar dívidas no Limpa Nome" class="article-featured-img">
+
+      <div class="article-body">
+        <p>Estar com restrições financeiras tira a paz de qualquer pessoa e trava o acesso a cartões, financiamentos e empréstimos. No entanto, usar o programa <strong>Limpa Nome</strong> é a forma mais rápida e segura de <strong>limpar nome rápido</strong> e recuperar sua liberdade financeira sem estourar o orçamento.</p>
+
+        <p>O <strong>Limpa Nome</strong> é um serviço gratuito de renegociação de dívidas que permite <strong>consultar CPF grátis</strong> e quitar pendências financeiras com até 90% de desconto (ou mais em edições especiais). Neste guia atualizado para 2026, você verá o passo a passo completo para fechar acordos vantajosos com total segurança.</p>
+
+        <div class="callout-box success">
+          <strong>📌 Atalho Rápido — O que você vai ver neste guia:</strong>
+          <ul style="margin-top: 10px; margin-bottom: 0;">
+            <li>O que é e como funciona o ecossistema do Limpa Nome</li>
+            <li>Passo a passo para consultar seu CPF de graça e ver as ofertas</li>
+            <li>Estratégias para maximizar os descontos no Feirão Limpa Nome 2026</li>
+            <li>Lista de empresas parceiras e tipos de pendências negociáveis</li>
+            <li>Guia de segurança para evitar boletos e chaves PIX falsas</li>
+            <li>Prazos legais para a baixa da negativação e impacto no Score</li>
+          </ul>
+        </div>
+
+        <h2>O que é e como funciona o Limpa Nome?</h2>
+        <p>O <strong>Limpa Nome</strong> atua como uma plataforma digital centralizada de negociação entre consumidores inadimplentes e empresas credoras. Ele reúne bancos, operadoras de cartão de crédito, varejistas, utilities e instituições de ensino em um único ambiente.</p>
+
+        <p>A plataforma realiza uma varredura automática no seu registro e apresenta propostas de acordo pré-aprovadas pelos próprios credores. Com isso, você não precisa ligar para cada empresa individualmente para pechinchar condições.</p>
+
+        <p>A grande vantagem do sistema é a transparência: você visualiza os valores originais, os abatimentos oferecidos e as opções de parcelamento ou quitação à vista com <strong>desconto no PIX</strong> antes de assinar qualquer contrato.</p>
+
+        <h2>Como consultar o CPF no Limpa Nome (Passo a Passo)</h2>
+        <p>Para <strong>consultar CPF grátis</strong> e encontrar as melhores opções de acordo, siga o fluxo operacional abaixo:</p>
+
+        <ol>
+          <li><strong>Acesse a plataforma oficial:</strong> Entre no site oficial do Serasa Limpa Nome ou baixe o aplicativo oficial.</li>
+          <li><strong>Faça o login seguro:</strong> Digite seu CPF e insira sua senha. Se for o primeiro acesso, crie uma conta e valide seus dados.</li>
+          <li><strong>Analise as pendências:</strong> No painel inicial, confira todas as dívidas vinculadas ao seu nome e as ofertas ativas.</li>
+          <li><strong>Simule as condições:</strong> Clique na dívida e altere o número de parcelas ou selecione o pagamento à vista para calcular a melhor margem de abatimento.</li>
+          <li><strong>Escolha a forma de pagamento:</strong> Selecione o pagamento via <strong>desconto no PIX</strong> para compensação mais rápida ou boleto bancário.</li>
+          <li><strong>Confirme e guarde o comprovante:</strong> Finalize o acordo e faça o download imediato do termo de negociação e do comprovante de pagamento.</li>
+        </ol>
+
+        <h2>Feirão Limpa Nome 2026: Quando acontece e como aproveitar?</h2>
+        <p>O <strong>Feirão Limpa Nome</strong> é um evento nacional mutirão de renegociação que ocorre em edições especiais ao longo do ano, com foco tradicional nos meses de março e novembro.</p>
+
+        <p>Durante o evento, as instituições credoras liberam condições de exceção para zerar seus estoques de inadimplência. Nessas datas, os abatimentos para quitação em parcela única costumam ultrapassar a marca de 90%.</p>
+
+        <p><strong>Para aproveitar as melhores oportunidades no Feirão:</strong></p>
+        <ul>
+          <li>Priorize sempre a quitação à vista utilizando reservas ou parte do 13º salário.</li>
+          <li>Monitore a plataforma logo nos primeiros dias do evento, quando as melhores propostas são liberadas.</li>
+          <li>Nunca feche um parcelamento longo se a parcela comprometer mais de 15% do seu orçamento livre, evitando um <strong>acordo quebrado</strong> no futuro.</li>
+        </ul>
+
+        <h2>Quais empresas e dívidas podem ser negociadas no Limpa Nome?</h2>
+        <p>A rede de parceiros do <strong>Limpa Nome</strong> abrange os principais setores da economia brasileira, permitindo resolver múltiplos débitos em um só lugar.</p>
+
+        <p><strong>Principais credores participantes:</strong></p>
+        <ul>
+          <li><strong>Bancos e Financeiras:</strong> Empréstimos, cheque especial, financiamentos e faturas de cartão de crédito.</li>
+          <li><strong>Telefonia e Internet:</strong> Contas em atraso de operadoras fixas e móveis.</li>
+          <li><strong>Varejo e Lojas de Departamento:</strong> Carnês e cartões de loja (<em>private label</em>).</li>
+          <li><strong>Contas Básicas (Utilities):</strong> Débitos de energia elétrica, água e gás encanado.</li>
+          <li><strong>Educação:</strong> Mensalidades em atraso de faculdades, escolas e cursos livres.</li>
+        </ul>
+
+        <p>Vale lembrar que dívidas não negativadas (apenas contas atrasadas no credor) e pendências caducadas (com mais de 5 anos) também surgem na plataforma como opção de quitação sem impactar o Serasa Score.</p>
+
+        <h2>O Limpa Nome é seguro? Como evitar golpes do boleto/PIX falso</h2>
+        <p>Com a popularização da plataforma, golpistas usam mensagens falsas de WhatsApp e sites clonados para interceptar pagamentos de consumidores.</p>
+
+        <div class="callout-box alert">
+          <strong>🚨 Alerta de Segurança contra Golpes:</strong><br>
+          A plataforma Serasa Limpa Nome <strong>nunca</strong> solicita depósitos em contas de pessoas físicas (CPF) nem envia chaves PIX aleatórias em nome de terceiros.
+        </div>
+
+        <p><strong>Checklist de validação antes de pagar:</strong></p>
+        <ul>
+          <li><strong>Confira o beneficiário:</strong> Na tela de confirmação do PIX ou do boleto, o nome deve ser exatamente o da <strong>empresa credora</strong> ou da <strong>Serasa Experian</strong>.</li>
+          <li><strong>Verifique os canais oficiais:</strong> Só negocie através do site oficial ou pelo app com selo de verificação.</li>
+          <li><strong>Desconfie de promessas de "limpeza imediata" via WhatsApp:</strong> O processo de exclusão do apontamento é automático e não exige taxas de intermediários.</li>
+        </ul>
+
+        <h2>O que acontece após o pagamento do acordo?</h2>
+        <p>Assim que a primeira parcela ou o valor à vista é compensado, o credor deve dar baixa no registro negativo do seu CPF.</p>
+
+        <div class="callout-box success">
+          <strong>⚠️ Direito do Consumidor (Súmula 548 do STJ):</strong><br>
+          O credor tem o prazo de <strong>até 5 dias úteis</strong>, a contar da efetiva compensação do pagamento, para retirar o nome do devedor dos cadastros de proteção ao crédito (Serasa, SPC, Boa Vista).
+        </div>
+
+        <h3>Dívida Caducada vs. Registrato do Banco Central</h3>
+        <p>Quitar uma dívida pelo <strong>Limpa Nome</strong> elimina o risco do <strong>acordo quebrado</strong> e limpa seu nome na praça, mas é importante entender a diferença entre a prescrição no Serasa e o histórico financeiro:</p>
+
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Tipo de Pendência</th>
+              <th>O que acontece após 5 anos?</th>
+              <th>Aparece para terceiros?</th>
+              <th>Impacto no Crédito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dívida Caducada (Prescrita)</strong></td>
+              <td>Sai do Serasa e SPC</td>
+              <td>❌ Não</td>
+              <td>Não afeta o Score, mas o banco de origem mantém registro interno.</td>
+            </tr>
+            <tr>
+              <td><strong>Registrato (SCR - Banco Central)</strong></td>
+              <td>Registro de prejuízo permanece no Bacen</td>
+              <td>⚠️ Restrito</td>
+              <td>Pode restringir crédito no banco onde a dívida foi gerada.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Caso o prazo de 5 dias úteis termine e seu nome continue negativado, apresente o comprovante de pagamento diretamente ao suporte da empresa. Se o problema não for resolvido, abra uma reclamação formal no Procon ou busque auxílio jurídico.</p>
+
+        <hr style="margin: 32px 0; border: none; border-top: 1px dashed var(--gray-300);">
+
+        <p style="font-size: 0.82rem; color: var(--gray-600);">
+          <strong>📌 Aviso Legal:</strong> <em>Este portal possui caráter exclusivamente informativo. Não realizamos renegociações diretas de dívidas e não cobramos taxas por serviços. Acesse sempre os canais oficiais do Serasa (serasa.com.br).</em>
+        </p>
+
+      </div>
+    </article>
+
+    <!-- SIDEBAR DO ARTIGO -->
+    <aside>
+      <div class="sidebar-block">
+        <h4>Quer simular um acordo?</h4>
+        <p style="font-size: 0.88rem; color: var(--gray-600); margin-bottom: 16px;">Use nossa calculadora gratuita para descobrir quanto você pode economizar na quitação à vista.</p>
+        <a href="index.html#calculadora" class="btn btn-primary" style="width: 100%;">Usar Calculadora →</a>
+      </div>
+
+      <div class="sidebar-block" style="background: var(--navy-900); color: #fff;">
+        <h4 style="color: #fff;">Consultar CPF</h4>
+        <p style="font-size: 0.85rem; color: var(--gray-300); margin-bottom: 16px;">Verifique suas dívidas diretamente nos canais oficiais de forma gratuita.</p>
+        <a href="https://www.serasa.com.br/limpa-nome-online/" target="_blank" rel="nofollow sponsored" class="btn btn-primary" style="width: 100%; background: var(--clean-green);">Ir para o Limpa Nome</a>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados.</span>
+        <div>
+          <a href="index.html">Página Inicial</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
