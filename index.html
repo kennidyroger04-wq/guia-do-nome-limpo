@@ -552,26 +552,30 @@
     </script>
   </div>
 
-  <!-- CALCULADORA DE DESCONTO -->
-  <div class="side-block">
-    <h4>
-      <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      Calculadora de desconto à vista
-    </h4>
-    <div class="calc-field">
-      <label for="valorDivida">Valor original da dívida</label>
-      <div class="fake-input" id="valorDivida">R$ 3.200,00</div>
-    </div>
-    <div class="calc-field">
-      <label for="desconto">Desconto médio negociado</label>
-      <div class="fake-input" id="desconto">45%</div>
-    </div>
-    <div class="calc-result">
-      <span class="label">Valor estimado do acordo</span>
-      <span class="value">R$ 1.760,00</span>
-    </div>
-    <a href="#" class="calc-cta">Simular minha dívida real</a>
+  <!-- CALCULADORA DE DESCONTO INTERATIVA -->
+<div class="side-block">
+  <h4>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    Calculadora de desconto à vista
+  </h4>
+
+  <div class="calc-field">
+    <label for="valorDivida">Valor original da dívida (R$)</label>
+    <input type="number" id="valorDivida" class="fake-input" placeholder="3200" value="3200" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
   </div>
+
+  <div class="calc-field" style="margin-top: 12px;">
+    <label for="desconto">Desconto estimado (%)</label>
+    <input type="number" id="desconto" class="fake-input" placeholder="45" value="45" min="0" max="99" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
+  </div>
+
+  <div class="calc-result" style="margin-top: 16px;">
+    <span class="label">Valor estimado do acordo</span>
+    <span class="value" id="resultadoAcordo" style="font-size: 1.4rem; font-weight: 700; color: var(--green-600, #1fae6f);">R$ 1.760,00</span>
+  </div>
+
+  <button type="button" id="btnCalcular" class="calc-cta" style="width:100%; border:none; cursor:pointer; margin-top: 12px;">Calcular meu desconto</button>
+</div>
 
   <!-- BLOCO DE ANÚNCIO 2 (AdSense Secundário) -->
   <div class="side-block">
@@ -678,6 +682,31 @@
     });
   </script>
 
+  <script>
+  // Script da Calculadora de Desconto
+  function calcularDesconto() {
+    const valorInput = parseFloat(document.getElementById('valorDivida').value) || 0;
+    const descontoInput = parseFloat(document.getElementById('desconto').value) || 0;
+
+    // Cálculo: Valor Final = Valor Original * (1 - Desconto/100)
+    const percentual = Math.min(Math.max(descontoInput, 0), 100);
+    const valorComDesconto = valorInput * (1 - (percentual / 100));
+
+    // Formata o resultado no padrão de moeda brasileira (R$)
+    const valorFormatado = valorComDesconto.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+
+    document.getElementById('resultadoAcordo').innerText = valorFormatado;
+  }
+
+  // Executa o cálculo ao clicar no botão ou ao digitar nos campos
+  document.getElementById('btnCalcular')?.addEventListener('click', calcularDesconto);
+  document.getElementById('valorDivida')?.addEventListener('input', calcularDesconto);
+  document.getElementById('desconto')?.addEventListener('input', calcularDesconto);
+</script>
+        
 </body>
 </html>
 
