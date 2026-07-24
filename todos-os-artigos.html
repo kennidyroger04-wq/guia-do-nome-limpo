@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todos os Artigos — Guia do Nome Limpo</title>
+<meta name="description" content="Explore todos os nossos guias, dicas de organização financeira e estratégias para aumentar sua renda e sair das dívidas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30; --navy-800:#0f2745; --navy-700:#16345e;
+    --blue-500:#2f6fed; --blue-400:#5b8fff; --gray-600:#5b6b82;
+    --gray-300:#c4cedd; --gray-100:#eef1f6; --white:#ffffff;
+    --clean-green:#1fae6f; --clean-green-soft:#e4f7ee; --dirty-red:#e35b5b;
+    --font-display:'Space Grotesk', sans-serif; --font-body:'Inter', sans-serif; --font-mono:'JetBrains Mono', monospace;
+    --radius-sm:6px; --radius-md:10px; --radius-lg:18px; --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:var(--font-body); background:var(--gray-100); color:var(--navy-900); line-height:1.5; -webkit-font-smoothing:antialiased; }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  .eyebrow{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+
+  /* ============ HEADER ============ */
+  header.site { background: var(--white); border-bottom: 1px solid var(--gray-300); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); }
+  .logo small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--gray-600); }
+  nav.primary ul { display: flex; align-items: center; gap: 24px; }
+  nav.primary a { font-weight: 500; font-size: 0.9rem; color: var(--navy-900); transition: color 0.2s ease; }
+  nav.primary a:hover { color: var(--blue-500); }
+  
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; }
+  @media (min-width: 721px) { .has-dropdown::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 100%; height: 15px; } }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: var(--white); border: 1px solid var(--gray-300); border-top: 3px solid var(--blue-500); border-radius: 0 0 var(--radius-sm) var(--radius-sm); box-shadow: 0 14px 30px rgba(10,26,48,0.12); min-width: 240px; padding: 8px 0; opacity: 0; visibility: hidden; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; z-index: 10; }
+  @media (min-width: 721px) { .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); } }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.88rem; font-weight: 500; color: var(--navy-800); }
+  .dropdown-menu a:hover { background: var(--gray-100); color: var(--blue-500); padding-left: 26px; }
+  
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); border: 1px solid transparent; }
+  .btn-primary { background: var(--blue-500); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-400); }
+
+  /* ============ PAGE HERO ============ */
+  .page-hero { background: var(--navy-900); color: var(--white); padding: 56px 0; border-bottom: 4px solid var(--blue-500); }
+  .page-hero h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+  .page-hero p { color: var(--gray-300); max-width: 60ch; font-size: 1.05rem; }
+
+  /* ============ FILTERS ============ */
+  .filters-bar { background: var(--white); border-bottom: 1px solid var(--gray-300); padding: 20px 0; position: sticky; top: 72px; z-index: 90; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+  .filters-wrap { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .filter-group { flex: 1; min-width: 240px; display: flex; align-items: center; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: var(--radius-sm); padding: 0 12px; }
+  .filter-group svg { width: 20px; height: 20px; color: var(--gray-600); flex-shrink: 0; }
+  .filter-group input, .filter-group select { width: 100%; border: none; background: transparent; padding: 12px; font-family: var(--font-body); font-size: 0.95rem; color: var(--navy-900); outline: none; }
+  .filter-results-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray-600); font-weight: 600; }
+
+  /* ============ ARTICLES GRID ============ */
+  .section { padding: 48px 0 80px; }
+  .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  
+  .card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s ease, box-shadow .18s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(10,26,48,.09); border-color: var(--blue-400); }
+  .card .thumb { height: 150px; position: relative; background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); display: flex; align-items: center; justify-content: center; }
+  .card .thumb svg { width: 48px; height: 48px; color: rgba(255,255,255,.35); }
+  .tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,.95); color: var(--navy-800); font-size: .68rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; padding: 5px 10px; border-radius: 100px; }
+  .card .body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1.3; color: var(--navy-900); }
+  .card p { color: var(--gray-600); font-size: .9rem; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .card .meta { margin-top: auto; display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: .72rem; color: var(--gray-600); padding-top: 10px; border-top: 1px dashed var(--gray-300); }
+  .card .meta .dot-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--gray-600); }
+
+  .no-results { grid-column: 1 / -1; text-align: center; padding: 64px 20px; background: var(--white); border: 1px dashed var(--gray-300); border-radius: var(--radius-md); }
+  .no-results h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 8px; color: var(--navy-900); }
+  .no-results p { color: var(--gray-600); }
+
+  /* FOOTER */
+  footer.site { background: var(--navy-900); color: var(--gray-300); padding: 40px 0 20px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+  .footer-bottom a { color: var(--gray-300); margin-left: 16px; }
+
+  @media (max-width: 980px){ .article-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px){ 
+    .article-grid { grid-template-columns: 1fr; } 
+    .filters-wrap { flex-direction: column; align-items: stretch; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site">
+    <div class="header-inner wrap">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Guia do Nome Limpo</span>
+      </a>
+      <nav class="primary">
+        <ul>
+          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
+          <li><a href="entender-score.html">Entender Score</a></li>
+          <li><a href="calculadoras.html">Calculadoras</a></li>
+          <li class="has-dropdown">
+            <a href="#">Artigos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="renda-extra.html">Renda Extra</a></li>
+              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
+              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
+              <li><a href="sobre.html">Sobre o Guia</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div><a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary">Consultar Dívidas Grátis</a></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Acervo Completo</span>
+      <h1>Todos os Artigos</h1>
+      <p>Pesquise por palavras-chave ou filtre pelas categorias para encontrar exatamente a informação que você precisa para sair das dívidas.</p>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <div class="filters-bar">
+    <div class="wrap filters-wrap">
+      
+      <!-- Busca por Texto -->
+      <div class="filter-group">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar por palavra-chave (ex: Serasa, juros, cartão)...">
+      </div>
+
+      <!-- Filtro por Categoria -->
+      <div class="filter-group">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <select id="categoryFilter">
+          <option value="todas">Todas as Categorias</option>
+          <option value="Renegociação">Renegociação</option>
+          <option value="Score">Score & CPF</option>
+          <option value="Orçamento">Orçamento Pessoal</option>
+          <option value="Segurança">Segurança & Golpes</option>
+          <option value="Cartão">Cartão de Crédito</option>
+          <option value="Renda Extra">Renda Extra</option>
+        </select>
+      </div>
+
+      <div class="filter-results-count" id="resultsCount">Exibindo 0 artigos</div>
+
+    </div>
+  </div>
+
+  <!-- GRID DE ARTIGOS -->
+  <main class="wrap section">
+    <div class="article-grid" id="articlesContainer">
+      <!-- Os cards serão injetados aqui via JavaScript -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados.</span>
+        <div>
+          <a href="index.html">Página Inicial</a>
+          <a href="termos-de-uso.html">Termos de Uso</a>
+          <a href="politica-de-privacidade.html">Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // BASE DE DADOS LOCAL (JSON)
+    // Para adicionar um novo post, basta inserir um novo bloco aqui!
+    // ==========================================
+    const articlesDB = [
+      {
+        id: 1,
+        title: "Como negociar dívidas atrasadas em 2026: passo a passo com bancos e financeiras",
+        excerpt: "Um roteiro completo para contatar credores, calcular sua margem de desconto e formalizar o acordo sem comprometer seu orçamento.",
+        category: "Renegociação",
+        tag: "Guia",
+        readTime: "12 min",
+        date: "22 jul 2026",
+        dateRaw: "2026-07-22",
+        link: "artigo-exemplo-1.html",
+        iconPath: "M4 19h16M6 15l3-4 3 2 5-7"
+      },
+      {
+        id: 2,
+        title: "Quanto tempo leva para meu nome sair do Serasa após o pagamento?",
+        excerpt: "Prazos legais, o que fazer se a baixa não ocorrer e como acompanhar sua situação online em tempo real.",
+        category: "Score",
+        tag: "Serasa",
+        readTime: "6 min",
+        date: "18 jul 2026",
+        dateRaw: "2026-07-18",
+        link: "artigo-exemplo-2.html",
+        iconPath: "M12 3v18M5 8h14M5 16h14"
+      },
+      {
+        id: 3,
+        title: "Orçamento em 50/30/20: como sobrar dinheiro para quitar dívidas",
+        excerpt: "Um método simples para reorganizar suas contas mensais e destinar parte da renda aos acordos sem sacrificar sua rotina.",
+        category: "Orçamento",
+        tag: "Planejamento",
+        readTime: "8 min",
+        date: "10 jul 2026",
+        dateRaw: "2026-07-10",
+        link: "artigo-exemplo-3.html",
+        iconPath: "M12 8v4l3 2" // Simplificado para exemplo
+      },
+      {
+        id: 4,
+        title: "5 golpes comuns em ofertas de 'limpeza de nome' e como identificá-los",
+        excerpt: "Empresas que prometem apagar dívidas sem pagamento, liminar no Serasa e outras armadilhas cibernéticas para evitar.",
+        category: "Segurança",
+        tag: "Alerta",
+        readTime: "7 min",
+        date: "05 jul 2026",
+        dateRaw: "2026-07-05",
+        link: "artigo-exemplo-4.html",
+        iconPath: "M12 9v4m0 4h.01M10.3 3.9L2.7 17a1.8 1.8 0 001.6 2.7h15.4a1.8 1.8 0 001.6-2.7L13.7 3.9a1.8 1.8 0 00-3.4 0z"
+      },
+      {
+        id: 5,
+        title: "Fatura do cartão atrasada: negociar direto com o banco ou portabilidade?",
+        excerpt: "Comparamos os dois caminhos considerando juros, prazos e impacto no seu score de crédito no curto e longo prazo.",
+        category: "Cartão",
+        tag: "Análise",
+        readTime: "9 min",
+        date: "28 jun 2026",
+        dateRaw: "2026-06-28",
+        link: "artigo-exemplo-5.html",
+        iconPath: "M3 10h18"
+      },
+      // Exemplo do seu "Artigo Novo" que não havia aparecido
+      {
+        id: 6,
+        title: "Como fazer renda extra nos finais de semana para antecipar parcelas",
+        excerpt: "Descubra 7 ideias práticas que não exigem investimento inicial para complementar sua renda e acelerar a saída das dívidas.",
+        category: "Renda Extra",
+        tag: "Dicas",
+        readTime: "5 min",
+        date: "24 jul 2026",
+        dateRaw: "2026-07-24",
+        link: "artigo-renda-extra.html",
+        iconPath: "M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+      }
+    ];
+
+    // ==========================================
+    // LÓGICA DE FILTRAGEM E RENDERIZAÇÃO
+    // ==========================================
+    const container = document.getElementById('articlesContainer');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const resultsCount = document.getElementById('resultsCount');
+
+    // Função que cria o HTML do card
+    function renderCards(articlesToRender) {
+      container.innerHTML = ''; // Limpa o container
+
+      if (articlesToRender.length === 0) {
+        container.innerHTML = `
+          <div class="no-results">
+            <h3>Nenhum artigo encontrado</h3>
+            <p>Não encontramos resultados para a sua busca. Tente palavras diferentes ou limpe os filtros.</p>
+          </div>
+        `;
+        resultsCount.textContent = `0 resultados`;
+        return;
+      }
+
+      // Ordena por data mais recente
+      articlesToRender.sort((a, b) => new Date(b.dateRaw) - new Date(a.dateRaw));
+
+      let htmlBlocks = '';
+      articlesToRender.forEach(article => {
+        htmlBlocks += `
+          <a href="${article.link}" class="card">
+            <div class="thumb">
+              <span class="tag">${article.tag}</span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="${article.iconPath}" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="body">
+              <h3>${article.title}</h3>
+              <p>${article.excerpt}</p>
+              <div class="meta">
+                <span>${article.category}</span><span class="dot-sep"></span>
+                <span>${article.readTime}</span><span class="dot-sep"></span>
+                <span>${article.date}</span>
+              </div>
+            </div>
+          </a>
+        `;
+      });
+
+      container.innerHTML = htmlBlocks;
+      resultsCount.textContent = `Exibindo ${articlesToRender.length} artigo${articlesToRender.length !== 1 ? 's' : ''}`;
+    }
+
+    // Função que aplica as regras de busca e categoria
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const selectedCategory = categoryFilter.value;
+
+      const filtered = articlesDB.filter(article => {
+        // Verifica a categoria
+        const matchCategory = selectedCategory === 'todas' || article.category === selectedCategory;
+        
+        // Verifica o termo de busca (no título ou resumo)
+        const matchSearch = article.title.toLowerCase().includes(searchTerm) || 
+                            article.excerpt.toLowerCase().includes(searchTerm) ||
+                            article.category.toLowerCase().includes(searchTerm);
+
+        return matchCategory && matchSearch;
+      });
+
+      renderCards(filtered);
+    }
+
+    // Listeners para ativar os filtros ao digitar ou selecionar
+    searchInput.addEventListener('input', applyFilters);
+    categoryFilter.addEventListener('change', applyFilters);
+
+    // Carrega tudo ao iniciar a página
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCards(articlesDB);
+    });
+  </script>
+
+</body>
+</html>
