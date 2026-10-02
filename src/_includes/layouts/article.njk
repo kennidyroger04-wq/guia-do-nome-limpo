@@ -160,8 +160,11 @@
         <div class="article-meta"><span>{{ readTime }} de leitura</span></div>
       </header>
 
-      <!-- Imagem Principal do Artigo -->
-      <img src="{{ image }}" alt="{{ imageAlt }}" class="article-featured-img">
+      {% if image and imageAlt %}
+      <figure class="article-featured-figure">
+        <img src="{{ image }}" alt="{{ imageAlt }}" class="article-featured-img">
+      </figure>
+      {% endif %}
 
       <div class="article-body">
         {{ content | safe }}

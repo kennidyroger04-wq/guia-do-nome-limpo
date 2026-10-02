@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Site estático educativo com publicação editorial em Markdown usando Eleventy",
   "scripts": {
-    "test": "npm run build && node scripts/check-build.mjs && node scripts/test-calculators.mjs",
+    "test": "npm run build && node scripts/check-build.mjs && node scripts/test-calculators.mjs && node scripts/test-article-template.mjs",
     "build": "node scripts/clean.mjs && ELEVENTY_ENV=production eleventy --config=eleventy.config.cjs",
     "dev": "eleventy --serve --config=eleventy.config.cjs"
   },
