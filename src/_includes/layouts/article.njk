@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- METADADOS DE SEO -->
+<title>{{ title }} — {{ site.name }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --navy-900:#0a1a30;
+    --navy-800:#0f2745;
+    --navy-700:#16345e;
+    --blue-500:#2f6fed;
+    --blue-400:#5b8fff;
+    --gray-600:#5b6b82;
+    --gray-300:#c4cedd;
+    --gray-100:#eef1f6;
+    --white:#ffffff;
+    --clean-green:#1fae6f;
+    --clean-green-soft:#e4f7ee;
+    --dirty-red:#e35b5b;
+
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:18px;
+    --max-w:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--gray-100);
+    color:var(--navy-900);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  ul, ol{margin-left: 20px; margin-bottom: 20px;}
+  li{margin-bottom: 8px;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 20px; font-weight: 600; font-size: 0.9rem;
+    border-radius: var(--radius-sm); transition: all 0.2s ease; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--blue-500); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-400); }
+
+  /* ============ HEADER ============ */
+  header.site { background: var(--white); border-bottom: 1px solid var(--gray-300); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); }
+  .logo small { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--gray-600); }
+  nav.primary ul { display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; }
+  nav.primary a { font-weight: 500; font-size: 0.9rem; color: var(--navy-900); }
+  nav.primary a:hover { color: var(--blue-500); }
+
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; }
+  .dropdown-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+    background: var(--white); border: 1px solid var(--gray-300); border-top: 3px solid var(--blue-500);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm); box-shadow: 0 14px 30px rgba(10,26,48,0.12);
+    min-width: 240px; padding: 8px 0; opacity: 0; visibility: hidden; transition: all 0.25s ease;
+    display: flex; flex-direction: column; list-style: none; margin: 0;
+  }
+  @media (min-width: 721px) {
+    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+  }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.88rem; color: var(--navy-800); }
+  .dropdown-menu a:hover { background: var(--gray-100); color: var(--blue-500); padding-left: 26px; }
+
+  /* ============ LAYOUT DO ARTIGO ============ */
+  .article-container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    padding: 40px 0 64px;
+  }
+
+  .article-content {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-300);
+  }
+
+  .article-header { margin-bottom: 32px; border-bottom: 1px solid var(--gray-300); padding-bottom: 24px; }
+  .article-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--blue-500); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; display: block; }
+  .article-title { font-family: var(--font-display); font-size: 2.2rem; line-height: 1.25; color: var(--navy-900); margin-bottom: 16px; }
+  .article-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray-600); display: flex; gap: 16px; }
+
+  /* Estilização da Manchete e Texto do Artigo */
+  .article-body h2 { font-family: var(--font-display); font-size: 1.4rem; color: var(--navy-900); margin: 36px 0 16px; }
+  .article-body h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy-800); margin: 24px 0 12px; }
+  .article-body p { margin-bottom: 20px; color: #2d3748; font-size: 1.02rem; }
+  .article-body strong { color: var(--navy-900); }
+  .article-body blockquote { background: var(--clean-green-soft); border-left: 4px solid var(--clean-green); border-radius: var(--radius-sm); margin: 24px 0; padding: 18px 20px; }
+  .article-body blockquote:first-of-type { background: #fff5f5; border-left-color: var(--dirty-red); }
+  .article-body blockquote p { margin: 0; }
+
+  /* Imagem Principal */
+  .article-featured-img { width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: 24px; object-fit: cover; }
+
+  /* Blocos de Alerta / Destaques */
+  .callout-box {
+    background: var(--gray-100); border-left: 4px solid var(--blue-500);
+    padding: 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 24px 0;
+  }
+  .callout-box.alert { background: #fff5f5; border-left-color: var(--dirty-red); }
+  .callout-box.success { background: var(--clean-green-soft); border-left-color: var(--clean-green); }
+
+  /* Estilização de Tabelas */
+  .custom-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.9rem; }
+  .custom-table th { background: var(--navy-900); color: var(--white); text-align: left; padding: 12px 16px; font-family: var(--font-mono); }
+  .custom-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-300); }
+  .custom-table tr:nth-child(even) { background: var(--gray-100); }
+
+  /* Sidebar */
+  .sidebar-block { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; }
+  .sidebar-block h4 { font-family: var(--font-display); margin-bottom: 12px; font-size: 1.05rem; }
+
+  /* FOOTER */
+  footer.site { background: var(--navy-900); color: var(--gray-300); padding: 40px 0 20px; margin-top: 40px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+
+  @media(max-width: 850px){
+    .article-container { grid-template-columns: 1fr; }
+    .article-title { font-size: 1.7rem; }
+  }
+</style>
+{% include "partials/responsive-assets.njk" %}
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  {% include "partials/navigation.njk" %}
+
+  <!-- ============ ARTIGO PRINCIPAL ============ -->
+  <main id="main-content" tabindex="-1" class="wrap article-container">
+
+    <article class="article-content">
+      <header class="article-header">
+        <span class="article-category">{{ category }}</span>
+        <h1 class="article-title">{{ title }}</h1>
+        <div class="article-meta"><span>{{ readTime }} de leitura</span></div>
+      </header>
+
+      <!-- Imagem Principal do Artigo -->
+      <img src="{{ image }}" alt="{{ imageAlt }}" class="article-featured-img">
+
+      <div class="article-body">
+        {{ content | safe }}
+      </div>
+    </article>
+
+    <!-- SIDEBAR DO ARTIGO -->
+    <aside>
+      <div class="sidebar-block">
+        <h4>Quer simular um acordo?</h4>
+        <p style="font-size: 0.88rem; color: var(--gray-600); margin-bottom: 16px;">Use a calculadora ilustrativa da página inicial para estimar um valor após informar um percentual de desconto. O resultado não é uma proposta de credor.</p>
+        <a href="index.html#calculadora" class="btn btn-primary" style="width: 100%;">Abrir calculadora ilustrativa →</a>
+      </div>
+
+      <div class="sidebar-block" style="background: var(--navy-900); color: #fff;">
+        <h4 style="color: #fff;">Canais da Serasa</h4>
+        <p style="font-size: 0.85rem; color: var(--gray-300); margin-bottom: 16px;">Consulte informações e serviços nos canais oficiais da Serasa.</p>
+        <a href="https://www.serasa.com.br/limpa-nome-online/" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary" style="width: 100%; background: var(--clean-green);">Acessar site da Serasa</a>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 Guia do Nome Limpo. Todos os direitos reservados.</span>
+        <div>
+          <a href="index.html">Página Inicial</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

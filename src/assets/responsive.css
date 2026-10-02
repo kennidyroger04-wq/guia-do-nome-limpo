@@ -1,0 +1,121 @@
+/* Shared responsive rules for source pages and generated article templates. */
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 8px;
+  left: 8px;
+  padding: 12px 16px;
+  transform: translateY(-160%);
+  border-radius: 6px;
+  background: var(--navy-900, #0a1a30);
+  color: var(--white, #fff);
+}
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 3px solid var(--blue-500, #2f6fed); outline-offset: 3px; }
+.header-inner { min-width: 0; }
+.header-inner .logo { min-width: 0; flex-shrink: 1; }
+.header-inner .logo span { min-width: 0; }
+.header-inner .logo svg.mark { width: 34px; height: 34px; flex: 0 0 34px; }
+.header-inner .menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid var(--gray-300, #c4cedd);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--white, #fff);
+  color: var(--navy-900, #0a1a30);
+}
+.header-inner .menu-toggle span { display: block; width: 20px; height: 2px; background: currentColor; }
+.mobile-only { display: none; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 980px) {
+  html, body { max-width: 100%; }
+  .header-inner { min-height: 72px; height: auto !important; gap: 12px !important; }
+  .header-inner .logo { gap: 8px; font-size: 1rem; }
+  .header-inner .logo small { font-size: .64rem; }
+  .header-inner .menu-toggle { display: inline-flex; margin-left: auto; }
+  .header-inner .header-action,
+  .header-inner .header-cta { display: none !important; }
+  html.has-js nav.primary {
+    position: absolute !important;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 200;
+    width: 100%;
+    max-height: calc(100vh - 72px);
+    max-height: calc(100dvh - 72px);
+    overflow: auto;
+    padding: 8px 24px 20px;
+    transform: translateY(-8px);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--white, #fff);
+    border-top: 1px solid var(--gray-300, #c4cedd);
+    box-shadow: 0 14px 30px rgba(10, 26, 48, .12);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  }
+  html.has-js nav.primary.open {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav.primary ul { display: flex !important; flex-direction: column; align-items: stretch !important; gap: 0 !important; width: 100%; }
+  nav.primary li { width: 100%; border-bottom: 1px solid var(--gray-100, #eef1f6); }
+  nav.primary a { display: block; padding: 13px 4px; font-size: 1rem !important; }
+  .mobile-only { display: list-item; }
+  html:not(.has-js) .header-inner .menu-toggle { display: none; }
+  html:not(.has-js) nav.primary {
+    position: static !important;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto;
+    border: 0;
+    box-shadow: none;
+  }
+  .ticker { max-width: 100%; overflow: hidden; }
+  .ticker-track { max-width: 100%; }
+  .wrap, main, section, article, aside, .content-layout, .article-grid, .tools-grid, .offers-grid, .about-grid, .legal-layout, .footer-grid { min-width: 0; }
+  .content-layout > *, .legal-layout > *, .footer-grid > *, .about-grid > * { min-width: 0; }
+  .footer-bottom { gap: 12px; flex-wrap: wrap; }
+  table { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .wrap { padding-right: 18px !important; padding-left: 18px !important; }
+  h1 { overflow-wrap: anywhere; }
+  .page-hero h1, .category-hero h1 { font-size: clamp(1.7rem, 8vw, 2.2rem) !important; }
+  .page-hero, .category-hero { padding-top: 36px !important; padding-bottom: 36px !important; }
+  .section { padding-top: 36px !important; padding-bottom: 48px !important; }
+  .legal-content { padding: 24px 18px !important; }
+  .filter-group { min-width: 0 !important; width: 100%; }
+  input, select, textarea, button { max-width: 100%; }
+  .footer-links, .footer-bottom > div { display: flex; flex-wrap: wrap; gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-inner .menu-toggle, nav.primary { transition: none !important; }
+}

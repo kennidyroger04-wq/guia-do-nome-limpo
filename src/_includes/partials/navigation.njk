@@ -1,0 +1,26 @@
+<a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+<header class="site">
+  <div class="header-inner wrap">
+    <a href="/index.html" class="logo" aria-label="Guia do Nome Limpo, página inicial">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Guia do Nome Limpo<small>Crédito, dívidas &amp; renegociação</small></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Abrir menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav class="primary" id="primaryNav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="/guias-de-renegociacao.html"{% if page.url == '/guias-de-renegociacao.html' %} aria-current="page"{% endif %}>Renegociação</a></li>
+        <li><a href="/entender-score.html"{% if page.url == '/entender-score.html' %} aria-current="page"{% endif %}>Score</a></li>
+        <li><a href="/calculadoras.html"{% if page.url == '/calculadoras.html' %} aria-current="page"{% endif %}>Calculadoras</a></li>
+        <li><a href="/todos-os-artigos.html"{% if page.url == '/todos-os-artigos.html' %} aria-current="page"{% endif %}>Artigos</a></li>
+        <li><a href="/sobre.html"{% if page.url == '/sobre.html' %} aria-current="page"{% endif %}>Sobre</a></li>
+        <li class="mobile-only"><a href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer">Canais oficiais da Serasa ↗</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-primary header-action" href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer">Acessar site da Serasa</a>
+  </div>
+</header>

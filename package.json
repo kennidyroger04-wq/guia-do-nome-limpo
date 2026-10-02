@@ -1,0 +1,20 @@
+{
+  "name": "guia-do-nome-limpo",
+  "version": "1.0.0",
+  "description": "Site estático educativo com publicação editorial em Markdown usando Eleventy",
+  "scripts": {
+    "test": "npm run build && node scripts/check-build.mjs",
+    "build": "node scripts/clean.mjs && eleventy --config=eleventy.config.cjs",
+    "dev": "eleventy --serve --config=eleventy.config.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennidyroger04-wq/guia-do-nome-limpo.git"
+  },
+  "type": "commonjs",
+  "homepage": "https://github.com/kennidyroger04-wq/guia-do-nome-limpo#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  },
+  "private": true
+}

@@ -1,3 +1,6 @@
+---
+permalink: /index.html
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -480,6 +483,7 @@
     .hero{padding:44px 0 56px;}
   }
 </style>
+{% include "partials/responsive-assets.njk" %}
 </head>
 <body>
 
@@ -492,50 +496,7 @@
   </div>
 
   <!-- ============ HEADER ============ -->
-  <header class="site">
-    <div class="header-inner wrap">
-      <a href="#topo" class="logo">
-        <svg class="mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/>
-          <path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Guia do Nome Limpo<small>Crédito, dívidas &amp; renegociação</small></span>
-      </a>
-
-      <!-- Menu Principal -->
-      <nav class="primary" id="primaryNav">
-        <ul>
-          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
-          <li><a href="entender-score.html">Entender Score</a></li>
-          <li><a href="calculadoras.html">Calculadoras</a></li>
-          
-          <!-- Dropdown Artigos -->
-          <li class="has-dropdown">
-            <a href="#artigos" class="dropdown-toggle">Artigos <span class="arrow">▾</span></a>
-            <ul class="dropdown-menu">
-              <li><a href="renda-extra.html">Renda Extra</a></li>
-              <li><a href="carreira-cursos.html">Carreira &amp; Cursos</a></li>
-              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
-              <li><a href="sobre.html">Sobre o Guia</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- CTA de Destaque -->
-      <div class="header-cta">
-        <a href="https://www.serasa.com.br"
-           class="btn btn-primary" 
-           target="_blank" 
-           rel="nofollow noopener noreferrer">
-           Acessar canais da Serasa
-        </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+  {% include "partials/navigation.njk" %}
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="topo">
@@ -571,7 +532,7 @@
   <!-- Indicadores de mercado serão publicados apenas com fonte e data de conferência. -->
 
   <!-- ============ MAIN CONTENT ============ -->
-  <main class="wrap">
+  <main id="main-content" tabindex="-1" class="wrap">
 
     <section class="section" id="artigos">
       <div class="content-layout">
@@ -588,18 +549,21 @@
 
           <div class="article-grid">
 
-            <a href="limpa-nome-guia-consultar-cpf-negociar-dividas.html" class="card featured">
+            {% for article in collections.articles | take(3) %}
+            <a href="{{ article.url }}" class="card featured">
               <div class="thumb">
-                <span class="tag tag-green">Renegociação</span>
-                <!-- O ícone continua aqui -->
-                <svg viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="tag tag-green">{{ article.data.category }}</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="{{ article.data.iconPath }}" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <div class="body">
-                <h3>Limpa Nome: como consultar o CPF e negociar dívidas</h3>
-                <p>Veja como acessar os canais oficiais, analisar propostas e tomar cuidados antes de fechar um acordo.</p>
-                <div class="meta"><span>Renegociação</span><span class="dot-sep"></span><span>7 min</span></div>
+                <h3>{{ article.data.title }}</h3>
+                <p>{{ article.data.excerpt }}</p>
+                <div class="meta"><span>{{ article.data.category }}</span><span class="dot-sep"></span><span>{{ article.data.readTime }}</span></div>
               </div>
             </a>
+            {% else %}
+            <p>Ainda não há artigos publicados.</p>
+            {% endfor %}
 
           </div>
         </div>
@@ -724,13 +688,6 @@
   </footer>
 
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const primaryNav = document.getElementById('primaryNav');
-    menuToggle && menuToggle.addEventListener('click', () => {
-      const isOpen = primaryNav.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', isOpen);
-    });
-
     function calcularDesconto() {
       const valorInput = parseFloat(document.getElementById('valorDivida').value) || 0;
       const descontoInput = parseFloat(document.getElementById('desconto').value) || 0;

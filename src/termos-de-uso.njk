@@ -1,10 +1,13 @@
+---
+permalink: /termos-de-uso.html
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidade — Guia do Nome Limpo</title>
-<meta name="description" content="Informações sobre privacidade e tratamento de dados no site Guia do Nome Limpo.">
+<title>Termos de Uso — Guia do Nome Limpo</title>
+<meta name="description" content="Termos de Uso do Guia do Nome Limpo: regras de utilização do portal, isenções de responsabilidade e propriedade intelectual.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -126,15 +129,6 @@
 
   /* ============ SECTION HEADERS (reused) ============ */
   .section{padding:56px 0;}
-  .section-head{
-    display:flex; align-items:flex-end; justify-content:space-between;
-    margin-bottom:30px; gap:20px; flex-wrap:wrap;
-    border-bottom:1px solid var(--gray-300); padding-bottom:16px;
-  }
-  .section-head h2{
-    font-family:var(--font-display); font-weight:700; font-size:1.5rem; color:var(--navy-900);
-  }
-  .section-head .eyebrow{color:var(--blue-500); display:block; margin-bottom:6px;}
 
   /* ============ TICKER (reused for continuity) ============ */
   .ticker{
@@ -226,20 +220,12 @@
   }
   .highlight-box p{color:var(--navy-800); margin-bottom:0; font-size:.9rem;}
   .highlight-box p strong{color:var(--clean-green);}
-  .ad-box{
-    background:var(--gray-100); border:1px solid var(--gray-300); border-radius:var(--radius-sm);
+  .warn-box{
+    background:#fdf1f1; border:1px solid rgba(227,91,91,.3); border-radius:var(--radius-sm);
     padding:16px 18px; margin:14px 0;
   }
-  .ad-box p{margin-bottom:0; font-size:.9rem;}
-  table.cookie-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.86rem;}
-  table.cookie-table th, table.cookie-table td{
-    text-align:left; padding:10px 12px; border-bottom:1px solid var(--gray-300); color:var(--gray-600);
-  }
-  table.cookie-table th{
-    font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em;
-    color:var(--navy-800); background:var(--gray-100);
-  }
-  table.cookie-table td strong{color:var(--navy-900);}
+  .warn-box p{margin-bottom:0; font-size:.9rem; color:var(--navy-800);}
+  .warn-box p strong{color:var(--dirty-red);}
   .legal-content a.inline-link{color:var(--blue-500); font-weight:600; text-decoration:underline;}
 
   /* ============ FOOTER (reused) ============ */
@@ -282,75 +268,47 @@
     .header-cta .btn-ghost{display:none;}
     .footer-grid{grid-template-columns:1fr;}
     .status-bar .items{display:none;}
-    table.cookie-table{display:block; overflow-x:auto; white-space:nowrap;}
   }
 </style>
+{% include "partials/responsive-assets.njk" %}
 </head>
 <body>
 
   <!-- ============ STATUS BAR ============ -->
   <div class="status-bar">
     <div class="wrap">
-      <span><span class="dot"></span>Informações sobre privacidade</span>
+      <span><span class="dot"></span>Termos de uso</span>
       <div class="items"></div>
     </div>
   </div>
 
   <!-- ============ HEADER ============ -->
-  <header class="site">
-    <div class="header-inner wrap">
-      <a href="index.html" class="logo">
-        <svg class="mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/>
-          <path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Guia do Nome Limpo<small>Crédito, dívidas &amp; renegociação</small></span>
-      </a>
-
-      <nav class="primary" id="primaryNav">
-        <ul>
-          <li><a href="index.html#renegociacao">Renegociação</a></li>
-          <li><a href="index.html#artigos">Artigos</a></li>
-          <li><a href="index.html#calculadora">Calculadora</a></li>
-          <li><a href="entender-score.html">Score &amp; CPF</a></li>
-          <li><a href="index.html#sobre">Sobre o Guia</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-cta">
-        <a href="entender-score.html" class="btn btn-ghost">Informações sobre score</a>
-        <a href="index.html#renegociacao" class="btn btn-primary">Quero limpar meu nome</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+  {% include "partials/navigation.njk" %}
 
   <!-- ============ LEGAL HERO ============ -->
   <section class="legal-hero">
     <div class="wrap">
       <span class="eyebrow">DOCUMENTO LEGAL</span>
-      <h1>Política de Privacidade</h1>
-      <p>Esta página registra o estado atual do site. A versão final da política depende da confirmação da hospedagem, do canal de contato e de eventuais integrações antes da publicação.</p>
-      <span class="updated"><span class="dot"></span>Informações de privacidade</span>
+      <h1>Termos de Uso</h1>
+      <p>Estas condições regem o acesso e a utilização do portal Guia do Nome Limpo. Ao navegar neste site, você declara ter lido, compreendido e aceito integralmente os termos aqui descritos.</p>
+      <span class="updated"><span class="dot"></span>Termos de uso</span>
     </div>
   </section>
 
   <!-- ============ TICKER ============ -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Esta versão não tem formulário de contato nem cadastro por e-mail</span>
-      <span>Não há cadastro por e-mail ou anúncios ativos neste site</span>
-      <span>O site não consulta CPF nem acessa dados de crédito</span>
-      <span>Esta versão não tem formulário de contato nem cadastro por e-mail</span>
-      <span>Não há cadastro por e-mail ou anúncios ativos neste site</span>
-      <span>O site não consulta CPF nem acessa dados de crédito</span>
+      <span>Conteúdo educativo, não constitui consultoria financeira individualizada</span>
+      <span>O uso do site implica aceitação integral destes termos</span>
+      <span>Este site oferece conteúdo educativo de caráter geral</span>
+      <span>Conteúdo educativo, não constitui consultoria financeira individualizada</span>
+      <span>O uso do site implica aceitação integral destes termos</span>
+      <span>Este site oferece conteúdo educativo de caráter geral</span>
     </div>
   </div>
 
   <!-- ============ MAIN CONTENT ============ -->
-  <main class="wrap">
+  <main id="main-content" tabindex="-1" class="wrap">
     <section class="section">
       <div class="legal-layout">
 
@@ -358,16 +316,17 @@
         <nav class="toc" aria-label="Sumário">
           <h4>Nesta página</h4>
           <ol>
-            <li><a href="#introducao">Introdução</a></li>
-            <li><a href="#dados-coletados">Dados que coletamos</a></li>
-            <li><a href="#uso-dados">Como usamos seus dados</a></li>
-            <li><a href="#cookies">Cookies e tecnologias similares</a></li>
-            <li><a href="#publicidade">Publicidade e Google AdSense</a></li>
-            <li><a href="#compartilhamento">Compartilhamento de dados</a></li>
-            <li><a href="#seguranca">Segurança da informação</a></li>
-            <li><a href="#direitos-lgpd">Seus direitos (LGPD)</a></li>
-            <li><a href="#retencao">Retenção e exclusão</a></li>
-            <li><a href="#alteracoes">Alterações desta política</a></li>
+            <li><a href="#aceitacao">Aceitação dos termos</a></li>
+            <li><a href="#descricao">Descrição do serviço</a></li>
+            <li><a href="#natureza-conteudo">Natureza do conteúdo</a></li>
+            <li><a href="#uso-permitido">Uso permitido do site</a></li>
+            <li><a href="#propriedade">Propriedade intelectual</a></li>
+            <li><a href="#links-terceiros">Links e serviços de terceiros</a></li>
+            <li><a href="#publicidade">Publicidade</a></li>
+            <li><a href="#isencao">Isenção de responsabilidade</a></li>
+            <li><a href="#limitacao">Limitação de responsabilidade</a></li>
+            <li><a href="#alteracoes">Alterações dos termos</a></li>
+            <li><a href="#lei-aplicavel">Lei aplicável e foro</a></li>
             <li><a href="#contato">Contato</a></li>
           </ol>
         </nav>
@@ -375,81 +334,74 @@
         <!-- LEGAL CONTENT -->
         <article class="legal-content">
 
-          <section id="introducao">
-            <h2><span class="num">01</span>Introdução</h2>
-            <p>O <strong>Guia do Nome Limpo</strong> é um site de conteúdo educativo. Nesta versão, o código do site não oferece formulário de contato, cadastro por e-mail, analytics ou anúncios ativos. A hospedagem poderá processar registros técnicos de acesso; o operador e os prazos aplicáveis precisam ser definidos antes da publicação.</p>
-            <p>Esta página precisa ser revisada quando domínio, hospedagem ou integrações forem definidos.</p>
+          <section id="aceitacao">
+            <h2><span class="num">01</span>Aceitação dos termos</h2>
+            <p>Estes Termos de Uso ("Termos") regulam o acesso e a utilização do portal <strong>Guia do Nome Limpo</strong>, disponível em <strong>guiadonomelimpo.com.br</strong>. Ao acessar ou utilizar o site, você concorda integralmente com estes Termos. Caso não concorde com alguma disposição, recomendamos que interrompa o uso do portal.</p>
           </section>
 
-          <section id="dados-coletados">
-            <h2><span class="num">02</span>Dados que coletamos</h2>
-            <p>Esta versão não possui formulários de dados pessoais, newsletter ou scripts de analytics e publicidade. A hospedagem pode registrar informações técnicas de acesso; esse tratamento deve ser confirmado com o provedor escolhido antes da publicação.</p>
-            <div class="highlight-box">
-              <p><strong>Importante:</strong> o Guia do Nome Limpo é um portal de conteúdo educativo e <strong>não realiza consultas reais a CPF, Serasa ou SPC</strong> dentro desta demonstração de interface; qualquer simulação exibida no site tem caráter meramente ilustrativo.</p>
+          <section id="descricao">
+            <h2><span class="num">02</span>Descrição do serviço</h2>
+            <p>O Guia do Nome Limpo é um portal de conteúdo editorial e educativo voltado a temas de crédito, dívidas, renegociação e organização financeira pessoal. O site disponibiliza artigos, uma calculadora ilustrativa de desconto e materiais informativos de caráter geral.</p>
+          </section>
+
+          <section id="natureza-conteudo">
+            <h2><span class="num">03</span>Natureza do conteúdo</h2>
+            <div class="warn-box">
+              <p><strong>Atenção:</strong> o conteúdo publicado neste site tem finalidade exclusivamente informativa e educacional. Ele <strong>não constitui consultoria financeira, jurídica ou contábil individualizada</strong> e não substitui a orientação de um profissional habilitado.</p>
             </div>
+            <p>A calculadora ilustrativa da página inicial estima um valor a partir de um percentual informado pelo visitante; ela não representa uma proposta de credor. As ferramentas da página Calculadoras ainda não estão disponíveis. Decisões relacionadas à renegociação devem considerar as condições individuais e as informações dos credores.</p>
           </section>
 
-          <section id="uso-dados">
-            <h2><span class="num">03</span>Como usamos seus dados</h2>
-            <p>Não há processamento de dados por formulários, newsletter, analytics ou anúncios implementados nesta versão do site. As finalidades e bases legais de qualquer integração futura deverão ser documentadas antes que ela seja ativada.</p>
+          <section id="uso-permitido">
+            <h2><span class="num">04</span>Uso permitido do site</h2>
+            <p>Ao utilizar o portal, você concorda em não:</p>
+            <ul>
+              <li>Utilizar o site para fins ilícitos ou não autorizados;</li>
+              <li>Tentar acessar áreas restritas, sistemas ou dados sem autorização;</li>
+              <li>Reproduzir, copiar ou distribuir o conteúdo do site sem autorização prévia, exceto para uso pessoal e não comercial;</li>
+              <li>Utilizar meios automatizados (robôs, scrapers) para extração de conteúdo sem consentimento expresso;</li>
+              <li>Praticar qualquer ação que comprometa a segurança, a disponibilidade ou o funcionamento do portal.</li>
+            </ul>
           </section>
 
-          <section id="cookies">
-            <h2><span class="num">04</span>Cookies e tecnologias similares</h2>
-            <p>O código desta versão não implementa cookies de analytics ou publicidade. A hospedagem e integrações futuras devem ser verificadas antes da publicação para identificar tecnologias de terceiros.</p>
-            <table class="cookie-table">
-              <thead>
-                <tr><th>Categoria</th><th>Finalidade</th><th>Pode ser desativado?</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>Analytics e publicidade</strong></td><td>Não implementados nesta versão.</td><td>Não aplicável</td></tr>
-              </tbody>
-            </table>
-            <p>Esta informação deverá ser atualizada após a escolha da hospedagem e de quaisquer integrações externas.</p>
+          <section id="propriedade">
+            <h2><span class="num">05</span>Propriedade intelectual</h2>
+            <p>Todo o conteúdo do portal — incluindo textos, artigos, logotipos, ícones, layout e elementos visuais — é de propriedade do Guia do Nome Limpo ou de seus licenciadores, sendo protegido pela legislação de direitos autorais e propriedade intelectual vigente. É vedada a reprodução total ou parcial sem autorização prévia por escrito, salvo para fins de citação com a devida referência à fonte.</p>
+          </section>
+
+          <section id="links-terceiros">
+            <h2><span class="num">06</span>Links e serviços de terceiros</h2>
+            <p>O portal pode conter links para sites de terceiros, incluindo instituições financeiras, órgãos de proteção ao crédito (como Serasa e SPC) e outros parceiros. Não temos controle sobre o conteúdo, as políticas de privacidade ou as práticas desses sites, e não nos responsabilizamos por eles. A inclusão de um link não representa endosso ou recomendação.</p>
           </section>
 
           <section id="publicidade">
-            <h2><span class="num">05</span>Publicidade e Google AdSense</h2>
-            <p>Os espaços reservados para publicidade não carregam anúncios nem scripts do Google AdSense. Se anúncios forem ativados futuramente, esta política deverá ser atualizada para explicar as tecnologias e dados envolvidos antes da publicação.</p>
+            <h2><span class="num">07</span>Publicidade</h2>
+            <p>Os espaços reservados no site não exibem anúncios no momento. Se publicidade de terceiros for ativada futuramente, os anúncios e as tecnologias associadas serão descritos na <a class="inline-link" href="politica-de-privacidade.html">Política de Privacidade</a> antes da publicação.</p>
           </section>
 
-          <section id="compartilhamento">
-            <h2><span class="num">06</span>Compartilhamento de dados</h2>
-            <p>O site não oferece formulários operacionais ou cadastro por e-mail no momento. Qualquer integração futura que trate dados pessoais deverá ser descrita nesta política antes de entrar em funcionamento.</p>
+          <section id="isencao">
+            <h2><span class="num">08</span>Isenção de responsabilidade</h2>
+            <p>Envidamos esforços para manter as informações do portal atualizadas e precisas, porém não garantimos a exatidão, completude ou atualidade de todo o conteúdo publicado, especialmente diante de mudanças frequentes em normas, taxas e políticas de instituições financeiras e órgãos de proteção ao crédito.</p>
+            <p>O uso das informações contidas neste site é de responsabilidade exclusiva do usuário. O Guia do Nome Limpo não se responsabiliza por decisões financeiras tomadas com base no conteúdo aqui publicado.</p>
           </section>
 
-          <section id="seguranca">
-            <h2><span class="num">07</span>Segurança da informação</h2>
-            <p>As medidas de segurança da hospedagem ainda precisam ser verificadas e descritas pelo responsável antes da publicação. Nenhum sistema de transmissão ou armazenamento de dados é 100% seguro.</p>
-          </section>
-
-          <section id="direitos-lgpd">
-            <h2><span class="num">08</span>Seus direitos (LGPD)</h2>
-            <p>Nos termos da LGPD, você tem direito a:</p>
-            <ul>
-              <li>Confirmar a existência de tratamento de seus dados;</li>
-              <li>Acessar seus dados pessoais;</li>
-              <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
-              <li>Solicitar anonimização, bloqueio ou eliminação de dados desnecessários;</li>
-              <li>Solicitar a portabilidade dos dados a outro fornecedor;</li>
-              <li>Revogar o consentimento e solicitar a exclusão dos dados tratados com base nele;</li>
-              <li>Obter informações sobre entidades com as quais compartilhamos seus dados.</li>
-            </ul>
-            <p>O canal para encaminhar solicitações ainda precisa ser definido antes da publicação; esta versão não oferece um meio de contato.</p>
-          </section>
-
-          <section id="retencao">
-            <h2><span class="num">09</span>Retenção e exclusão</h2>
-            <p>Os prazos de retenção de registros técnicos dependem da hospedagem escolhida e ainda precisam ser confirmados. Esta seção deve ser atualizada com os períodos e procedimentos efetivamente adotados antes da publicação.</p>
+          <section id="limitacao">
+            <h2><span class="num">09</span>Limitação de responsabilidade</h2>
+            <p>Na máxima extensão permitida pela legislação aplicável, o Guia do Nome Limpo não se responsabiliza por danos diretos, indiretos, incidentais ou consequenciais decorrentes do uso ou da impossibilidade de uso do site, incluindo eventuais indisponibilidades, falhas técnicas ou erros de conteúdo.</p>
           </section>
 
           <section id="alteracoes">
-            <h2><span class="num">10</span>Alterações desta política</h2>
-            <p>Esta política deve ser revisada quando a hospedagem ou as integrações mudarem. A data da revisão precisa ser informada quando o conteúdo for efetivamente atualizado.</p>
+            <h2><span class="num">10</span>Alterações dos termos</h2>
+            <p>Estes Termos podem ser revistos quando o site ou as regras aplicáveis mudarem. A data deverá ser indicada quando uma revisão efetiva for publicada.</p>
+          </section>
+
+          <section id="lei-aplicavel">
+            <h2><span class="num">11</span>Lei aplicável e foro</h2>
+            <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca de domicílio do usuário para dirimir eventuais controvérsias decorrentes destes Termos, conforme facultado pelo Código de Defesa do Consumidor, ou o foro que vier a ser especificado em contrato específico, quando aplicável.</p>
           </section>
 
           <section id="contato">
-            <h2><span class="num">11</span>Contato</h2>
+            <h2><span class="num">12</span>Contato</h2>
             <p>O canal de contato do responsável ainda precisa ser definido antes da publicação.</p>
           </section>
 
@@ -508,14 +460,6 @@
     </div>
   </footer>
 
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const primaryNav = document.getElementById('primaryNav');
-    menuToggle && menuToggle.addEventListener('click', () => {
-      const isOpen = primaryNav.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', isOpen);
-    });
-  </script>
 
 </body>
 </html>

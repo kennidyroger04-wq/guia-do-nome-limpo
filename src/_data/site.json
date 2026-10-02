@@ -1,0 +1,12 @@
+{
+  "name": "Guia do Nome Limpo",
+  "url": "https://guiadonomelimpo.com.br",
+  "filterCategories": [
+    { "value": "Renegociação", "label": "Renegociação" },
+    { "value": "Score", "label": "Score & CPF" },
+    { "value": "Orçamento", "label": "Orçamento Pessoal" },
+    { "value": "Segurança", "label": "Segurança & Golpes" },
+    { "value": "Cartão", "label": "Cartão de Crédito" },
+    { "value": "Renda Extra", "label": "Renda Extra" }
+  ]
+}

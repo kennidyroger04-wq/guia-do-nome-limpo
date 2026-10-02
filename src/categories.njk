@@ -1,3 +1,10 @@
+---
+pagination:
+  data: collections.siteCategories
+  size: 1
+  alias: category
+permalink: "{{ category.permalink }}"
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,8 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- METADADOS DE SEO -->
-<title>Carreira & Cursos: Qualificação para Sair das Dívidas — Guia do Nome Limpo</title>
-<meta name="description" content="Ainda não há artigos publicados nesta categoria. Consulte a lista do conteúdo disponível no site.">
+<title>{{ category.title }} — Guia do Nome Limpo</title>
+<meta name="description" content="{{ category.description }} Consulte os artigos disponíveis nesta categoria.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -91,63 +98,42 @@
     .sidebar { grid-template-columns: 1fr; }
   }
 </style>
+{% include "partials/responsive-assets.njk" %}
 </head>
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="site">
-    <div class="header-inner wrap">
-      <a href="index.html" class="logo">
-        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Guia do Nome Limpo</span>
-      </a>
-
-      <nav class="primary">
-        <ul>
-          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
-          <li><a href="entender-score.html">Entender Score</a></li>
-          <li><a href="calculadoras.html">Calculadoras</a></li>
-          <li class="has-dropdown">
-            <a href="todos-os-artigos.html" style="color: var(--blue-500);">Artigos ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="renda-extra.html">Renda Extra</a></li>
-              <li><a href="carreira-cursos.html" style="color: var(--blue-500); background: var(--gray-100);">Carreira & Cursos</a></li>
-              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
-              <li><a href="sobre.html">Sobre o Guia</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-
-      <div>
-        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary">Acessar site da Serasa</a>
-      </div>
-    </div>
-  </header>
+  {% include "partials/navigation.njk" %}
 
   <!-- ============ CATEGORY HERO ============ -->
   <section class="category-hero">
     <div class="wrap">
       <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Central de Artigos</span>
-      <h1>Carreira & Cursos</h1>
-      <p>Esta categoria ainda não possui artigos publicados.</p>
+      <h1>{{ category.title }}</h1>
+      <p>{{ category.description }}</p>
     </div>
   </section>
 
   <!-- ============ MAIN CONTENT ============ -->
-  <main class="wrap section">
+  <main id="main-content" tabindex="-1" class="wrap section">
     <div class="content-layout">
 
-      <!-- Esta categoria ainda não tem artigos publicados. -->
+      <!-- Artigos gerados a partir dos metadados Markdown -->
       <div>
-        <div class="side-block">
-          <h3>Nenhum artigo publicado nesta categoria</h3>
-          <p>Consulte a lista dos artigos que já estão disponíveis no site.</p>
-          <a href="todos-os-artigos.html" class="btn btn-ghost">Ver artigos disponíveis</a>
+        <div class="article-grid">
+          {% set categoryArticles = collections.articles | articlesByCategory(category.name) %}
+          {% for article in categoryArticles %}
+          <a href="{{ article.url }}" class="card">
+            <div class="thumb"><span class="tag">{{ article.data.tag or article.data.category }}</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="{{ article.data.iconPath }}" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="body"><h3>{{ article.data.title }}</h3><p>{{ article.data.excerpt }}</p></div>
+          </a>
+          {% else %}
+          <div class="side-block"><h3>Nenhum artigo publicado nesta categoria</h3><p>Consulte a lista dos artigos já disponíveis.</p><a href="/todos-os-artigos.html" class="btn btn-ghost">Ver artigos disponíveis</a></div>
+          {% endfor %}
         </div>
       </div>
 
-      <!-- SIDEBAR -->
+      <!-- SIDEBAR (MANTENDO A CONSISTÊNCIA) -->
       <aside class="sidebar">
         
         <div class="side-block" style="background: var(--navy-900); color: #fff;">

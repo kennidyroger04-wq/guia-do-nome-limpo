@@ -1,3 +1,6 @@
+---
+permalink: /sobre.html
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -96,39 +99,12 @@
     .contact-box { position: static; }
   }
 </style>
+{% include "partials/responsive-assets.njk" %}
 </head>
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="site">
-    <div class="header-inner wrap">
-      <a href="index.html" class="logo">
-        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Guia do Nome Limpo</span>
-      </a>
-
-      <nav class="primary">
-        <ul>
-          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
-          <li><a href="entender-score.html">Entender Score</a></li>
-          <li><a href="calculadoras.html">Calculadoras</a></li>
-          <li class="has-dropdown">
-            <a href="todos-os-artigos.html" style="color: var(--blue-500);">Artigos ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="renda-extra.html">Renda Extra</a></li>
-              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
-              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
-              <li><a href="sobre.html" style="color: var(--blue-500); background: var(--gray-100);">Sobre o Guia</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-
-      <div>
-        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary">Acessar site da Serasa</a>
-      </div>
-    </div>
-  </header>
+  {% include "partials/navigation.njk" %}
 
   <!-- ============ PAGE HEADER ============ -->
   <section class="page-header">
@@ -140,7 +116,7 @@
   </section>
 
   <!-- ============ CONTENT ============ -->
-  <main class="wrap section">
+  <main id="main-content" tabindex="-1" class="wrap section">
     <div class="about-grid">
       
       <div class="content-body">

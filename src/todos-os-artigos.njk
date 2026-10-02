@@ -1,10 +1,13 @@
+---
+permalink: /todos-os-artigos.html
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Todos os Artigos — Guia do Nome Limpo</title>
-<meta name="description" content="Pesquise o artigo disponível sobre consulta ao Serasa Limpa Nome e renegociação de dívidas.">
+<meta name="description" content="Pesquise e filtre os artigos publicados sobre crédito, dívidas e renegociação.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -93,35 +96,12 @@
     .filters-wrap { flex-direction: column; align-items: stretch; }
   }
 </style>
+{% include "partials/responsive-assets.njk" %}
 </head>
 <body>
 
   <!-- HEADER -->
-  <header class="site">
-    <div class="header-inner wrap">
-      <a href="index.html" class="logo">
-        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Guia do Nome Limpo</span>
-      </a>
-      <nav class="primary">
-        <ul>
-          <li><a href="guias-de-renegociacao.html">Guias de Renegociação</a></li>
-          <li><a href="entender-score.html">Entender Score</a></li>
-          <li><a href="calculadoras.html">Calculadoras</a></li>
-          <li class="has-dropdown">
-            <a href="todos-os-artigos.html">Artigos ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="renda-extra.html">Renda Extra</a></li>
-              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
-              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
-              <li><a href="sobre.html">Sobre o Guia</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <div><a href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary">Acessar site da Serasa</a></div>
-    </div>
-  </header>
+  {% include "partials/navigation.njk" %}
 
   <!-- HERO -->
   <section class="page-hero">
@@ -139,32 +119,38 @@
       <!-- Busca por Texto -->
       <div class="filter-group">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <label class="sr-only" for="searchInput">Buscar artigos</label>
         <input type="text" id="searchInput" placeholder="Buscar por palavra-chave (ex: Serasa, juros, cartão)...">
       </div>
 
       <!-- Filtro por Categoria -->
       <div class="filter-group">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <label class="sr-only" for="categoryFilter">Filtrar por categoria</label>
         <select id="categoryFilter">
           <option value="todas">Todas as Categorias</option>
-          <option value="Renegociação">Renegociação</option>
-          <option value="Score">Score & CPF</option>
-          <option value="Orçamento">Orçamento Pessoal</option>
-          <option value="Segurança">Segurança & Golpes</option>
-          <option value="Cartão">Cartão de Crédito</option>
-          <option value="Renda Extra">Renda Extra</option>
+          {% for category in collections.articleFilterCategories %}
+          <option value="{{ category.value }}">{{ category.label }}</option>
+          {% endfor %}
         </select>
       </div>
 
-      <div class="filter-results-count" id="resultsCount">Exibindo 0 artigos</div>
+      <div class="filter-results-count" id="resultsCount" aria-live="polite">Exibindo 0 artigos</div>
 
     </div>
   </div>
 
   <!-- GRID DE ARTIGOS -->
-  <main class="wrap section">
-    <div class="article-grid" id="articlesContainer">
-      <!-- Os cards serão injetados aqui via JavaScript -->
+  <main id="main-content" tabindex="-1" class="wrap section">
+    <div class="article-grid" id="articlesContainer" aria-live="polite">
+      {% for article in collections.articles %}
+      <a href="{{ article.url }}" class="card">
+        <div class="thumb"><span class="tag">{{ article.data.tag or 'Artigo' }}</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="{{ article.data.iconPath }}" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="body"><h3>{{ article.data.title }}</h3><p>{{ article.data.excerpt }}</p><div class="meta"><span>{{ article.data.category }}</span><span class="dot-sep"></span><span>{{ article.data.readTime }}</span></div></div>
+      </a>
+      {% else %}
+      <div class="no-results"><h3>Nenhum artigo publicado</h3><p>Os artigos disponíveis aparecerão aqui.</p></div>
+      {% endfor %}
     </div>
   </main>
 
@@ -183,24 +169,8 @@
   </footer>
 
   <script>
-    // ==========================================
-    // BASE DE DADOS LOCAL (JSON)
-    // Para adicionar um novo post, basta inserir um novo bloco aqui!
-    // ==========================================
-    // Fonte manual atual: somente artigos HTML publicados entram nesta lista.
-    // Na migração para Markdown, gere a página do artigo e esta listagem a partir do mesmo registro.
-    const articlesDB = [
-      {
-        id: 1,
-        title: "Limpa Nome: Guia para Consultar CPF e Negociar Dívidas",
-        excerpt: "Entenda como acessar os canais oficiais, analisar propostas e tomar cuidados antes de fechar um acordo.",
-        category: "Renegociação",
-        tag: "Guia",
-        readTime: "7 min",
-        link: "limpa-nome-guia-consultar-cpf-negociar-dividas.html",
-        iconPath: "M4 19h16M6 15l3-4 3 2 5-7"
-      }
-    ];
+    // Os metadados e destinos vêm dos mesmos arquivos Markdown usados para gerar as páginas.
+    const articlesDB = {{ collections.articles | articlesJson | safe }};
 
     // ==========================================
     // LÓGICA DE FILTRAGEM E RENDERIZAÇÃO

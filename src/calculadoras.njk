@@ -1,3 +1,6 @@
+---
+permalink: /calculadoras.html
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- METADADOS DE SEO -->
-<title>Organização Financeira e Controle de Gastos — Guia do Nome Limpo</title>
-<meta name="description" content="Ainda não há artigos publicados nesta categoria. Consulte a lista do conteúdo disponível no site.">
+<title>Ferramentas financeiras — Guia do Nome Limpo</title>
+<meta name="description" content="Veja quais ferramentas financeiras ainda não estão disponíveis e acesse os canais oficiais dos credores.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -61,17 +64,20 @@
   /* ============ CONTENT LAYOUT ============ */
   .section { padding: 56px 0; }
   .content-layout { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
-  .article-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  
+  /* Layout específico para ferramentas */
+  .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
-  /* Cards */
-  .card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s ease, box-shadow .18s ease; }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(10,26,48,.09); border-color: var(--blue-400); }
-  .card .thumb { height: 160px; position: relative; background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); display: flex; align-items: center; justify-content: center; }
-  .card .thumb svg { width: 40px; height: 40px; color: rgba(255,255,255,.35); }
-  .tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,.95); color: var(--navy-800); font-size: .68rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; padding: 5px 10px; border-radius: 100px; }
-  .card .body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1.3; color: var(--navy-900); }
-  .card p { color: var(--gray-600); font-size: .9rem; line-height: 1.55; }
+  /* Cards de Ferramentas */
+  .tool-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 32px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; transition: transform .18s ease, box-shadow .18s ease; }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(10,26,48,.09); border-color: var(--blue-400); }
+  
+  .tool-icon { width: 56px; height: 56px; background: var(--clean-green-soft); color: var(--clean-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .tool-icon svg { width: 28px; height: 28px; }
+  
+  .tool-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; line-height: 1.3; color: var(--navy-900); margin-bottom: 12px; }
+  .tool-card p { color: var(--gray-600); font-size: .9rem; line-height: 1.55; margin-bottom: 24px; flex: 1; }
+  .tool-card .btn { width: 100%; }
 
   /* Sidebar */
   .sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 92px; }
@@ -87,67 +93,65 @@
     .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 720px){
-    .article-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
     .sidebar { grid-template-columns: 1fr; }
   }
 </style>
+{% include "partials/responsive-assets.njk" %}
 </head>
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="site">
-    <div class="header-inner wrap">
-      <a href="index.html" class="logo">
-        <svg width="32" height="32" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="#2f6fed" stroke-width="2"/><path d="M9 17.5L14.2 22.5L25 11" stroke="#1fae6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Guia do Nome Limpo</span>
-      </a>
-
-      <nav class="primary">
-        <ul>
-          <li><a href="guias-de-renegociacao.html" style="color: var(--blue-500);">Guias de Renegociação</a></li>
-          <li><a href="entender-score.html">Entender Score</a></li>
-          <li><a href="calculadoras.html">Calculadoras</a></li>
-          <li class="has-dropdown">
-            <a href="todos-os-artigos.html">Artigos ▾</a>
-            <ul class="dropdown-menu">
-              <li><a href="renda-extra.html">Renda Extra</a></li>
-              <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
-              <li><a href="organizacao-financeira.html">Organização Financeira</a></li>
-              <li><a href="sobre.html">Sobre o Guia</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-
-      <div>
-        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary">Acessar site da Serasa</a>
-      </div>
-    </div>
-  </header>
+  {% include "partials/navigation.njk" %}
 
   <!-- ============ CATEGORY HERO ============ -->
   <section class="category-hero">
     <div class="wrap">
-      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Central de Artigos</span>
-      <h1>Organização Financeira</h1>
-      <p>Esta categoria ainda não possui artigos publicados.</p>
+      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Kit de Ferramentas</span>
+      <h1>Nossas Calculadoras</h1>
+      <p>As ferramentas desta página ainda não estão disponíveis. Use apenas os canais oficiais para confirmar valores e condições de acordos.</p>
     </div>
   </section>
 
   <!-- ============ MAIN CONTENT ============ -->
-  <main class="wrap section">
+  <main id="main-content" tabindex="-1" class="wrap section">
     <div class="content-layout">
 
-      <!-- Esta categoria ainda não tem artigos publicados. -->
+      <!-- LISTA DE FERRAMENTAS -->
       <div>
-        <div class="side-block">
-          <h3>Nenhum artigo publicado nesta categoria</h3>
-          <p>Consulte a lista dos artigos que já estão disponíveis no site.</p>
-          <a href="todos-os-artigos.html" class="btn btn-ghost">Ver artigos disponíveis</a>
+        <div class="tools-grid">
+
+          <!-- FERRAMENTA 1: Desconto à vista -->
+          <div class="tool-card">
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0"/></svg>
+            </div>
+            <h3>Calculadora de Desconto à Vista</h3>
+            <p>Esta ferramenta ainda não está disponível.</p>
+          </div>
+
+          <!-- FERRAMENTA 2: Simulador de Parcelamento -->
+          <div class="tool-card">
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>Simulador de Parcelamento</h3>
+            <p>Este simulador ainda não está disponível.</p>
+          </div>
+
+          <!-- FERRAMENTA 3: Orçamento 50/30/20 -->
+          <div class="tool-card">
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            </div>
+            <h3>Calculadora de Orçamento 50/30/20</h3>
+            <p>Esta calculadora ainda não está disponível.</p>
+          </div>
+
         </div>
       </div>
 
-      <!-- SIDEBAR (MANTENDO A CONSISTÊNCIA) -->
+      <!-- SIDEBAR -->
       <aside class="sidebar">
         
         <div class="side-block" style="background: var(--navy-900); color: #fff;">

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Renegociação",
+    "title": "Guias de Renegociação",
+    "description": "Informações gerais para acessar canais oficiais e entender processos de renegociação de dívidas.",
+    "permalink": "/guias-de-renegociacao.html",
+    "slug": "renegociacao"
+  },
+  {
+    "name": "Renda Extra",
+    "title": "Renda Extra",
+    "description": "Ainda não há artigos publicados nesta categoria.",
+    "permalink": "/renda-extra.html",
+    "slug": "renda-extra"
+  },
+  {
+    "name": "Carreira & Cursos",
+    "title": "Carreira & Cursos",
+    "description": "Ainda não há artigos publicados nesta categoria.",
+    "permalink": "/carreira-cursos.html",
+    "slug": "carreira-cursos"
+  },
+  {
+    "name": "Organização Financeira",
+    "title": "Organização Financeira",
+    "description": "Ainda não há artigos publicados nesta categoria.",
+    "permalink": "/organizacao-financeira.html",
+    "slug": "organizacao-financeira"
+  }
+]
