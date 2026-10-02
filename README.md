@@ -49,7 +49,7 @@ O build define `ELEVENTY_ENV=production`, remove e recria `_site/`. Os testes ve
 
 ## Publicar
 
-Este repositório não contém configuração de hospedagem, integração contínua ou implantação automática. Nenhum provedor foi confirmado. Para publicar após escolher/confirmar o provedor:
+O proprietário indicou a Vercel como ambiente temporário de desenvolvimento e validação. Ainda não há projeto Vercel, configuração de build no painel nem deploy configurado neste repositório. Para qualquer publicação após autorização:
 
 1. Execute `npm ci` e `npm test` em um ambiente com Node.js 18 ou superior.
 2. Execute `npm run build` e envie todos os arquivos e subpastas de `_site/` para a raiz pública de um host estático.
@@ -57,7 +57,37 @@ Este repositório não contém configuração de hospedagem, integração contí
 4. Ative HTTPS no provedor e confirme que HTTP redireciona para HTTPS e que o domínio personalizado serve o build esperado, inclusive `/404.html`, `/robots.txt` e `/sitemap.xml`.
 5. Para atualizações, repita `npm ci`, `npm test`, `npm run build` e envie o novo conteúdo de `_site/`. Automatização de build e deploy requer decisão posterior sobre o provedor e suas credenciais; não está configurada aqui.
 
-Antes do lançamento, confirme no registrador quem controla a zona DNS e no provedor qual destino e configuração de domínio devem ser usados. Os valores de DNS variam entre provedores e não estão registrados neste repositório. Verifique externamente DNS, HTTPS, redirecionamentos e status de publicação após configurar o host.
+O proprietário informou que o domínio usa `ns1.vercel-dns.com` e `ns2.vercel-dns.com`; isso não confirma que o projeto do site esteja hospedado na Vercel. Não altere os nameservers nem outros registros DNS sem uma migração aprovada e uma cópia de todos os registros atuais.
+
+## Configurar na Vercel (quando o deploy estiver autorizado)
+
+Não é necessário criar `vercel.json`: os parâmetros abaixo podem ser preenchidos no painel do projeto e não prendem o build ao runtime da Vercel. O site é estático e o deploy contém somente o diretório gerado. A existência de `404.html` permite que a hospedagem use a página 404 estática; confirme o comportamento no domínio de preview antes do lançamento.
+
+Em **Add New Project → Import Git Repository**, selecione `kennidyroger04-wq/guia-do-nome-limpo` e use a branch `work` para validar esta versão. Como importar/conectar GitHub pode iniciar um build e criar uma URL acessível, não conclua essa ação nem clique em **Deploy** sem autorização para a publicação correspondente.
+
+Valores do painel **Build and Development Settings**:
+
+| Campo | Valor |
+| --- | --- |
+| Framework Preset | Eleventy, se disponível; caso contrário, Other |
+| Root Directory | `./` (raiz do repositório) |
+| Install Command | `npm ci` |
+| Build Command | `npm run build` |
+| Output Directory | `_site` |
+| Node.js Version | 22.x (Eleventy requer Node.js 18 ou superior) |
+| Environment Variables | Nenhuma necessária |
+
+Não associe o domínio personalizado durante uma validação temporária. Antes do lançamento, confirme domínio, branch de produção, redirecionamentos entre apex e `www`, HTTPS e a configuração da zona DNS no painel. O projeto define o apex `https://guiadonomelimpo.com.br` como URL canônica e sitemap.
+
+## Candidato para migração: Cloudflare Pages
+
+O build atual já é portável: integração GitHub opcional, comando `npm run build`, pasta de saída `_site`, Node.js 18+ e nenhum Worker ou função. Os valores de build se mantêm iguais aos da Vercel. Preserve o domínio canônico, os caminhos `.html`, `robots.txt` e o sitemap; compare todos os caminhos gerados antes de trocar o host.
+
+Antes de escolher o plano gratuito, confirme nas políticas vigentes se o uso comercial e os anúncios planejados são permitidos, e verifique os limites atuais de arquivos por site, tamanho máximo de arquivo, builds mensais, concorrência/tempo de build, tráfego, regras de uso e recursos de funções. Este projeto é somente estático e não precisa de funções no momento. Esses limites e a política comercial não foram confirmados nesta tarefa: o acesso às páginas oficiais foi bloqueado pelo proxy de rede (HTTP 403). Consulte [limites do Pages](https://developers.cloudflare.com/pages/platform/limits/), [builds](https://developers.cloudflare.com/pages/configuration/build-configuration/), [integração Git](https://developers.cloudflare.com/pages/get-started/git-integration/) e [domínios personalizados](https://developers.cloudflare.com/pages/configuration/custom-domains/) antes de decidir.
+
+O proprietário informou nameservers da Vercel. Para apontar o domínio apex para outro provedor que exija a zona DNS sob sua gestão, planeje uma migração de DNS: exporte/copie todos os registros atuais (incluindo MX, TXT e verificações de serviços), configure e valide a zona no novo provedor, confira o requisito de nameservers para domínio apex e só então altere a delegação no registrador. Faça a mudança em janela controlada, mantenha acesso à zona anterior e verifique NS, registros, HTTPS, apex/`www` e redirecionamentos após a propagação. Não execute nenhuma dessas etapas nesta missão.
+
+Depois de escolher um destino, conecte o repositório e a branch de publicação por integração GitHub ou publique manualmente `_site/`, conforme suporte do provedor. A integração Git automatiza builds e publicações a cada atualização; só a habilite depois de decidir qual branch deve publicar e autorizar deploy automático. A arquitetura não requer mudanças no código para trocar de host.
 
 ## Informações que faltam para transparência
 
