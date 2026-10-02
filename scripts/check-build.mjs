@@ -14,6 +14,9 @@ function listHtmlFiles(directory, prefix = '') {
 
 const pages = listHtmlFiles(root).sort();
 assert.ok(pages.length >= 12, `Expected the 12 existing HTML pages, received ${pages.length}`);
+assert.ok(existsSync(path.join(root, '404.html')), '404 page was not generated');
+assert.ok(existsSync(path.join(root, 'robots.txt')), 'robots.txt was not generated');
+assert.ok(existsSync(path.join(root, 'favicon.svg')), 'favicon was not generated');
 
 const read = (name) => readFileSync(path.join(root, name), 'utf8');
 const allPages = pages.map((name) => [name, read(name)]);
@@ -60,7 +63,7 @@ assert.ok(existsSync(path.join(root, 'assets/navigation.js')));
 
 const sitemap = read('sitemap.xml');
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]));
-assert.equal(sitemapUrls.length, pages.length, `Expected every generated HTML page in the sitemap; received ${sitemapUrls.length} entries for ${pages.length} pages`);
+assert.equal(sitemapUrls.length, pages.length - 1, `Expected every indexable HTML page except the 404 in the sitemap; received ${sitemapUrls.length} entries for ${pages.length} pages`);
 for (const url of sitemapUrls) {
   const pathname = decodeURIComponent(url.pathname.replace(/^\//, ''));
   const targetPath = path.join(root, pathname);
@@ -68,6 +71,23 @@ for (const url of sitemapUrls) {
     ? targetPath
     : path.join(targetPath, 'index.html');
   assert.ok(existsSync(target), `Sitemap URL has no generated file: ${url.href}`);
+  assert.notEqual(url.pathname, '/404.html', '404 page must not appear in the sitemap');
 }
+
+const siteUrl = 'https://guiadonomelimpo.com.br';
+assert.ok(read('robots.txt').includes(`Sitemap: ${siteUrl}/sitemap.xml`), 'robots.txt must point at the configured sitemap');
+for (const [name, html] of allPages) {
+  const canonicals = [...html.matchAll(/<link rel="canonical" href="([^"]+)">/g)].map((match) => match[1]);
+  if (name === '404.html') {
+    assert.equal(canonicals.length, 0, '404 page must not have a canonical URL');
+    assert.match(html, /name="robots" content="noindex, follow"/);
+  } else {
+    assert.equal(canonicals.length, 1, `${name} must have exactly one canonical URL`);
+    assert.ok(canonicals[0].startsWith(`${siteUrl}/`), `${name} canonical must use the configured site URL`);
+    if (name === 'index.html') assert.equal(canonicals[0], `${siteUrl}/`, 'homepage canonical must use the domain root');
+  }
+}
+assert.ok(sitemapUrls.some((url) => url.href === `${siteUrl}/`), 'sitemap must use the domain root for the homepage');
+assert.match(read('index.html'), /rel="icon" type="image\/svg\+xml" href="\/favicon\.svg"/);
 
 console.log(`Build check passed: ${pages.length} pages, ${sitemapUrls.length} sitemap entries, no broken local links.`);

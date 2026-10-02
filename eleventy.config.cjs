@@ -3,6 +3,7 @@ const site = require('./src/_data/site.json');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
+  eleventyConfig.addPassthroughCopy({ 'src/favicon.svg': 'favicon.svg' });
 
   eleventyConfig.addCollection('articles', (collectionApi) =>
     collectionApi.getFilteredByTag('article').sort((a, b) => {

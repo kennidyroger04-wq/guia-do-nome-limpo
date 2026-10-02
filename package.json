@@ -4,7 +4,7 @@
   "description": "Site estático educativo com publicação editorial em Markdown usando Eleventy",
   "scripts": {
     "test": "npm run build && node scripts/check-build.mjs",
-    "build": "node scripts/clean.mjs && eleventy --config=eleventy.config.cjs",
+    "build": "node scripts/clean.mjs && ELEVENTY_ENV=production eleventy --config=eleventy.config.cjs",
     "dev": "eleventy --serve --config=eleventy.config.cjs"
   },
   "repository": {

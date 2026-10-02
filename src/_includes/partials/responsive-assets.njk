@@ -1,2 +1,4 @@
 <link rel="stylesheet" href="/assets/responsive.css">
+{% if not noCanonical %}<link rel="canonical" href="{{ site.url }}{% if page.url == '/index.html' %}/{% else %}{{ page.url }}{% endif %}">{% endif %}
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script src="/assets/navigation.js" defer></script>

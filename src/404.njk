@@ -1,0 +1,47 @@
+---
+permalink: /404.html
+title: Página não encontrada
+description: A página solicitada não foi encontrada. Volte ao início ou consulte os artigos publicados.
+noCanonical: true
+excludeFromSitemap: true
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — {{ site.name }}</title>
+<meta name="description" content="{{ description }}">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy-900:#0a1a30; --blue-500:#2f6fed; --gray-600:#5b6b82; --gray-300:#c4cedd; --gray-100:#eef1f6; --white:#fff; --font-display:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--gray-100); color:var(--navy-900); font-family:var(--font-body); line-height:1.6; }
+  .not-found { min-height:55vh; display:grid; place-content:center; text-align:center; padding:64px 24px; }
+  .not-found h1 { margin:0 0 12px; font:700 clamp(2rem,6vw,3.5rem)/1.1 var(--font-display); }
+  .not-found p { max-width:38rem; margin:0 auto 24px; color:var(--gray-600); }
+  .not-found-links { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
+  .not-found-links a { display:inline-flex; padding:10px 18px; border-radius:6px; background:var(--blue-500); color:var(--white); font-weight:600; text-decoration:none; }
+  .not-found-links a:focus-visible { outline:3px solid var(--navy-900); outline-offset:3px; }
+  footer { padding:24px; border-top:1px solid var(--gray-300); text-align:center; color:var(--gray-600); }
+</style>
+{% include "partials/responsive-assets.njk" %}
+</head>
+<body>
+{% include "partials/navigation.njk" %}
+<main id="main-content" class="not-found" tabindex="-1">
+  <div>
+    <p class="eyebrow">Erro 404</p>
+    <h1>Não encontramos esta página</h1>
+    <p>O endereço pode ter mudado ou estar incorreto. Você pode voltar ao início ou procurar entre os artigos publicados.</p>
+    <div class="not-found-links">
+      <a href="/index.html">Ir para a página inicial</a>
+      <a href="/todos-os-artigos.html">Ver todos os artigos</a>
+    </div>
+  </div>
+</main>
+<footer>© 2026 Guia do Nome Limpo</footer>
+</body>
+</html>
