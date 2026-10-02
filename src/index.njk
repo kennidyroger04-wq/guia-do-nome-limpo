@@ -373,9 +373,12 @@ permalink: /index.html
   .calc-field label{
     display:block; font-size:.76rem; font-weight:600; color:var(--gray-600); margin-bottom:6px;
   }
+  .calc-help{font-size:.76rem; color:var(--gray-600); margin:0;}
+  .calc-error{margin:8px 0 0; color:#a32626; font-size:.84rem; font-weight:600;}
+  .fake-input[aria-invalid="true"]{border-color:#a32626 !important;}
   .calc-result{
     margin-top:16px; background:var(--clean-green-soft); border-radius:var(--radius-sm);
-    padding:14px; display:flex; justify-content:space-between; align-items:center;
+    padding:14px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 12px; align-items:center;
   }
   .calc-result .label{font-size:.76rem; color:var(--gray-600); font-weight:600;}
   .calc-result .value{font-family:var(--font-mono); font-weight:700; color:var(--clean-green); font-size:1.15rem;}
@@ -588,22 +591,28 @@ permalink: /index.html
               Calculadora de desconto à vista
             </h4>
 
-            <div class="calc-field">
-              <label for="valorDivida">Valor original da dívida (R$)</label>
-              <input type="number" id="valorDivida" class="fake-input" placeholder="3200" value="3200" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
-            </div>
+            <form id="discountCalculator" novalidate>
+              <div class="calc-field">
+                <label for="valorDivida">Valor original da dívida (R$)</label>
+                <input type="text" inputmode="decimal" id="valorDivida" name="debt" class="fake-input" placeholder="3.200,00" value="3200" required aria-required="true" aria-describedby="discountHelp">
+              </div>
 
-            <div class="calc-field" style="margin-top: 12px;">
-              <label for="desconto">Desconto estimado (%)</label>
-              <input type="number" id="desconto" class="fake-input" placeholder="45" value="45" min="0" max="99" style="width:100%; border:1px solid var(--gray-300); padding:8px 12px; border-radius:var(--radius-sm); font-size:1rem;">
-            </div>
+              <div class="calc-field" style="margin-top: 12px;">
+                <label for="desconto">Desconto informado (%)</label>
+                <input type="text" inputmode="decimal" id="desconto" name="discount" class="fake-input" placeholder="45" value="45" required aria-required="true" aria-describedby="discountHelp">
+              </div>
+              <p id="discountHelp" class="calc-help">Informe uma dívida maior que zero, com até duas casas decimais e no máximo R$ 1 bilhão; desconto entre 0% e 100%.</p>
+              <p class="calc-error" data-error role="alert" hidden></p>
 
-            <div class="calc-result" style="margin-top: 16px;">
-              <span class="label">Valor estimado do acordo</span>
-              <span class="value" id="resultadoAcordo" style="font-size: 1.4rem; font-weight: 700; color: var(--clean-green);">R$ 1.760,00</span>
-            </div>
+              <div class="calc-result" data-results role="status" aria-live="polite" style="margin-top: 16px;">
+                <span class="label">Economia calculada</span>
+                <span class="value" data-output="savings">R$ 1.440,00</span>
+                <span class="label" style="margin-top: 8px;">Valor após o desconto</span>
+                <span class="value" data-output="finalAmount">R$ 1.760,00</span>
+              </div>
 
-            <button type="button" id="btnCalcular" class="calc-cta" style="width:100%; border:none; cursor:pointer; margin-top: 12px;">Calcular meu desconto</button>
+              <button type="submit" class="calc-cta" style="width:100%; border:none; cursor:pointer; margin-top: 12px;">Calcular desconto</button>
+            </form>
           </div>
 
           <!-- BLOCO DE ANÚNCIO 2 -->
@@ -687,25 +696,6 @@ permalink: /index.html
     </div>
   </footer>
 
-  <script>
-    function calcularDesconto() {
-      const valorInput = parseFloat(document.getElementById('valorDivida').value) || 0;
-      const descontoInput = parseFloat(document.getElementById('desconto').value) || 0;
-
-      const percentual = Math.min(Math.max(descontoInput, 0), 100);
-      const valorComDesconto = valorInput * (1 - (percentual / 100));
-
-      const valorFormatado = valorComDesconto.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      });
-
-      document.getElementById('resultadoAcordo').innerText = valorFormatado;
-    }
-
-    document.getElementById('btnCalcular')?.addEventListener('click', calcularDesconto);
-    document.getElementById('valorDivida')?.addEventListener('input', calcularDesconto);
-    document.getElementById('desconto')?.addEventListener('input', calcularDesconto);
-  </script>
+  <script src="/assets/financial-tools.js" defer></script>
 </body>
 </html>

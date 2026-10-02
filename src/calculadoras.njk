@@ -9,7 +9,7 @@ permalink: /calculadoras.html
 
 <!-- METADADOS DE SEO -->
 <title>Ferramentas financeiras — Guia do Nome Limpo</title>
-<meta name="description" content="Veja quais ferramentas financeiras ainda não estão disponíveis e acesse os canais oficiais dos credores.">
+<meta name="description" content="Use calculadoras locais de desconto de dívidas, orçamento doméstico e parcelas pelo sistema Price.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -78,6 +78,25 @@ permalink: /calculadoras.html
   .tool-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; line-height: 1.3; color: var(--navy-900); margin-bottom: 12px; }
   .tool-card p { color: var(--gray-600); font-size: .9rem; line-height: 1.55; margin-bottom: 24px; flex: 1; }
   .tool-card .btn { width: 100%; }
+  .tool-card.financial-tool { align-items: stretch; text-align: left; }
+  .financial-tool .tool-icon { align-self: center; }
+  .financial-tool h3 { text-align: center; }
+  .financial-tool .tool-intro { margin: 0 0 18px; text-align: left; }
+  .tool-form { width: 100%; display: grid; gap: 12px; }
+  .tool-form label { display: block; margin-bottom: 5px; color: var(--navy-800); font-size: .82rem; font-weight: 600; }
+  .tool-form input { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); background: var(--white); color: var(--navy-900); font: inherit; }
+  .tool-form input[aria-invalid="true"] { border-color: #a32626; }
+  .tool-help { margin: 0; color: var(--gray-600); font-size: .78rem; text-align: left; }
+  .tool-error { margin: 0; color: #a32626; font-size: .84rem; font-weight: 600; text-align: left; }
+  .tool-results { padding: 14px; border-radius: var(--radius-sm); background: var(--clean-green-soft); }
+  .tool-results p { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 7px; color: var(--navy-800); font-size: .86rem; text-align: left; }
+  .tool-results p:last-child { margin-bottom: 0; }
+  .tool-results output { color: var(--clean-green); font-family: var(--font-mono); font-weight: 700; text-align: right; }
+  .tool-submit { width: 100%; padding: 12px 16px; border: 0; border-radius: var(--radius-sm); background: var(--navy-900); color: var(--white); font: 700 .9rem var(--font-body); cursor: pointer; }
+  .tool-submit:hover { background: var(--blue-500); }
+  .formula-note { margin-top: 16px; color: var(--gray-600); font-size: .82rem; text-align: left; }
+  .formula-note summary { color: var(--blue-500); font-weight: 600; cursor: pointer; }
+  .formula-note p { margin: 8px 0 0; }
 
   /* Sidebar */
   .sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 92px; }
@@ -109,7 +128,7 @@ permalink: /calculadoras.html
     <div class="wrap">
       <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 8px; display: block;">Kit de Ferramentas</span>
       <h1>Nossas Calculadoras</h1>
-      <p>As ferramentas desta página ainda não estão disponíveis. Use apenas os canais oficiais para confirmar valores e condições de acordos.</p>
+      <p>Faça estimativas no navegador. Os valores são ilustrativos e não são propostas de credores, orientação individual nem promessa de condições.</p>
     </div>
   </section>
 
@@ -122,31 +141,70 @@ permalink: /calculadoras.html
         <div class="tools-grid">
 
           <!-- FERRAMENTA 1: Desconto à vista -->
-          <div class="tool-card">
+          <section class="tool-card financial-tool" aria-labelledby="discountTitle">
             <div class="tool-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H4v18h16V3h-5M9 3v4h6V3M9 3a3 3 0 016 0"/></svg>
             </div>
-            <h3>Calculadora de Desconto à Vista</h3>
-            <p>Esta ferramenta ainda não está disponível.</p>
-          </div>
+            <h3 id="discountTitle">Calculadora de desconto de dívida</h3>
+            <p class="tool-intro">Informe um valor de referência e o percentual de desconto para calcular a economia e o valor restante.</p>
+            <form id="discountCalculator" class="tool-form" novalidate>
+              <div><label for="calcDebt">Valor original da dívida (R$)</label><input id="calcDebt" name="debt" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 3.200,00" required aria-required="true" aria-describedby="discountHelp"></div>
+              <div><label for="calcDiscount">Desconto (%)</label><input id="calcDiscount" name="discount" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 45" required aria-required="true" aria-describedby="discountHelp"></div>
+              <p class="tool-help" id="discountHelp">Dívida maior que zero, até duas casas decimais e no máximo R$ 1 bilhão; desconto entre 0% e 100%.</p>
+              <p class="tool-error" data-error role="alert" hidden></p>
+              <div class="tool-results" data-results role="status" aria-live="polite" hidden>
+                <p>Economia calculada <output data-output="savings"></output></p>
+                <p>Valor após o desconto <output data-output="finalAmount"></output></p>
+              </div>
+              <button class="tool-submit" type="submit">Calcular desconto</button>
+            </form>
+            <details class="formula-note"><summary>Fórmula e limites</summary><p>Economia = dívida × desconto. Valor final = dívida − economia. É uma conta ilustrativa; ofertas reais podem ter outras condições.</p></details>
+          </section>
 
           <!-- FERRAMENTA 2: Simulador de Parcelamento -->
-          <div class="tool-card">
+          <section class="tool-card financial-tool" aria-labelledby="installmentTitle">
             <div class="tool-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-            <h3>Simulador de Parcelamento</h3>
-            <p>Este simulador ainda não está disponível.</p>
-          </div>
+            <h3 id="installmentTitle">Simulador de parcelamento</h3>
+            <p class="tool-intro">Estime parcelas mensais com uma taxa efetiva mensal informada, usando parcelas constantes pelo sistema Price.</p>
+            <form id="installmentCalculator" class="tool-form" novalidate>
+              <div><label for="financedAmount">Valor financiado (R$)</label><input id="financedAmount" name="principal" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 1.000,00" required aria-required="true" aria-describedby="installmentHelp"></div>
+              <div><label for="installmentPeriods">Quantidade de parcelas mensais</label><input id="installmentPeriods" name="periods" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: 12" required aria-required="true" aria-describedby="installmentHelp"></div>
+              <div><label for="monthlyRate">Taxa efetiva mensal (%)</label><input id="monthlyRate" name="monthlyRate" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 1,00" required aria-required="true" aria-describedby="installmentHelp"></div>
+              <p class="tool-help" id="installmentHelp">Valor maior que zero, até duas casas decimais e no máximo R$ 1 bilhão; 1 a 600 parcelas; taxa mensal entre 0% e 100%.</p>
+              <p class="tool-error" data-error role="alert" hidden></p>
+              <div class="tool-results" data-results role="status" aria-live="polite" hidden>
+                <p>Parcela mensal <output data-output="monthlyInstallment"></output></p>
+                <p>Total pago estimado <output data-output="totalPaid"></output></p>
+                <p>Custo dos juros estimado <output data-output="interestCost"></output></p>
+              </div>
+              <button class="tool-submit" type="submit">Simular parcelas</button>
+            </form>
+            <details class="formula-note"><summary>Fórmula e limites</summary><p>Sistema Price: parcela = P × i ÷ (1 − (1 + i)<sup>−n</sup>), onde P é o valor financiado, i é a taxa efetiva por mês como fração e n é o número de parcelas mensais. Com taxa zero, parcela = P ÷ n. Informe a taxa na mesma periodicidade mensal; uma taxa anual precisa ser convertida para taxa efetiva mensal antes da simulação. A conta não inclui tarifas, impostos, seguros ou outros custos; não é proposta de crédito e não representa o CET.</p></details>
+          </section>
 
-          <!-- FERRAMENTA 3: Orçamento 50/30/20 -->
-          <div class="tool-card">
+          <!-- FERRAMENTA 3: Orçamento doméstico -->
+          <section class="tool-card financial-tool" aria-labelledby="budgetTitle">
             <div class="tool-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
             </div>
-            <h3>Calculadora de Orçamento 50/30/20</h3>
-            <p>Esta calculadora ainda não está disponível.</p>
-          </div>
+            <h3 id="budgetTitle">Simulador de orçamento doméstico</h3>
+            <p class="tool-intro">Some renda e despesas mensais para ver o saldo aritmético depois dos compromissos informados.</p>
+            <form id="budgetCalculator" class="tool-form" novalidate>
+              <div><label for="netIncome">Renda líquida mensal (R$)</label><input id="netIncome" name="income" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 5.000,00" required aria-required="true" aria-describedby="budgetHelp"></div>
+              <div><label for="essentialExpenses">Despesas essenciais (R$)</label><input id="essentialExpenses" name="essentials" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 2.200,00" required aria-required="true" aria-describedby="budgetHelp"></div>
+              <div><label for="variableExpenses">Despesas variáveis (R$)</label><input id="variableExpenses" name="variable" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 700,00" required aria-required="true" aria-describedby="budgetHelp"></div>
+              <div><label for="financialCommitments">Compromissos financeiros existentes (R$)</label><input id="financialCommitments" name="commitments" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 900,00" required aria-required="true" aria-describedby="budgetHelp"></div>
+              <p class="tool-help" id="budgetHelp">Campos obrigatórios, zero ou maior, até duas casas decimais e R$ 1 bilhão por campo.</p>
+              <p class="tool-error" data-error role="alert" hidden></p>
+              <div class="tool-results" data-results role="status" aria-live="polite" hidden>
+                <p>Saldo mensal calculado <output data-output="availableBalance"></output></p>
+              </div>
+              <button class="tool-submit" type="submit">Calcular saldo mensal</button>
+            </form>
+            <details class="formula-note"><summary>Fórmula e limites</summary><p>Saldo = renda líquida − despesas essenciais − despesas variáveis − compromissos informados. O saldo é uma conta, não uma recomendação nem o valor que necessariamente pode ser comprometido. Considere gastos irregulares, necessidades e imprevistos; não usamos percentual universal de renda.</p></details>
+          </section>
 
         </div>
       </div>
@@ -186,5 +244,6 @@ permalink: /calculadoras.html
     </div>
   </footer>
 
+<script src="/assets/financial-tools.js" defer></script>
 </body>
 </html>
