@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- METADADOS DE SEO -->
-<title>Entenda seu Score e Descubra seu Perfil de Crédito — Guia do Nome Limpo</title>
-<meta name="description" content="Faça nosso quiz de crédito e descubra quais cartões e empréstimos estão disponíveis para a sua faixa de score.">
+<title>Score de Crédito: informações gerais — Guia do Nome Limpo</title>
+<meta name="description" content="Informações educativas sobre score de crédito. Esta página não consulta CPF nem recomenda produtos financeiros.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -117,7 +117,7 @@
           <li><a href="entender-score.html" style="color: var(--blue-500);">Entender Score</a></li>
           <li><a href="calculadoras.html">Calculadoras</a></li>
           <li class="has-dropdown">
-            <a href="#">Artigos ▾</a>
+            <a href="todos-os-artigos.html">Artigos ▾</a>
             <ul class="dropdown-menu">
               <li><a href="renda-extra.html">Renda Extra</a></li>
               <li><a href="carreira-cursos.html">Carreira & Cursos</a></li>
@@ -129,7 +129,7 @@
       </nav>
 
       <div>
-        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow sponsored" class="btn btn-primary" style="padding: 10px 20px;">Consultar Dívidas Grátis</a>
+        <a href="https://www.serasa.com.br" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary" style="padding: 10px 20px;">Acessar site da Serasa</a>
       </div>
     </div>
   </header>
@@ -137,104 +137,13 @@
   <!-- ============ SCORE HERO & QUIZ ============ -->
   <section class="score-hero">
     <div class="wrap">
-      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 12px; display: block;">Análise de Perfil Financeiro</span>
-      <h1>Descubra o que seu Score pode comprar hoje</h1>
-      <p>Responda 3 perguntas rápidas e receba uma lista personalizada de cartões e empréstimos que aprovam pessoas com o seu perfil.</p>
+      <span class="eyebrow" style="color: var(--blue-400); margin-bottom: 12px; display: block;">Informações gerais</span>
+      <h1>Informações gerais sobre score de crédito</h1>
+      <p>Esta página não consulta CPF ou score nem recomenda produtos de crédito.</p>
 
-      <!-- Formulário estruturado para futura integração -->
       <div class="quiz-box">
-        <form id="quiz-score" onsubmit="event.preventDefault(); alert('Em breve: Integração para enviar seu roteiro personalizado no WhatsApp!');">
-          
-          <div class="quiz-step">
-            <span class="quiz-label">1. Como está a sua situação atual no Serasa/SPC?</span>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" name="situacao" value="negativado" required>
-                Estou com o nome sujo (negativado)
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="situacao" value="limpo_score_baixo">
-                Nome limpo, mas score baixo (rejeitado em análises)
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="situacao" value="limpo_score_alto">
-                Nome limpo e score alto (busco cartões melhores)
-              </label>
-            </div>
-          </div>
-
-          <div class="quiz-step">
-            <span class="quiz-label">2. Qual o seu principal objetivo agora?</span>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" name="objetivo" value="cartao_credito" required>
-                Conseguir um Cartão de Crédito
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="objetivo" value="emprestimo">
-                Conseguir um Empréstimo
-              </label>
-            </div>
-          </div>
-
-          <div class="quiz-step">
-            <span class="quiz-label">3. Para onde devemos enviar sua análise gratuita?</span>
-            <input type="text" id="nome" name="nome" class="input-field" placeholder="Seu primeiro nome" required>
-            <input type="tel" id="whatsapp" name="whatsapp" class="input-field" placeholder="Seu WhatsApp (com DDD)" required>
-            <p style="font-size: 0.75rem; color: var(--gray-600); margin-top: 4px;">Não enviamos spam. Seus dados estão seguros.</p>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="padding: 16px; font-size: 1.05rem;">Analisar Meu Perfil Agora →</button>
-        
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ OFFERS SECTION ============ -->
-  <section class="wrap offers-section">
-    <div class="section-title">
-      <h2>Prateleira de Ofertas (Exemplo)</h2>
-      <p style="color: var(--gray-600);">Opções mapeadas de acordo com as faixas de crédito do mercado.</p>
-    </div>
-
-    <div class="offers-grid">
-      
-      <!-- Oferta: Score Baixo / Negativado -->
-      <div class="offer-card">
-        <span class="offer-badge badge-low">Para Negativados</span>
-        <h3>Cartão SuperDigital</h3>
-        <p>Cartão pré-pago sem anuidade e sem consulta ao SPC/Serasa. Perfeito para quem está com restrição.</p>
-        <ul class="offer-features">
-          <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Aprovação garantida</li>
-          <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Conta digital gratuita</li>
-        </ul>
-        <a href="#" class="btn btn-primary" style="background: var(--navy-900);">Solicitar Cartão</a>
-      </div>
-
-      <!-- Oferta: Score Médio -->
-      <div class="offer-card">
-        <span class="offer-badge badge-med">Score Médio (300+)</span>
-        <h3>Will Bank</h3>
-        <p>Cartão de crédito sem anuidade com alta taxa de aprovação para quem está com o nome limpo há pouco tempo.</p>
-        <ul class="offer-features">
-          <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Sem anuidade para sempre</li>
-          <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Limite inicial amigável</li>
-        </ul>
-        <a href="#" class="btn btn-primary">Solicitar Cartão</a>
-      </div>
-
-      <!-- Oferta: Score Alto -->
-      <div class="offer-card">
-        <span class="offer-badge badge-high">Score Alto (700+)</span>
-        <h3>Nubank Ultravioleta</h3>
-        <p>Cartão Black com 1% de cashback que rende a 200% do CDI. Acesso a salas VIP e benefícios premium.</p>
-        <ul class="offer-features">
-          <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mastercard Black</li>
-          <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Cashback que não expira</li>
-        </ul>
-        <a href="#" class="btn btn-primary">Solicitar Cartão</a>
+        <p>O quiz de perfil ainda não está disponível. Não informe dados pessoais nesta página.</p>
+        <a href="limpa-nome-guia-consultar-cpf-negociar-dividas.html" class="btn btn-primary">Ler o guia disponível</a>
       </div>
 
     </div>
