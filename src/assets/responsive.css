@@ -111,6 +111,10 @@
   .page-hero, .category-hero { padding-top: 36px !important; padding-bottom: 36px !important; }
   .section { padding-top: 36px !important; padding-bottom: 48px !important; }
   .legal-content { padding: 24px 18px !important; }
+  .article-container > * { min-width: 0; }
+  .article-content { min-width: 0; padding: 24px 18px; }
+  .article-body table { width: 100%; table-layout: fixed; overflow-wrap: anywhere; }
+  .article-body th, .article-body td { padding: 8px 6px; overflow-wrap: anywhere; }
   .filter-group { min-width: 0 !important; width: 100%; }
   input, select, textarea, button { max-width: 100%; }
   .footer-links, .footer-bottom > div { display: flex; flex-wrap: wrap; gap: 10px; }
