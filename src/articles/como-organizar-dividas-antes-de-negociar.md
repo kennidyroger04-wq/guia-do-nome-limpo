@@ -42,6 +42,32 @@ Copie este modelo para um caderno, uma planilha ou uma nota no celular:
 | Documentos | Contrato, fatura, extrato, cobrança e comprovantes |
 | Próxima ação | Pedir demonstrativo, contestar, comparar proposta ou contatar o credor |
 
+### Ficha prática para preencher
+
+Copie uma linha para cada dívida em papel, planilha ou nota. Registre o valor e o vencimento com a data em que consultou o credor. Se um dado estiver pendente, marque-o para confirmar antes de decidir.
+
+<div class="table-scroll" role="region" aria-label="Ficha prática de dívidas; use as setas esquerda e direita para percorrer a tabela" aria-keyshortcuts="ArrowLeft ArrowRight" tabindex="0">
+<table class="custom-table worksheet-table">
+  <caption>Ficha prática de organização — uma linha por dívida</caption>
+  <thead>
+    <tr>
+      <th scope="col">Credor</th>
+      <th scope="col">Valor atualizado e data</th>
+      <th scope="col">Vencimento</th>
+      <th scope="col">Encargos</th>
+      <th scope="col">Situação</th>
+      <th scope="col">Prioridade e motivo</th>
+      <th scope="col">Próxima ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">Registro 1</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><th scope="row">Registro 2</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><th scope="row">Registro 3</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
+</table>
+</div>
+
 Não misture o valor original contratado com o saldo atual. Registre ambos quando estiverem disponíveis, junto com a data de cada informação. O total pode mudar com pagamentos, encargos e condições previstas no contrato.
 
 Se uma dívida não for reconhecida ou houver divergência no valor, marque-a como **“a confirmar”**. Procure o credor por um canal oficial e guarde o protocolo. Não trate uma cobrança como correta apenas porque apareceu em uma mensagem ou plataforma.

@@ -48,11 +48,14 @@
   html, body { max-width: 100%; }
   .header-inner { min-height: 72px; height: auto !important; gap: 12px !important; }
   .header-inner .logo { gap: 8px; font-size: 1rem; }
-  .header-inner .logo small { font-size: .64rem; }
-  .header-inner .menu-toggle { display: inline-flex; margin-left: auto; }
-  .header-inner .header-action,
-  .header-inner .header-cta { display: none !important; }
-  html.has-js nav.primary {
+.header-inner .logo small { font-size: .64rem; }
+.header-inner .menu-toggle { display: inline-flex; margin-left: auto; }
+.header-inner .header-action,
+.header-inner .header-cta { display: none !important; }
+.article-body .table-scroll { max-width: 100%; margin: 28px 0; overflow-x: auto; overscroll-behavior-x: contain; }
+.article-body .table-scroll .worksheet-table { width: 1000px; min-width: 1000px; max-width: none; margin: 0; table-layout: fixed; }
+.article-body .table-scroll .proposal-table { width: 1280px; min-width: 1280px; max-width: none; margin: 0; table-layout: fixed; }
+html.has-js nav.primary {
     position: absolute !important;
     top: 100%;
     right: 0;

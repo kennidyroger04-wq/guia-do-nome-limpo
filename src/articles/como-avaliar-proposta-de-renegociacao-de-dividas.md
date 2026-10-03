@@ -77,11 +77,51 @@ Antes de pagar, confirme beneficiário, valor e código de barras ou chave Pix n
 
 Os valores abaixo são fictícios. Para permitir a comparação, considere que as três propostas se referem à mesma dívida e usam o mesmo saldo de referência de **R$ 4.000**, atualizado na mesma data. Os totais indicados já incluem todos os pagamentos previstos, sem cobranças adicionais.
 
-| Proposta | Condição de pagamento | Total nominal | Redução nominal sobre R$ 4.000 |
-|---|---|---:|---:|
-| A | R$ 2.500 à vista | R$ 2.500 | R$ 1.500 (37,5%) |
-| B | Entrada de R$ 50 + 12 parcelas de R$ 225 | R$ 2.750 | R$ 1.250 (31,25%) |
-| C | 18 parcelas de R$ 175 | R$ 3.150 | R$ 850 (21,25%) |
+<div class="table-scroll" role="region" aria-label="Comparação das três propostas fictícias; use as setas esquerda e direita para percorrer a tabela" aria-keyshortcuts="ArrowLeft ArrowRight" tabindex="0">
+<table class="custom-table proposal-table">
+  <caption>Comparação das propostas para saldo de referência de R$ 4.000 e limite mensal ilustrativo de R$ 300</caption>
+  <thead>
+    <tr>
+      <th scope="col">Proposta</th>
+      <th scope="col">Saldo de referência da dívida</th>
+      <th scope="col">Entrada</th>
+      <th scope="col">Quantidade e valor das parcelas</th>
+      <th scope="col">Custo total nominal</th>
+      <th scope="col">Diferença de total</th>
+      <th scope="col">Impacto no orçamento mensal do exemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">A</th>
+      <td>R$ 4.000</td>
+      <td>R$ 2.500 à vista</td>
+      <td>Sem parcelas</td>
+      <td>R$ 2.500</td>
+      <td>Menor total de referência</td>
+      <td>Exige R$ 2.500 de uma vez; não é comparável a uma parcela mensal.</td>
+    </tr>
+    <tr>
+      <th scope="row">B</th>
+      <td>R$ 4.000</td>
+      <td>R$ 50</td>
+      <td>12 × R$ 225</td>
+      <td>R$ 2.750</td>
+      <td>R$ 250 a mais que A</td>
+      <td>R$ 275 no primeiro mês se entrada e 1ª parcela coincidirem (91,7% do limite); depois R$ 225 (75%).</td>
+    </tr>
+    <tr>
+      <th scope="row">C</th>
+      <td>R$ 4.000</td>
+      <td>Sem entrada</td>
+      <td>18 × R$ 175</td>
+      <td>R$ 3.150</td>
+      <td>R$ 650 a mais que A; R$ 400 a mais que B</td>
+      <td>R$ 175 por mês (58,3% do limite ilustrativo de R$ 300).</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 Os cálculos são:
 

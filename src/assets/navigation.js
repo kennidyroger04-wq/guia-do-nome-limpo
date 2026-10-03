@@ -1,4 +1,12 @@
 (() => {
+  document.querySelectorAll('.table-scroll[role="region"][tabindex="0"]').forEach((region) => {
+    region.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      region.scrollBy({ left: event.key === 'ArrowRight' ? 180 : -180 });
+    });
+  });
+
   const toggle = document.getElementById('menuToggle');
   const navigation = document.getElementById('primaryNav');
   if (!toggle || !navigation) return;
